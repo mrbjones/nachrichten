@@ -16,7 +16,7 @@ callback = function(response) {
   });
 }
 
-var server = http.createServer(function(request, response) {
+var server = http.createServer(function(req, res) {
 res.writeHead(200, {'Content-Type': 'text/plain'});
 http.request(options, callback).end();
 }).listen(process.env.VCAP_APP_PORT);
