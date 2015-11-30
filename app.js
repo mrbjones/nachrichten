@@ -3,7 +3,7 @@ var url = require('url');
 
 function fetchNachrichten(callback){
 return http.get({
-        host: 'http://www.welt.de',
+        host: 'www.welt.de',
         path: '/?service=Rss'
     }, function(response) {
         // Continuously update stream with data
