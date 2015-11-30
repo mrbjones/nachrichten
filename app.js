@@ -17,7 +17,8 @@ callback = function(response) {
 
   //the whole response has been recieved, so we just print it out here
   response.on('end', function () {
-    console.log(str);
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end(str);;
   });
 }
 
