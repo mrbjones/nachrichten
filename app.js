@@ -12,14 +12,10 @@ return http.get({
             body += d;
         });
         response.on('end', function() {
-            callback({
-              body
-            });
+            callback(body);
         });
-    });
-
-
-}
+    } });
+};
 
 var server = http.createServer(function(req, res) {
 res.writeHead(200, {'Content-Type': 'text/plain'});
