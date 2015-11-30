@@ -14,7 +14,7 @@ return http.get({
         response.on('end', function() {
             callback(body);
         });
-    } });
+    });
 };
 
 var server = http.createServer(function(req, res) {
