@@ -6,20 +6,17 @@ var options = {
   host: 'http://www.welt.de',
   path: '/?service=Rss'
 };
-
 callback = function(response) {
   var str = '';
-
-  //another chunk of data has been recieved, so append it to `str`
   response.on('data', function (chunk) {
-    str += chunk;
+  str += chunk;
   });
-
-  //the whole response has been recieved, so we just print it out here
   response.on('end', function () {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end(str);;
+  res.write(str);;
   });
 }
 
+var server = http.createServer(function(request, response) {
+res.writeHead(200, {'Content-Type': 'text/plain'});
 http.request(options, callback).end();
+}).listen(process.env.VCAP_APP_PORT);
