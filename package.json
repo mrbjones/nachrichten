@@ -4,6 +4,6 @@
         "node": "0.10.38"
     },
      "dependencies": {
-        "orchestrate": "git://github.com/orchestrate-io/orchestrate.js.git#upgrade_nock"
+        "orchestrate": "git://github.com/orchestrate-io/orchestrate.js.git"
      }
 }
