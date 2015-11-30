@@ -4,6 +4,7 @@
         "node": "0.10.38"
     },
      "dependencies": {
-        "orchestrate": "git://github.com/orchestrate-io/orchestrate.js.git"
+        "orchestrate": "git://github.com/orchestrate-io/orchestrate.js.git",
+        "xml2js": "https://github.com/Leonidas-from-XIV/node-xml2js.git"
      }
 }
