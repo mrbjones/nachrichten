@@ -1,15 +1,10 @@
 var http = require('http');
 var url = require('url');
 
-
-var options = {
-  host: 'http://www.welt.de',
-  path: '/?service=Rss'
-};
 function fetchNachrichten(callback){
 return http.get({
-        host: 'personatestuser.org',
-        path: '/email'
+        host: 'http://www.welt.de',
+        path: '/?service=Rss'
     }, function(response) {
         // Continuously update stream with data
         var body = '';
