@@ -19,5 +19,5 @@ return http.get({
 
 var server = http.createServer(function(req, res) {
 res.writeHead(200, {'Content-Type': 'text/plain'});
-fetchNachrichten( function(resp) { response.write(resp);response.end(); }); );
+fetchNachrichten( function(resp) { response.write(resp);response.end(); }); 
 }).listen(process.env.VCAP_APP_PORT);
