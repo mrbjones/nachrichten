@@ -15,11 +15,11 @@ return http.get({
         response.on('end', function() {
          /*   callback(body); */
          var extractedData = "";
-         var parser = new xml2js.Parser();
+         var parser = new xml2js.Parser('UTF-8');
          parser.parseString(body, function(err,result){
   //Extract the value from the data element
     //     extractedData = result['channel']['item']['guid'];
-         extractedData = result['channel']['title'];
+         extractedData = result;
          callback(extractedData);
 });
         });
