@@ -19,7 +19,7 @@ return http.get({
          parser.parseString(body, function(err,result){
   //Extract the value from the data element
     //     extractedData = result['channel']['item']['guid'];
-         extractedData = result;
+         extractedData = result['channel'];
          callback(extractedData);
 });
         });
