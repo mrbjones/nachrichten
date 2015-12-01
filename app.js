@@ -18,7 +18,8 @@ return http.get({
          var parser = new xml2js.Parser();
          parser.parseString(body, function(err,result){
   //Extract the value from the data element
-         extractedData = result['channel']['item']['guid'];
+    //     extractedData = result['channel']['item']['guid'];
+         extractedData = result['channel']['title'];
          callback(extractedData);
 });
         });
