@@ -1,5 +1,6 @@
 var http = require('http');
 var url = require('url');
+var xml2js = require('xml2js');
 
 function fetchNachrichten(callback){
 return http.get({
@@ -12,7 +13,14 @@ return http.get({
             body += d;
         });
         response.on('end', function() {
-            callback(body);
+         /*   callback(body); */
+         var extractedData = "";
+         var parser = new xml2js.Parser();
+         parser.parseString(body, function(err,result){
+  //Extract the value from the data element
+         extractedData = result['item']['guid'];
+         callback(extractedData);
+});
         });
     });
 };
