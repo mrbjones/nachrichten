@@ -4,8 +4,9 @@
         "node": "0.10.38"
     },
      "dependencies": {
-       
+       [
+         "xmljs": "*",
         "orchestrate": "git://github.com/orchestrate-io/orchestrate.js.git"
-       
+       ]
      }
 }
