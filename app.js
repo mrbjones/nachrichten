@@ -18,9 +18,14 @@ return http.get({
          var parser = new xml2js.Parser();
          parser.parseString(body, function(err,result){
     //Extract the value from the data element
-         extractedData = result['rss']['channel']['item']['guid'];
+    //     extractedData = result['rss']['channel']['item']['guid'];
     //     extractedData = result.xml.channel.title;
-         callback(extractedData);
+      var parser = new xml2js.Parser();      
+      parser.parseString(body.substring(0, body.length), function (err, result) {
+      var json = JSON.stringify(result);
+      callback(json);
+    });
+       //  callback(extractedData);
 });
         });
     });
