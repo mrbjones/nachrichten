@@ -22,7 +22,7 @@ return http.get({
     //     extractedData = result.xml.channel.title;
       var parser = new xml2js.Parser();      
       parser.parseString(body.substring(0, body.length), function (err, result) {
-      var json = JSON.stringify(result, ["$", "item", "guid"]);
+      var json = JSON.stringify(result, ["rss", "$", "item", "guid"]);
       callback(json);
     });
        //  callback(extractedData);
