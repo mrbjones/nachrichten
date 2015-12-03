@@ -54,14 +54,14 @@ return http.get({
                 for(var aaa in json1[rss][xxx][yyy][zzz]) {
                        if (aaa!=0){title="";link="";category="";pubDate="";description="";guid="";
                   for(var bbb in json1[rss][xxx][yyy][zzz][aaa]) {
-                      if (bbb=="title"){ title= jsesc(json1[rss][xxx][yyy][zzz][aaa][bbb], {'quotes': 'double'}); }
+                      if (bbb=="title"){ title=json1[rss][xxx][yyy][zzz][aaa][bbb];var title1=title.replace(/\"/g,'\\"')  }
                                if (bbb=="link"){  link=json1[rss][xxx][yyy][zzz][aaa][bbb] }
                                  if (bbb=="category"){  category=json1[rss][xxx][yyy][zzz][aaa][bbb] }
                                    if (bbb=="pubDate"){  pubDate=json1[rss][xxx][yyy][zzz][aaa][bbb] }
-                                     if (bbb=="description"){ description=jsesc(json1[rss][xxx][yyy][zzz][aaa][bbb],{'quotes': 'double'}); }
+                                     if (bbb=="description"){ description=json1[rss][xxx][yyy][zzz][aaa][bbb]; var description1=description.replace(/\"/g,'\\"')  }
                                        if (bbb=="guid"){  guid=json1[rss][xxx][yyy][zzz][aaa][bbb] }
  }
-  putter(title,link,category,pubDate,description,guid,callback);
+  putter(title1,link,category,pubDate,description,guid,callback);
                                
                        }
     
