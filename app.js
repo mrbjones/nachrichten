@@ -32,12 +32,13 @@ return http.get({
                 for(var aaa in json1[rss][xxx][yyy][zzz]) {
                   for(var bbb in json1[rss][xxx][yyy][zzz][aaa]) {
                          for(var ccc in json1[rss][xxx][yyy][zzz][aaa][bbb]) {
-                                    for(var ddd in json1[rss][xxx][yyy][zzz][aaa][bbb][ccc]) {
+                              for(var ddd in json1[rss][xxx][yyy][zzz][aaa][bbb][ccc]) {
+                                       for(var eee in json1[rss][xxx][yyy][zzz][aaa][bbb][ccc][ddd]) {
                            
                             
                             
-                callback("key:"+rss+xxx+yyy+zzz+aaa+bbb+ccc+", value:"+json1[rss][xxx][yyy][zzz][aaa][bbb][ccc][ddd]);
- }}}}}}}}
+                callback("key:"+rss+xxx+yyy+zzz+aaa+bbb+ccc+ddd+eee+", value:"+json1[rss][xxx][yyy][zzz][aaa][bbb][ccc][ddd][eee]);
+ }}}}}}}}}
 
      
         });
