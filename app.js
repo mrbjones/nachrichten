@@ -1,5 +1,6 @@
 var http = require('http');
 var url = require('url');
+var express = require('express');
 var xml2js = require('xml2js');
 if (process.env.VCAP_SERVICES)
 {
