@@ -52,24 +52,20 @@ return http.get({
                 for(var aaa in json1[rss][xxx][yyy][zzz]) {
                        if (aaa!=0){title="";link="";category="";pubDate="";description="";guid="";
                   for(var bbb in json1[rss][xxx][yyy][zzz][aaa]) {
-                            //    callback("key:"+rss+xxx+yyy+zzz+aaa+bbb+", value:"+json1[rss][xxx][yyy][zzz][aaa][bbb]);
-                          // if (aaa!=0){
-                              if (bbb=="title"){  title=json1[rss][xxx][yyy][zzz][aaa][bbb] }
+                      if (bbb=="title"){  title=json1[rss][xxx][yyy][zzz][aaa][bbb] }
                                if (bbb=="link"){  link=json1[rss][xxx][yyy][zzz][aaa][bbb] }
                                  if (bbb=="category"){  category=json1[rss][xxx][yyy][zzz][aaa][bbb] }
                                    if (bbb=="pubDate"){  pubDate=json1[rss][xxx][yyy][zzz][aaa][bbb] }
                                      if (bbb=="description"){  description=json1[rss][xxx][yyy][zzz][aaa][bbb] }
                                        if (bbb=="guid"){  guid=json1[rss][xxx][yyy][zzz][aaa][bbb] }
-               
-               bigid=bigid+aaa+'+'+guid+'|'
-               // putter(title,link,category,pubDate,description,guid,callback);                       
-                                     //     }
-                                
- } }
+ }
+  putter(title,link,category,pubDate,description,guid,callback);
+                               
+                       }
     
                 }}}}}
 //callback(title +' '+link+' '+category+' '+pubDate+' '+description+' '+guid+'|'+aaa)
-callback(bigid)
+//callback(bigid)
      
         });
         });
