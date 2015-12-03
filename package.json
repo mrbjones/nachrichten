@@ -7,7 +7,8 @@
 "dependencies": {
 "orchestrate": "git://github.com/orchestrate-io/orchestrate.js.git",
 "express": ">= 1.2.0",
-"xml2js": "*"
+"xml2js": "*",
+"jsesc": "*"
 }
     
 }
