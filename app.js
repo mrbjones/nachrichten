@@ -2,6 +2,8 @@ var http = require('http');
 var url = require('url');
 var express = require('express');
 var xml2js = require('xml2js');
+var jsesc = require('jsesc');
+
 if (process.env.VCAP_SERVICES)
 {
 var services = JSON.parse(process.env.VCAP_SERVICES);
@@ -15,7 +17,7 @@ orchestrate_api_endpoint = node.credentials.ORCHESTRATE_API_HOST
 };
 var db = require("orchestrate")(orchestrate_api_key,orchestrate_api_endpoint);
 function putter(title,link,category,pubDate,description,guid,cb) {
-var jsonString = "{\"title\":\"" +title+ "\", \"link\":\""+link+"\", \"category\":\""+category+"\", \"pubDate\":\""+pubDate+"\", \"description\":\""+description+"\"}";
+var jsonString = "{\"title\":\"" +jsesc(title);+ "\", \"link\":\""+jsesc(link);+"\", \"category\":\""+category+"\", \"pubDate\":\""+pubDate+"\", \"description\":\""+jsesc(description);+"\"}";
 var jsonObj = JSON.parse(jsonString);
 db.put('nachrichten', guid, jsonObj, false);
 cb("success :!");
