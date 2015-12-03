@@ -26,11 +26,7 @@ return http.get({
          //var obj1 = JSON.parse(json);
        
 
-var items = Object.keys(json);
-items.sort(); // sort the array of keys
-items.forEach(function(item) {
-  callback(item + '=' + json[item]);
-});
+
 })
 })
         // callback(obj1.rss.'$'.channel.item.guid)
