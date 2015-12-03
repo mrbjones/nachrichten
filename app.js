@@ -26,8 +26,9 @@ return http.get({
          var obj1 = JSON.parse(json);
        
 
-for (var i in obj1.rss) {
-  val = conf[i];
+for (var i in obj1) {
+  val = obj1[i];
+
   callback(val.path);
 }
 
