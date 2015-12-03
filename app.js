@@ -26,13 +26,7 @@ return http.get({
          var obj1 = JSON.parse(json);
        
 
-for (var i in obj1) {
-  val = obj1[i];
-
-  callback(val.path);
-}
-
-
+obj1.forEach(function(obj) { callback(obj.rss); });
         // callback(obj1.rss.'$'.channel.item.guid)
  
          
