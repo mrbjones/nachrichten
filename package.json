@@ -3,10 +3,11 @@
    "engines": {
         "node": "0.10.38"
     },
-     "dependencies": {
-       "orchestrate": "git://github.com/orchestrate-io/orchestrate.js.git",
-       "xml2js": "*"
-        
-       
-     }
+    
+"dependencies": {
+"orchestrate": "git://github.com/orchestrate-io/orchestrate.js.git",
+"express": ">= 1.2.0",
+"xml2js": "*"
+}
+    
 }
