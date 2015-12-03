@@ -17,7 +17,7 @@ orchestrate_api_endpoint = node.credentials.ORCHESTRATE_API_HOST
 };
 var db = require("orchestrate")(orchestrate_api_key,orchestrate_api_endpoint);
 function putter(title,link,category,pubDate,description,guid,cb) {
-var jsonString = "{\"title\":\"" +jsesc(title);+ "\", \"link\":\""+jsesc(link);+"\", \"category\":\""+category+"\", \"pubDate\":\""+pubDate+"\", \"description\":\""+jsesc(description);+"\"}";
+var jsonString = "{\"title\":\"" +jsesc(title, {'quotes': 'double'});+ "\", \"link\":\""+jsesc(link, {'quotes': 'double'});+"\", \"category\":\""+category+"\", \"pubDate\":\""+pubDate+"\", \"description\":\""+jsesc(description, {'quotes': 'double'});+"\"}";
 var jsonObj = JSON.parse(jsonString);
 db.put('nachrichten', guid, jsonObj, false);
 cb("success :!");
