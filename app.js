@@ -25,7 +25,7 @@ return http.get({
       var json = JSON.stringify(result, ["rss", "$", "channel", "item", "title", "link", "category", "pubDate", "description", "guid"]);
          //var obj1 = JSON.parse(json);
        
-
+      callback(json);
 
      
         });
