@@ -62,7 +62,7 @@ return http.get({
                                      if (bbb=="description"){ description=json1[rss][xxx][yyy][zzz][aaa][bbb];   }
                                        if (bbb=="guid"){  guid=json1[rss][xxx][yyy][zzz][aaa][bbb] }
  }
-  putter(title1,link,category,pubDate,description,guid,callback);
+  putter(title,link,category,pubDate,description,guid,callback);
                                
                        }
     
