@@ -5,6 +5,7 @@ var xml2js = require('xml2js');
 if (process.env.VCAP_SERVICES)
 {
 var services = JSON.parse(process.env.VCAP_SERVICES);
+
 var orchestrateConfig = services["orchestrate"];
 if (orchestrateConfig) {
 var node = orchestrateConfig[0];
@@ -13,7 +14,7 @@ orchestrate_api_endpoint = node.credentials.ORCHESTRATE_API_HOST
 }
 };
 var db = require("orchestrate")(orchestrate_api_key,orchestrate_api_endpoint);
-function putter(keyer,title,link,category,pubDate,description,guid,cb) {
+function putter(title,link,category,pubDate,description,guid,cb) {
 var jsonString = "{\"title\":\"" +title+ "\", \"link\":\""+link+"\", \"category\":\""+category+"\", \"pubDate\":\""+pubDate+"\", \"description\":\""+description+"\"}";
 var jsonObj = JSON.parse(jsonString);
 db.put('nachrichten', guid, jsonObj, false);
