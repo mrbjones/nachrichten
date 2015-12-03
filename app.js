@@ -23,10 +23,10 @@ return http.get({
       var parser = new xml2js.Parser();      
       parser.parseString(body.substring(0, body.length), function (err, result) {
       var json = JSON.stringify(result, ["rss", "$", "channel", "item", "title", "link", "category", "pubDate", "description", "guid"]);
-        // var json1 = JSON.parse(json);
+      var json1 = JSON.parse(json);
        
-   for(var rss in json) {
-      callback("key:"+rss+", value:"+json[rss]);
+   for(var rss in json1) {
+      callback("key:"+rss+", value:"+json1[rss]);
  }
 
      
