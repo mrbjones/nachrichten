@@ -30,17 +30,20 @@ return http.get({
         for(var yyy in json1[rss][xxx]) {
            for(var zzz in json1[rss][xxx][yyy]) {
                 for(var aaa in json1[rss][xxx][yyy][zzz]) {
-                        bob="";dick=0
+                       title="";link="";category="";pubDate="";description="";guid="";dick=0
                   for(var bbb in json1[rss][xxx][yyy][zzz][aaa]) {
                             //    callback("key:"+rss+xxx+yyy+zzz+aaa+bbb+", value:"+json1[rss][xxx][yyy][zzz][aaa][bbb]);
-                               if (dick==3){
-                                tom=tom+"|"+json1[rss][xxx][yyy][zzz][aaa][bbb]
-                               }
+                               if (dick==1){  title=json1[rss][xxx][yyy][zzz][aaa][bbb] }
+                                 if (dick==2){  link=json1[rss][xxx][yyy][zzz][aaa][bbb] }
+                                   if (dick==3){  category=json1[rss][xxx][yyy][zzz][aaa][bbb] }
+                                     if (dick==4){  pubDate=json1[rss][xxx][yyy][zzz][aaa][bbb] }
+                                       if (dick==5){  description=json1[rss][xxx][yyy][zzz][aaa][bbb] }
+                                         if (dick==6){  guid=json1[rss][xxx][yyy][zzz][aaa][bbb] }
                                 dick=dick+1
  }
-    tom=tom+'|m|';dick=0
+    dick=0
                 }}}}}
-callback(bob+'___'+tom)
+callback(title +' '+link+' '+category+' '+pubDate+' '+description+' '+guid)
      
         });
         });
