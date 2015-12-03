@@ -13,8 +13,8 @@ orchestrate_api_endpoint = node.credentials.ORCHESTRATE_API_HOST
 }
 };
 var db = require("orchestrate")(orchestrate_api_key,orchestrate_api_endpoint);
-function putter(keyer,title,link,category,datePub,description,guid,cb) {
-var jsonString = "{\"title\":\"" +title+ "\", \"link\":\""+link+"\", \"category\":\""+category+"\", \"datePub\":\""+datePub+"\", \"description\":\""+description+"\"}";
+function putter(keyer,title,link,category,pubDate,description,guid,cb) {
+var jsonString = "{\"title\":\"" +title+ "\", \"link\":\""+link+"\", \"category\":\""+category+"\", \"pubDate\":\""+pubDate+"\", \"description\":\""+description+"\"}";
 var jsonObj = JSON.parse(jsonString);
 db.put('nachrichten', guid, jsonObj, false);
 cb("success :!");
@@ -55,10 +55,10 @@ return http.get({
                               if (bbb=="title"){  title=json1[rss][xxx][yyy][zzz][aaa][bbb] }
                                if (bbb=="link"){  link=json1[rss][xxx][yyy][zzz][aaa][bbb] }
                                  if (bbb=="category"){  category=json1[rss][xxx][yyy][zzz][aaa][bbb] }
-                                   if (bbb=="datePub"){  datePub=json1[rss][xxx][yyy][zzz][aaa][bbb] }
+                                   if (bbb=="pubDate"){  pubDate=json1[rss][xxx][yyy][zzz][aaa][bbb] }
                                      if (bbb=="description"){  description=json1[rss][xxx][yyy][zzz][aaa][bbb] }
                                        if (bbb=="guid"){  guid=json1[rss][xxx][yyy][zzz][aaa][bbb] }
-                putter(title,link,category,datePub,description,guid,callback);                       
+                putter(title,link,category,pubDate,description,guid,callback);                       
                                      //     }
                                 
  } }
