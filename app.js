@@ -23,8 +23,8 @@ return http.get({
       var parser = new xml2js.Parser();      
       parser.parseString(body.substring(0, body.length), function (err, result) {
       var json = JSON.stringify(result, ["rss", "$", "channel", "item", "title", "link", "category", "pubDate", "description", "guid"]);
-         var object = JSON.parse(json);
-         object.forEach(function(obj) { callback(obj.channel.item.guid); });
+         var obj1 = JSON.parse(json);
+         callback(obj1); });
      
     });
        //  callback(extractedData);
