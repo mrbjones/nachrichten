@@ -24,7 +24,11 @@ return http.get({
       parser.parseString(body.substring(0, body.length), function (err, result) {
       var json = JSON.stringify(result, ["rss", "$", "channel", "item", "title", "link", "category", "pubDate", "description", "guid"]);
          var obj1 = JSON.parse(json);
-         callback(obj1); 
+         for(var title in obj1){
+         callback(obj1[title]);
+}
+         
+         //callback(obj1.channel.item.guid); 
      
     });
        //  callback(extractedData);
