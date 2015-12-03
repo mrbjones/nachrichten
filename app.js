@@ -17,7 +17,7 @@ orchestrate_api_endpoint = node.credentials.ORCHESTRATE_API_HOST
 };
 var db = require("orchestrate")(orchestrate_api_key,orchestrate_api_endpoint);
 function putter(title,link,category,pubDate,description,guid,cb) {
-var jsonString = "{\"title\":\"" +jsesc(title, {'quotes': 'double'});+ "\", \"link\":\""+link+"\", \"category\":\""+category+"\", \"pubDate\":\""+pubDate+"\", \"description\":\""+description+"\"}";
+var jsonString = "{\"title\":\"" +title+ "\", \"link\":\""+link+"\", \"category\":\""+category+"\", \"pubDate\":\""+pubDate+"\", \"description\":\""+description+"\"}";
 cb(jsonString)
 var jsonObj = JSON.parse(jsonString);
 db.put('nachrichten', guid, jsonObj, false);
@@ -54,11 +54,11 @@ return http.get({
                 for(var aaa in json1[rss][xxx][yyy][zzz]) {
                        if (aaa!=0){title="";link="";category="";pubDate="";description="";guid="";
                   for(var bbb in json1[rss][xxx][yyy][zzz][aaa]) {
-                      if (bbb=="title"){ jsesc(title=json1[rss][xxx][yyy][zzz][aaa][bbb], {'quotes': 'double'}); }
+                      if (bbb=="title"){ title= jsesc(json1[rss][xxx][yyy][zzz][aaa][bbb], {'quotes': 'double'}); }
                                if (bbb=="link"){  link=json1[rss][xxx][yyy][zzz][aaa][bbb] }
                                  if (bbb=="category"){  category=json1[rss][xxx][yyy][zzz][aaa][bbb] }
                                    if (bbb=="pubDate"){  pubDate=json1[rss][xxx][yyy][zzz][aaa][bbb] }
-                                     if (bbb=="description"){ jsesc(description=json1[rss][xxx][yyy][zzz][aaa][bbb],{'quotes': 'double'}); }
+                                     if (bbb=="description"){ description=jsesc(json1[rss][xxx][yyy][zzz][aaa][bbb],{'quotes': 'double'}); }
                                        if (bbb=="guid"){  guid=json1[rss][xxx][yyy][zzz][aaa][bbb] }
  }
   putter(title,link,category,pubDate,description,guid,callback);
