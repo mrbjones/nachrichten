@@ -23,9 +23,9 @@ return http.get({
       var parser = new xml2js.Parser();      
       parser.parseString(body.substring(0, body.length), function (err, result) {
       var json = JSON.stringify(result, ["rss", "$", "channel", "item", "title", "link", "category", "pubDate", "description", "guid"]);
-         //var obj1 = JSON.parse(json);
+         var json1 = JSON.parse(json);
        
-      callback(json);
+      callback(json1.channel);
 
      
         });
