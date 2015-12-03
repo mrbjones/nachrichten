@@ -26,18 +26,13 @@ return http.get({
          //var obj1 = JSON.parse(json);
        
 
-});
-});
-});
-        // callback(obj1.rss.'$'.channel.item.guid)
-         //callback(obj1.channel.item.guid); 
+
      
-    });
-       //  callback(extractedData);
-});
         });
-    });
-};
+        });
+        });
+        });
+        };
 
 var server = http.createServer(function(req, res) {
 res.writeHead(200, {'Content-Type': 'text/plain'});
