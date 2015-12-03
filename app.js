@@ -26,10 +26,14 @@ return http.get({
          var obj1 = JSON.parse(json);
        
 
-obj1.forEach(function(obj) { callback(obj.rss); });
+obj1.forEach(function(e) {
+Object.keys(e).forEach(function(key) {
+var value = e[key]
+callback(key+' '+value)
+
+})
+})
         // callback(obj1.rss.'$'.channel.item.guid)
- 
-         
          //callback(obj1.channel.item.guid); 
      
     });
