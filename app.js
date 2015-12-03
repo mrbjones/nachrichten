@@ -33,10 +33,13 @@ return http.get({
                         bob=""
                   for(var bbb in json1[rss][xxx][yyy][zzz][aaa]) {
                             //    callback("key:"+rss+xxx+yyy+zzz+aaa+bbb+", value:"+json1[rss][xxx][yyy][zzz][aaa][bbb]);
-                                tom=tom+"|"+json1[rss][xxx][yyy][zzz][aaa][1]
-                                bob=bob+'|'+bbb
+                               dick=0
+                               if (dick==3){
+                                tom=tom+"|"+json1[rss][xxx][yyy][zzz][aaa][bbb]
+                               }
+                                dick=dick+1
  }
-    tom=tom+'|m|'
+    tom=tom+'|m|';dick=0
                 }}}}}
 callback(bob+'___'+tom)
      
