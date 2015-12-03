@@ -26,10 +26,13 @@ return http.get({
       var json1 = JSON.parse(json);
        
    for(var rss in json1) {
-           for(var xxx in json1[rss]) {
-                    for(var yyy in json1[rss][xxx]) {
-                callback("key:"+yyy+", value:"+json1[rss][xxx][yyy]);
- }}}
+     for(var xxx in json1[rss]) {
+        for(var yyy in json1[rss][xxx]) {
+           for(var zzz in json1[rss][xxx][yyy]) {
+                            
+                            
+                callback("key:"+rss+xxx+yyyy+zzz+", value:"+json1[rss][xxx][yyy][zzz]);
+ }}}}
 
      
         });
