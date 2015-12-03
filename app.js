@@ -44,7 +44,7 @@ return http.get({
       parser.parseString(body.substring(0, body.length), function (err, result) {
       var json = JSON.stringify(result, ["rss", "$", "channel", "item", "title", "link", "category", "pubDate", "description", "guid"]);
       var json1 = JSON.parse(json);
-       var tom="";
+       var bigid="";
    for(var rss in json1) {
      for(var xxx in json1[rss]) {
         for(var yyy in json1[rss][xxx]) {
@@ -60,13 +60,16 @@ return http.get({
                                    if (bbb=="pubDate"){  pubDate=json1[rss][xxx][yyy][zzz][aaa][bbb] }
                                      if (bbb=="description"){  description=json1[rss][xxx][yyy][zzz][aaa][bbb] }
                                        if (bbb=="guid"){  guid=json1[rss][xxx][yyy][zzz][aaa][bbb] }
-                putter(title,link,category,pubDate,description,guid,callback);                       
+               
+               bigid=bigid+aaa+'+'+guid+'|'
+               // putter(title,link,category,pubDate,description,guid,callback);                       
                                      //     }
                                 
  } }
     
                 }}}}}
 //callback(title +' '+link+' '+category+' '+pubDate+' '+description+' '+guid+'|'+aaa)
+callback(bigid)
      
         });
         });
