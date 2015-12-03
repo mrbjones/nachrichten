@@ -33,7 +33,7 @@ return http.get({
                            
                             
                             
-                callback("key:"+rss+xxx+yyy+zzz+aaa+", value:"+json1[rss][xxx][yyy][zzz][aaa][0]);
+                callback("key:"+rss+xxx+yyy+zzz+aaa+", value:"+json1[rss][xxx][yyy][zzz][aaa][1]);
  }}}}}
 
      
