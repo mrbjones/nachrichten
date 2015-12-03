@@ -31,7 +31,7 @@ return http.get({
            for(var zzz in json1[rss][xxx][yyy]) {
                             
                             
-                callback("key:"+rss+xxx+yyy+zzz+", value:"+json1[rss][xxx][yyy][zzz]);
+                callback("key:"+rss+xxx+yyy+zzz+", value:"+json1[rss][xxx][yyy][zzz].title);
  }}}}
 
      
