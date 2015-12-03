@@ -26,9 +26,9 @@ return http.get({
          //var obj1 = JSON.parse(json);
        
 
-
-})
-})
+});
+});
+});
         // callback(obj1.rss.'$'.channel.item.guid)
          //callback(obj1.channel.item.guid); 
      
