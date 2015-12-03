@@ -18,9 +18,10 @@ orchestrate_api_endpoint = node.credentials.ORCHESTRATE_API_HOST
 var db = require("orchestrate")(orchestrate_api_key,orchestrate_api_endpoint);
 function putter(title,link,category,pubDate,description,guid,cb) {
 var jsonString = "{\"title\":\"" +jsesc(title, {'quotes': 'double'});+ "\", \"link\":\""+jsesc(link, {'quotes': 'double'});+"\", \"category\":\""+category+"\", \"pubDate\":\""+pubDate+"\", \"description\":\""+jsesc(description, {'quotes': 'double'});+"\"}";
+cb(jsonString)
 var jsonObj = JSON.parse(jsonString);
-db.put('nachrichten', guid, jsonObj, false);
-cb("success :!");
+//db.put('nachrichten', guid, jsonObj, false);
+//cb("success :!");
 };
 
 function fetchNachrichten(callback){
