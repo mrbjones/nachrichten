@@ -34,14 +34,13 @@ return http.get({
                   for(var bbb in json1[rss][xxx][yyy][zzz][aaa]) {
                             //    callback("key:"+rss+xxx+yyy+zzz+aaa+bbb+", value:"+json1[rss][xxx][yyy][zzz][aaa][bbb]);
                            if (aaa!=0){
-                               if (dick==1){  title=json1[rss][xxx][yyy][zzz][aaa][bbb] }
-                                 if (dick==2){  link=json1[rss][xxx][yyy][zzz][aaa][bbb] }
-                                   if (dick==3){  category=json1[rss][xxx][yyy][zzz][aaa][bbb] }
-                                     if (dick==4){  pubDate=json1[rss][xxx][yyy][zzz][aaa][bbb] }
-                                       if (dick==5){  description=json1[rss][xxx][yyy][zzz][aaa][bbb] }
-                                         if (dick==6){  guid=json1[rss][xxx][yyy][zzz][aaa][bbb] }
-                                   
-                           }
+                              if (dick==0){  title=json1[rss][xxx][yyy][zzz][aaa][bbb] }
+                               if (dick==1){  link=json1[rss][xxx][yyy][zzz][aaa][bbb] }
+                                 if (dick==2){  category=json1[rss][xxx][yyy][zzz][aaa][bbb] }
+                                   if (dick==3){  datePub=json1[rss][xxx][yyy][zzz][aaa][bbb] }
+                                     if (dick==4){  description=json1[rss][xxx][yyy][zzz][aaa][bbb] }
+                                       if (dick==5){  guid=json1[rss][xxx][yyy][zzz][aaa][bbb] }
+                                          }
                                 dick=dick+1
  }
     dick=0
