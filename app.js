@@ -29,10 +29,11 @@ return http.get({
      for(var xxx in json1[rss]) {
         for(var yyy in json1[rss][xxx]) {
            for(var zzz in json1[rss][xxx][yyy]) {
+                   for(var aaa in json1[rss][xxx][yyy][zzz]) {
                             
                             
-                callback("key:"+rss+xxx+yyy+zzz+", value:"+json1[rss][xxx][yyy][zzz]['guid']);
- }}}}
+                callback("key:"+rss+xxx+yyy+zzz+aaa+", value:"+json1[rss][xxx][yyy][zzz][aaa]);
+ }}}}}
 
      
         });
