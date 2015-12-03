@@ -1,6 +1,23 @@
 var http = require('http');
 var url = require('url');
 var xml2js = require('xml2js');
+if (process.env.VCAP_SERVICES)
+{
+var services = JSON.parse(process.env.VCAP_SERVICES);
+var orchestrateConfig = services["orchestrate"];
+if (orchestrateConfig) {
+var node = orchestrateConfig[0];
+orchestrate_api_key = node.credentials.ORCHESTRATE_API_KEY
+orchestrate_api_endpoint = node.credentials.ORCHESTRATE_API_HOST
+}
+};
+var db = require("orchestrate")(orchestrate_api_key,orchestrate_api_endpoint);
+function putter(keyer,title,link,category,datePub,description,guid,cb) {
+var jsonString = "{\"title\":\"" +title+ "\", \"link\":\""+link+"\", \"category\":\""+category+"\", \"datePub\":\""+datePub+"\", \"description\":\""+description+"\"}";
+var jsonObj = JSON.parse(jsonString);
+db.put('nachrichten', guid, jsonObj, false);
+cb("success :!");
+};
 
 function fetchNachrichten(callback){
 return http.get({
@@ -40,12 +57,13 @@ return http.get({
                                    if (bbb=="datePub"){  datePub=json1[rss][xxx][yyy][zzz][aaa][bbb] }
                                      if (bbb=="description"){  description=json1[rss][xxx][yyy][zzz][aaa][bbb] }
                                        if (bbb=="guid"){  guid=json1[rss][xxx][yyy][zzz][aaa][bbb] }
+                putter(title,link,category,datePub,description,guid,callback);                       
                                      //     }
                                 
  } }
     
                 }}}}}
-callback(title +' '+link+' '+category+' '+pubDate+' '+description+' '+guid+'|'+aaa)
+//callback(title +' '+link+' '+category+' '+pubDate+' '+description+' '+guid+'|'+aaa)
      
         });
         });
