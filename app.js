@@ -18,7 +18,8 @@ orchestrate_api_endpoint = node.credentials.ORCHESTRATE_API_HOST
 var db = require("orchestrate")(orchestrate_api_key,orchestrate_api_endpoint);
 function putter(title,link,category,pubDate,description,guid,cb) {
         var jsonTitle=title.toString().replace(/\"/g,'\\"');
-var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+link+"\", \"category\":\""+category+"\", \"pubDate\":\""+pubDate+"\", \"description\":\""+description+"\"}";
+        var jsonDesc=description.toString().replace(/\"/g,'\\"');
+var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+link+"\", \"category\":\""+category+"\", \"pubDate\":\""+pubDate+"\", \"description\":\""+jsonDesc+"\"}";
 
 cb(jsonString)
 var jsonObj = JSON.parse(jsonString);
