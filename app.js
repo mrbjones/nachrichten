@@ -23,14 +23,14 @@ return http.get({
       var parser = new xml2js.Parser();      
       parser.parseString(body.substring(0, body.length), function (err, result) {
       var json = JSON.stringify(result, ["rss", "$", "channel", "item", "title", "link", "category", "pubDate", "description", "guid"]);
-         var obj1 = JSON.parse(json);
+         //var obj1 = JSON.parse(json);
        
 
-obj1.forEach(function(e) {
-Object.keys(e).forEach(function(key) {
-var value = e[key]
-callback(key+' '+value)
-
+var items = Object.keys(json);
+items.sort(); // sort the array of keys
+items.forEach(function(item) {
+  callback(item + '=' + json[item]);
+});
 })
 })
         // callback(obj1.rss.'$'.channel.item.guid)
