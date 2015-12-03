@@ -26,8 +26,9 @@ return http.get({
       var json1 = JSON.parse(json);
        
    for(var rss in json1) {
-      callback("key:"+rss+", value:"+json1[rss]);
- }
+           for(var xxx in json1[rss]) {
+                callback("key:"+xxx+", value:"+json1[rss][xxx]);
+ }}
 
      
         });
