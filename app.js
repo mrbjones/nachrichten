@@ -70,6 +70,8 @@ var server = http.createServer(function(req, res) {
 res.writeHead(200, {'Content-Type': 'text/plain'});
 res.write('serverUP!');res.end();
 //fetchNachrichten( function(resp) { res.write(resp);res.end(); }); 
+  fetchNachrichten();
+  console.log('update ran!')
 }).listen(process.env.VCAP_APP_PORT);
 
 var minutes = 30, the_interval = minutes * 60 * 1000;
