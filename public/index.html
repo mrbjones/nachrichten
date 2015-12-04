@@ -9,7 +9,7 @@
 
 <div ng-init="listnewz()"></div>
 <table><tr ng-repeat="news in newslist">
-<td style=font-family:verdana;font-size:11px>{{news.path.guid}}<br>
+<td style=font-family:verdana;font-size:11px>{{news.path.key}}<br>
 <b>{{news.value.title}}</b><br>
 {{news.value.pubDate}}<br>
 {{news.value.description}}</td>
