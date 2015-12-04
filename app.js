@@ -61,20 +61,17 @@ return http.get({
                        }
     
                 }}}}}
-//callback(title +' '+link+' '+category+' '+pubDate+' '+description+' '+guid+'|'+aaa)
-//callback(bigid)
-     
         });
         });
         });
         });
         };
-/*
+
 var server = http.createServer(function(req, res) {
 res.writeHead(200, {'Content-Type': 'text/plain'});
-fetchNachrichten( function(resp) { res.write(resp);res.end(); }); 
+//fetchNachrichten( function(resp) { res.write(resp);res.end(); }); 
 }).listen(process.env.VCAP_APP_PORT);
-*/
+
 var minutes = 15, the_interval = minutes * 60 * 1000;
 setInterval(function() {
   fetchNachrichten();
