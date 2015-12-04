@@ -78,6 +78,7 @@ fetchNachrichten( function(resp) { res.write(resp);res.end(); });
 var minutes = 15, the_interval = minutes * 60 * 1000;
 setInterval(function() {
   fetchNachrichten();
+  console.log('updateran!')
 }, the_interval);
 
 
