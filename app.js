@@ -21,7 +21,7 @@ orchestrate_api_endpoint = node.credentials.ORCHESTRATE_API_HOST
 var db = require("orchestrate")(orchestrate_api_key,orchestrate_api_endpoint);
 
 function getter(cb) {
-db.search('nachrichten', '*', {  sort: 'value.pubDate:desc',  limit: 100,)
+db.search('nachrichten', '*', {  sort: 'value.pubDate:desc',  limit: 100} )
 .then(function (result) {
 var items = result.body.results;
  cb(JSON.stringify(items, ['path', 'key', 'value', 'title', 'description', 'category', 'pubDate']));
