@@ -78,7 +78,7 @@ getter( function(resp)
 }); }
 
 //this one sends the page!
-if (queryData.o != "g")
+if (queryData.o != "g") {
 var filePath = false;
 if (request.url == '/') {
 filePath = "public/index.html";
