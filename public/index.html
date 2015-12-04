@@ -24,7 +24,7 @@
 <script>var myApp=angular.module('putter', []);
 myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
  $scope.listnewz = function() { $http({ url: 'http://frontpage.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data }); };
- $scope.update = function(newser) { $http({ url: 'http://frontpage.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search}}).success(function(data, status, headers, config) {$scope.newslist=[]; $scope.newslist=data; }); }; 
+ $scope.update = function(newser) { $http({ url: 'http://frontpage.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search}}).success(function(data, status, headers, config) {$scope.newslist=[]; $scope.newslist=data; }); }; 
 
 }]);
 </script>
