@@ -1,11 +1,12 @@
 
 <head>
+<!doctype html><html lang="en"><head> <meta charset="UTF-8"><html><head><title>Nachrichten Scraper</title> <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-sanitize.js">
 </head>
 
 <body ng-app="putter">
 <div id=main ng-controller="ListNews">
-Die Welt RSS Feed
+
 <div ng-init="listnewz()"></div>
 <table><tr ng-repeat="news in newslist">
 <td style=font-family:verdana;font-size:11px>{{news.path.guid}}<br>
@@ -15,7 +16,6 @@ Die Welt RSS Feed
 
 </tr></table>
 </div>
-</body>
 
 
 <script>var myApp=angular.module('putter', []);
@@ -25,3 +25,4 @@ myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
 
 }]);
 </script>
+</body>
