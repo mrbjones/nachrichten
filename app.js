@@ -41,7 +41,6 @@ return http.get({
       parser.parseString(body.substring(0, body.length), function (err, result) {
       var json = JSON.stringify(result, ["rss", "$", "channel", "item", "title", "link", "category", "pubDate", "description", "guid"]);
       var json1 = JSON.parse(json);
-       var bigid="";
    for(var rss in json1) {
      for(var xxx in json1[rss]) {
         for(var yyy in json1[rss][xxx]) {
@@ -69,13 +68,14 @@ return http.get({
 
 var server = http.createServer(function(req, res) {
 res.writeHead(200, {'Content-Type': 'text/plain'});
+res.write('serverUP!');res.end();
 //fetchNachrichten( function(resp) { res.write(resp);res.end(); }); 
 }).listen(process.env.VCAP_APP_PORT);
 
-var minutes = 15, the_interval = minutes * 60 * 1000;
+var minutes = 2, the_interval = minutes * 60 * 1000;
 setInterval(function() {
   fetchNachrichten();
-  console.log('updateran!')
+  console.log('update ran!')
 }, the_interval);
 
 
