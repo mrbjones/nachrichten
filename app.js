@@ -73,7 +73,7 @@ var server = http.createServer(function(request, response) {
 if (queryData.o == "g") {
 response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
 getter( function(resp)
-{response.write("<br>" + resp);response.end();
+{response.write(resp);response.end();
 }); }
 
 //this one sends the page!
