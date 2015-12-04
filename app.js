@@ -72,7 +72,7 @@ res.write('serverUP!');res.end();
 //fetchNachrichten( function(resp) { res.write(resp);res.end(); }); 
 }).listen(process.env.VCAP_APP_PORT);
 
-var minutes = 2, the_interval = minutes * 60 * 1000;
+var minutes = 30, the_interval = minutes * 60 * 1000;
 setInterval(function() {
   fetchNachrichten();
   console.log('update ran!')
