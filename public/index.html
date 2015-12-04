@@ -8,7 +8,7 @@
 <div id=main ng-controller="ListNews">
 
 <div ng-init="listnewz()"></div>
-<table><tr ng-repeat="news in newslist">
+<table><tr ng-repeat="news in newslist track by $index">
 <td style=font-family:verdana;font-size:11px>{{news.path.key}}<br>
 <b>{{news.value.title}}</b><br>
 {{news.value.pubDate}}<br>
