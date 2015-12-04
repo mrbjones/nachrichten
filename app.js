@@ -86,7 +86,7 @@ getter( function(resp)
 //this one does a search!
 if (queryData.o == "s") {
 response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
-getter(queryData.search, function(resp)
+searcher(queryData.search, function(resp)
 {response.write(resp);response.end();
 }); }
 
