@@ -21,6 +21,8 @@ function getter(cb) {
 db.list('nachrichten')
 .then(function (result) {
 var items = result.body.results;
+ cb(JSON.stringify(items, ['path', 'key', 'value', 'title', 'description', 'category', 'pubDate']));
+
 cb(JSON.stringify(items))
 })};
 
