@@ -29,6 +29,14 @@ var items = result.body.results;
 cb(JSON.stringify(items))
 })};
 
+function searcher(a,cb) {
+db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 100} )
+.then(function (result) {
+var items = result.body.results;
+ cb(JSON.stringify(items, ['path', 'key', 'value', 'title', 'description', 'category', 'pubDate']));
+
+cb(JSON.stringify(items))
+})};
 
 
  /*
@@ -75,9 +83,15 @@ response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
 getter( function(resp)
 {response.write(resp);response.end();
 }); }
+//this one does a search!
+if (queryData.o == "s") {
+response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
+getter(queryData.search, function(resp)
+{response.write(resp);response.end();
+}); }
 
 //this one sends the page!
-if (queryData.o != "g") {
+if (queryData.o != "g" && queryData.o != "s") {
 var filePath = false;
 if (request.url == '/') {
 filePath = "public/index.html";
