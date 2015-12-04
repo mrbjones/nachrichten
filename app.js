@@ -71,8 +71,7 @@ var server = http.createServer(function(request, response) {
   var queryData = url.parse(request.url, true).query;
 //this one just sends the json from ochestrate
 if (queryData.o == "g") {
- ressponse.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
-
+response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
 getter( function(resp)
 {response.write("<br>" + resp);response.end();
 }); }
