@@ -6,7 +6,11 @@
 
 <body ng-app="putter">
 <div id=main ng-controller="ListNews">
-
+<form novalidate class="simple-form" >
+<input ng-model="newser.search">
+<input type=button ng-click="update(newslist)" value="Save" >
+</form>
+<input type=input name=searcher value='search'>
 <div ng-init="listnewz()"></div>
 <table><tr ng-repeat="news in newslist">
 <td style=font-family:verdana;font-size:11px>
@@ -21,7 +25,7 @@
 <script>var myApp=angular.module('putter', []);
 myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
  $scope.listnewz = function() { $http({ url: 'http://frontpage.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data }); };
- 
+ $scope.update = function(news) { $http({ url: 'http://frontpage.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search}}).success(function(data, status, headers, config) {$scope.newslist=[]; $scope.newslist=data; }); }; 
 
 }]);
 </script>
