@@ -13,7 +13,7 @@
 <div ng-init="listnewz()"></div>
 <table><tr ng-repeat="news in newslist">
 <td style=font-family:verdana;font-size:11px>
-<b>{{news.value.title}}</b><br>
+<b><a href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
 {{news.value.pubDate}}<br>
 {{news.value.description}}</td>
 
