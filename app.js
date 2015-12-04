@@ -3,6 +3,9 @@ var url = require('url');
 var express = require('express');
 var xml2js = require('xml2js');
 var jsesc = require('jsesc');
+var fs = require("fs");
+var path = require("path");
+var mime = require("mime");
 
 if (process.env.VCAP_SERVICES)
 {
@@ -28,8 +31,7 @@ cb(JSON.stringify(items))
 
 
 
-
-
+ /*
 var server = http.createServer(function(req, res) {
 res.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
 
@@ -37,3 +39,53 @@ getter( function(resp)
 {res.write("<br>" + resp);res.end();
 }); 
 }).listen(process.env.VCAP_APP_PORT);
+*/
+
+
+
+function send404(response) {
+response.writeHead(404, {"Content-type" : "text/plain"});
+response.write("Error 404: resource not found");
+response.end();
+}
+function sendPage(response, filePath, fileContents) {
+response.writeHead(200, {"Content-type" : mime.lookup(path.basename(filePath))});
+response.end(fileContents);
+}
+function serverWorking(response, absPath) {
+fs.exists(absPath, function(exists) {
+if (exists) {
+fs.readFile(absPath, function(err, data) {
+if (err) {
+send404(response)
+} else {
+sendPage(response, absPath, data);
+}
+});
+} else {
+send404(response);
+}
+});
+}
+var server = http.createServer(function(request, response) {
+  var queryData = url.parse(request.url, true).query;
+//this one just sends the json from ochestrate
+if (queryData.o == "g") {
+ ressponse.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
+
+getter( function(resp)
+{response.write("<br>" + resp);response.end();
+}); }
+
+//this one sends the page!
+if (queryData.o != "g")
+var filePath = false;
+if (request.url == '/') {
+filePath = "public/index.html";
+} else {
+filePath = "public" + request.url;
+}
+var absPath = "./" + filePath;
+serverWorking(response, absPath); }
+}).listen(process.env.VCAP_APP_PORT);
+
