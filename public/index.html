@@ -7,9 +7,9 @@
 
 <body ng-app="putter">
 <div id=main ng-controller="ListNews">
-<form novalidate class="simple-form" >
-<input ng-model="newser.search" ng-keypress="update(newser)"><input type=button ng-click="update(newser)" value="search" >
-</form>
+<center></center><form novalidate class="simple-form" >
+Nachrichten von der Welt <input ng-model="newser.search" ng-keypress="update(newser)"><input type=button ng-click="update(newser)" value="search" >
+</form></center>
 
 <div ng-init="listnewz()"></div>
 <table><tr ng-repeat="news in newslist">
