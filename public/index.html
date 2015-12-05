@@ -1,6 +1,6 @@
 
 <head>
-<!doctype html><html lang="en"><head> <meta charset="UTF-8"><html><head><title>Nachrichten Scraper</title> <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
+<!doctype html><html lang="de"><head> <meta charset="UTF-8"><html><head><title>Nachrichten Scraper</title> <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-sanitize.js"></script>
  <link rel="stylesheet" href="mystyle.css"> 
 </head>
@@ -8,7 +8,7 @@
 <body ng-app="putter">
 <div id=main ng-controller="ListNews">
 <center></center><form novalidate class="simple-form" >
-Nachrichten von der Welt <input ng-model="newser.search" ng-keypress="update(newser)"><input type=button ng-click="update(newser)" value="search" >
+Nachrichten von der Welt <input ng-model="newser.search" ng-keypress="update(newser)"><input type=button ng-click="update(newser)" value="suchen" >
 </form></center>
 
 <div ng-init="listnewz()"></div>
