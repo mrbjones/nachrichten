@@ -27,9 +27,7 @@ myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
  $scope.update = function(newser) { $http({ url: 'http://frontpage.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search}}).success(function(data, status, headers, config) {$scope.newslist=[]; $scope.newslist=data; });
  }; 
 }]);
-myApp.directive('ngEnter', 
- function(newser) { $http({ url: 'http://frontpage.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search}}).success(function(data, status, headers, config) {$scope.newslist=[]; $scope.newslist=data; });}
-);
+
 
 </script>
 </body>
