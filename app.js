@@ -24,7 +24,7 @@ var jsonObj = JSON.parse(jsonString);
 db.put('nachrichten', guid, jsonObj, false);
 };
 
-function fetchNachrichten(a,b){
+function fetchNachrichten(a,b,cb){
 return http.get({
         host: a,
         path: b
@@ -40,6 +40,7 @@ return http.get({
        var parser = new xml2js.Parser();      
       parser.parseString(body.substring(0, body.length), function (err, result) {
       var json = JSON.stringify(result, ["rss", "$", "channel", "item", "title", "link", "category", "pubDate", "description", "guid"]);
+      cb(json)
       var json1 = JSON.parse(json);
    for(var rss in json1) {
      for(var xxx in json1[rss]) {
@@ -70,9 +71,9 @@ var server = http.createServer(function(req, res) {
 res.writeHead(200, {'Content-Type': 'text/plain'});
 res.write('serverUP!');res.end();
 //fetchNachrichten( function(resp) { res.write(resp);res.end(); }); 
-  fetchNachrichten('www.welt.de', '/?service=Rss');
+  fetchNachrichten('www.welt.de', '/?service=Rss', cb);
   console.log('update ran 1!')
-  fetchNachrichten('http://newsfeed.zeit.de', '/index');
+  fetchNachrichten('http://newsfeed.zeit.de', '/index', cb);
   console.log('update ran 2!')
   
   
@@ -80,8 +81,12 @@ res.write('serverUP!');res.end();
 
 var minutes = 30, the_interval = minutes * 60 * 1000;
 setInterval(function() {
-  fetchNachrichten();
-  console.log('update ran!')
+//  fetchNachrichten();
+//  console.log('update ran!')
+  fetchNachrichten('www.welt.de', '/?service=Rss', cb);
+  console.log('update ran 1!')
+  fetchNachrichten('http://newsfeed.zeit.de', '/index', cb);
+  console.log('update ran 2!')
 }, the_interval);
 
 
