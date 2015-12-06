@@ -24,10 +24,10 @@ var jsonObj = JSON.parse(jsonString);
 db.put('nachrichten', guid, jsonObj, false);
 };
 
-function fetchNachrichten(){
+function fetchNachrichten(a,b){
 return http.get({
-        host: 'www.welt.de',
-        path: '/?service=Rss'
+        host: a,
+        path: b
     }, function(response) {
         var body = '';
         response.on('data', function(d) {
@@ -70,8 +70,12 @@ var server = http.createServer(function(req, res) {
 res.writeHead(200, {'Content-Type': 'text/plain'});
 res.write('serverUP!');res.end();
 //fetchNachrichten( function(resp) { res.write(resp);res.end(); }); 
-  fetchNachrichten();
-  console.log('update ran!')
+  fetchNachrichten('www.welt.de', '/?service=Rss');
+  console.log('update ran 1!')
+  fetchNachrichten('http://newsfeed.zeit.de', '/index');
+  console.log('update ran 2!')
+  
+  
 }).listen(process.env.VCAP_APP_PORT);
 
 var minutes = 30, the_interval = minutes * 60 * 1000;
