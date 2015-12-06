@@ -24,7 +24,7 @@ var jsonObj = JSON.parse(jsonString);
 db.put('nachrichten', guid, jsonObj, false);
 };
 
-function fetchNachrichten(a,b,cb){
+function fetchNachrichten(a,b){
 return http.get({
         host: a,
         path: b
@@ -71,9 +71,9 @@ var server = http.createServer(function(req, res) {
 res.writeHead(200, {'Content-Type': 'text/plain'});
 res.write('serverUP!');res.end();
 //fetchNachrichten( function(resp) { res.write(resp);res.end(); }); 
-  fetchNachrichten('www.welt.de', '/?service=Rss', cb);
+  fetchNachrichten('www.welt.de', '/?service=Rss');
   console.log('update ran 1!')
-  fetchNachrichten('http://newsfeed.zeit.de', '/index', cb);
+  fetchNachrichten('http://newsfeed.zeit.de', '/index');
   console.log('update ran 2!')
   
   
@@ -83,9 +83,9 @@ var minutes = 30, the_interval = minutes * 60 * 1000;
 setInterval(function() {
 //  fetchNachrichten();
 //  console.log('update ran!')
-  fetchNachrichten('www.welt.de', '/?service=Rss', cb);
+  fetchNachrichten('www.welt.de', '/?service=Rss');
   console.log('update ran 1!')
-  fetchNachrichten('http://newsfeed.zeit.de', '/index', cb);
+  fetchNachrichten('http://newsfeed.zeit.de', '/index');
   console.log('update ran 2!')
 }, the_interval);
 
