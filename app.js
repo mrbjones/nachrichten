@@ -29,11 +29,11 @@ var items = result.body.results;
 cb(JSON.stringify(items))
 })};
 
-function searcher(a,cb) {
-db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 20} )
+function searcher(a,b,cb) {
+db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 20, offset: b} )
 .then(function (result) {
 var items = result.body.results;
- cb(JSON.stringify(items, ['path', 'key', 'value', 'title', 'description', 'category', 'pubDate', 'link', 'links', 'next']));
+ cb(JSON.stringify(items, ['path', 'key', 'value', 'title', 'description', 'category', 'pubDate', 'link']));
 
 cb(JSON.stringify(items))
 })};
@@ -86,7 +86,9 @@ getter( function(resp)
 //this one does a search!
 if (queryData.o == "s") {
 response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
-searcher(queryData.search+'*', function(resp)
+var offs=queryData.offs
+if (offs==''){offs=0};
+searcher(queryData.search+'*', offs, function(resp)
 {response.write(resp);response.end();
 }); }
 
