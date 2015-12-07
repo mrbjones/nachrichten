@@ -32,7 +32,7 @@ Nachrichten von der Welt <input value='' ng-model="newser.search" ng-keyup="upda
 myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
  $scope.listnewz = function(newser) { $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data }); };
  $scope.update = function(newser) {
-  if ($scope.newser.search == $scope.newser.oldsearch){$scope.newser.pager=number($scope.newser.pager)+15};
+  if ($scope.newser.search == $scope.newser.oldsearch){$scope.newser.pager=parseInt($scope.newser.pager, 10)+15};
   if ($scope.newser.search != $scope.newser.oldsearch){$scope.newser.pager='15'};
   $scope.newser.oldsearch=$scope.newser.search;
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search, offs: newser.pager}}).success(function(data, status, headers, config) 
