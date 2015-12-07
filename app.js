@@ -36,7 +36,7 @@ var items = result.body.results;
 // cb(JSON.stringify(items, ['count', 'total_count', 'path', 'key', 'value', 'title', 'description', 'category', 'pubDate', 'link']));
 
 //cb(JSON.stringify(items))
-cd(JSON.stringify(result))
+cb(JSON.stringify(result))
  
  
 })};
