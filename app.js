@@ -30,10 +30,10 @@ cb(JSON.stringify(items))
 })};
 
 function searcher(a,b,cb) {
-db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 20, offset: b} )
+db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b} )
 .then(function (result) {
 var items = result.body.results;
- cb(JSON.stringify(items, ['count', 'total_count', 'path', 'key', 'value', 'title', 'description', 'category', 'pubDate', 'link']));
+// cb(JSON.stringify(items, ['count', 'total_count', 'path', 'key', 'value', 'title', 'description', 'category', 'pubDate', 'link']));
 
 cb(JSON.stringify(items))
 })};
