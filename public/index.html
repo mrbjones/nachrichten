@@ -8,7 +8,7 @@
 <body ng-app="putter">
 <div id=main ng-controller="ListNews">
 <center></center><form novalidate class="simple-form" >
-Nachrichten von der Welt <input ng-model="newser.search" ng-keypress="update(newser)"><input type=button ng-click="update(newser)" value="suchen" >
+Nachrichten von der Welt <input value='' ng-model="newser.search" ng-keypress="update(newser)"><input type=button ng-click="update(newser)" value="suchen" >
 </form></center>
 
 <div ng-init="listnewz()"></div>
@@ -19,7 +19,7 @@ Nachrichten von der Welt <input ng-model="newser.search" ng-keypress="update(new
 {{news.value.description}}</td>
 
 </tr>
-<tr><td style=text-align:right;><input ng-model="newser.next" type=button value='next' ng-click="update(newser)"></td></tr>
+<tr><td style=text-align:right;><input type=hidden ng-model="newser.pager" name=pager value="20"><input ng-model="newser.next" type=button value='next' ng-click="update(newser)"></td></tr>
 </table>
 </div>
 
