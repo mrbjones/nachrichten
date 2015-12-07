@@ -14,9 +14,9 @@ Nachrichten von der Welt <input value='' ng-model="newser.search" ng-keypress="u
 <div ng-init="listnewz()"></div>
 <table><tr ng-repeat="news in newslist">
 <td style=font-family:verdana;font-size:11px>
-<b><a href={{news.results.value.link}} target=_blank style=color:black;>{{news.results.value.title}}</a></b><br>
-{{news.results.value.pubDate}}<br>
-{{news.results.value.description}}</td>
+<b><a href={{news.body.results.value.link}} target=_blank style=color:black;>{{news.body.results.value.title}}</a></b><br>
+{{news.body.results.value.pubDate}}<br>
+{{news.body.results.value.description}}</td>
 
 </tr>
 <tr>{{news.body.total_count}}</tr>
