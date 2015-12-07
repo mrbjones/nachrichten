@@ -35,7 +35,10 @@ db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b
 var items = result.body.results;
 // cb(JSON.stringify(items, ['count', 'total_count', 'path', 'key', 'value', 'title', 'description', 'category', 'pubDate', 'link']));
 
-cb(JSON.stringify(items))
+//cb(JSON.stringify(items))
+cd(JSON.stringify(result.body))
+ 
+ 
 })};
 
 
