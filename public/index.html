@@ -19,7 +19,7 @@ Nachrichten von der Welt <input value='' ng-model="newser.search" ng-keypress="u
 {{news.results.value.description}}</td>
 
 </tr>
-<tr>{{news.results.body.total_count}}</tr>
+<tr>{{news.body.total_count}}</tr>
 <tr><td style=text-align:right;><input type=hidden ng-model="newser.pager" name=pager value="20"><input ng-model="newser.next" type=button value='next' ng-click="update(newser)"></td></tr>
 </table>
 </div>
