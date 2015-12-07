@@ -8,7 +8,7 @@
 <body ng-app="putter">
 <div id=main ng-controller="ListNews">
 <center></center><form novalidate class="simple-form" >
-Nachrichten von der Welt <input value='' ng-model="newser.search" ng-keyup="update(newser)"><input style=visibility:hidden; ng-model="newser.pager" name=pager value="15"><input type=button ng-click="update(newser)" value="suchen" >
+Nachrichten von der Welt <input value='' ng-model="newser.search" ng-keyup="update(newser)"><input ng-model="newser.pager" name=pager value="15"><input type=button ng-click="update(newser)" value="suchen" >
 </form></center>
 
 <div ng-init="listnewz()"></div>
