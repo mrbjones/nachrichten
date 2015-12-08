@@ -8,8 +8,8 @@
 <div id=main ng-controller="ListNews" >
 <center></center><form novalidate class="simple-form" >
 Nachrichten von der Welt 
-<input value='' ng-model="newser.search" ng-keyup="update(newser)">
-<input ng-model="newser.pager" name='pager' value='15' type=hidden>
+<input ng-value="search1" value='' ng-model="newser.search" ng-keyup="update(newser)">
+<input ng-value="pager1" ng-model="newser.pager" name='pager' value='15' type=hidden>
 <input type=button ng-click="update(newser)" value="suchen" >
 </form></center>
 <div ng-init="listnewz(newser)"></div>
@@ -26,12 +26,17 @@ Nachrichten von der Welt
 var myApp=angular.module('putter', []);
 myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
 $scope.mydisabled=false; 
- $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results;   }); 
+$scope.search1="";
+$scope.pager1="15";
+$http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results;   }); 
+if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; };
+
 
 //$scope.listnewz = function(newser) {     $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results;   }); $scope.newser.search="";$scope.newser.pager="15" ; };
 $scope.update = function(newser) { $scope.mydisabled=false; 
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search}}).success(function(data, status, headers, config) 
- {$scope.newslist=[]; $scope.newslist=data.body.results;$scope.newser.pager='15';  }); };
+ {$scope.newslist=[]; $scope.newslist=data.body.results;$scope.newser.pager='15';if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; }  }); };
+
 $scope.pager = function(newser) {
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search, offs: newser.pager}}).success(function(data, status, headers, config) 
  {$scope.newslist=[]; $scope.newslist=data.body.results;   
