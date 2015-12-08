@@ -26,7 +26,8 @@ Nachrichten von der Welt
 var myApp=angular.module('putter', []);
 myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
 $scope.mydisabled=false; 
-$scope.search1="welt";
+$scope.search1="welt1";
+$scope.searchz="welt2";
 $scope.pager1=15;
 $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results; if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; };  }); 
 
