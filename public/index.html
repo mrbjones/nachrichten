@@ -6,7 +6,7 @@
 </head>
 
 <body ng-app="putter">
-<div id=main ng-controller="ListNews" onload="starter(newser)">
+<div id=main ng-controller="ListNews" >
 <center></center><form novalidate class="simple-form" >
 Nachrichten von der Welt 
 <input value='' ng-model="newser.search" ng-keyup="update(newser)">
@@ -34,7 +34,7 @@ Nachrichten von der Welt
 var myApp=angular.module('putter', []);
 myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
  
- $scope.starter = function(newser) { $scope.newser.search='';$scope.newser.pager='15'; alert('FIRED!'); }
+  $scope.newser.search='';$scope.newser.pager='15'; alert('FIRED!'); 
  
  $scope.listnewz = function() { $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results }); ; };
  
