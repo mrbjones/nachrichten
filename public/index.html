@@ -9,7 +9,7 @@
 <center></center><form novalidate class="simple-form" >
 Nachrichten von der Welt 
 <input ng-value="search1"  ng-model="search" ng-keyup="update()">
-<input ng-value="pager1" ng-model="pager" name='pager'  type=hidden>
+<input ng-value="pager1" ng-model="pagerz" name='pager'  type=hidden>
 <input type=button ng-click="update()" value="suchen" >
 </form></center>
 <div ></div>
@@ -35,12 +35,12 @@ $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params:
 //$scope.listnewz = function(newser) {     $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results;   }); $scope.newser.search="";$scope.newser.pager="15" ; };
 $scope.update = function() { $scope.mydisabled=false; 
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: $scope.search}}).success(function(data, status, headers, config) 
- {$scope.newslist=[]; $scope.newslist=data.body.results;$scope.pager='15';if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; }  }); };
+ {$scope.newslist=[]; $scope.newslist=data.body.results;$scope.pagerz='15';if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; }  }); };
 
 $scope.pager = function() {
-   $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: $scope.search, offs: $scope.pager}}).success(function(data, status, headers, config) 
+   $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: $scope.search, offs: $scope.pagerz}}).success(function(data, status, headers, config) 
  {$scope.newslist=[]; $scope.newslist=data.body.results;   
-  $scope.pager=parseInt($scope.pager, 10)+15; if (parseInt($scope.pager, 10) >= parseInt(data.body.total_count,10)) {
+  $scope.pagerz=parseInt($scope.pagerz, 10)+15; if (parseInt($scope.pagerz, 10) >= parseInt(data.body.total_count,10)) {
   $scope.mydisabled=true;   }; 
   
   
