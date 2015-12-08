@@ -26,7 +26,9 @@ Nachrichten von der Welt
 var myApp=angular.module('putter', []);
 myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
 $scope.mydisabled=false; 
-$scope.listnewz = function(newser) {     $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results;   }); $scope.newser.search="";$scope.newser.pager="15" ; };
+ $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results;   }); $scope.newser.search="";$scope.newser.pager="15" ;
+
+//$scope.listnewz = function(newser) {     $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results;   }); $scope.newser.search="";$scope.newser.pager="15" ; };
 $scope.update = function(newser) { $scope.mydisabled=false; 
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search}}).success(function(data, status, headers, config) 
  {$scope.newslist=[]; $scope.newslist=data.body.results;$scope.newser.pager='15';  }); };
