@@ -10,7 +10,7 @@
 <center></center><form novalidate class="simple-form" >
 Nachrichten von der Welt <input value='' ng-model="newser.search" ng-keyup="update(newser)">
 <input ng-model="newser.pager" name='pager' value='15'>
-<input ng-model="newser.oldsearch" name='' value=''>
+
 <input type=button ng-click="update(newser)" value="suchen" >
 </form></center>
 
@@ -23,7 +23,7 @@ Nachrichten von der Welt <input value='' ng-model="newser.search" ng-keyup="upda
 
 </tr>
 
-<tr><td style=text-align:right;><input ng-model="newser.next" type=button value='next' ng-click="update(newser)"></td></tr>
+<tr><td style=text-align:right;><input ng-model="newser.next" type=button value='next' ng-click="pager(newser)"></td></tr>
 </table>
 </div>
 
@@ -32,15 +32,16 @@ Nachrichten von der Welt <input value='' ng-model="newser.search" ng-keyup="upda
 myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
  $scope.listnewz = function(newser) { $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data }); };
  $scope.update = function(newser) {
+   $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search}}).success(function(data, status, headers, config) 
+ {$scope.newslist=[]; $scope.newslist=data;$scope.newser.pager='15'  });
  
-  $scope.newser.oldsearch=$scope.newser.search;
+  $scope.pager = function(newser) {
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search, offs: newser.pager}}).success(function(data, status, headers, config) 
- {$scope.newslist=[]; $scope.newslist=data;
-  if ($scope.newser.search == $scope.newser.oldsearch){$scope.newser.pager=parseInt($scope.newser.pager, 10)+15};
-  if ($scope.newser.search != $scope.newser.oldsearch){$scope.newser.pager='15'};
-  $scope.newser.oldsearch;
+ {$scope.newslist=[]; $scope.newslist=data;  });
+  $scope.newser.pager=parseInt($scope.newser.pager, 10)+15;});
   
- });
+  
+
  }; 
 }]);
 
