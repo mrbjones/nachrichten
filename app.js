@@ -73,8 +73,8 @@ res.write('serverUP!');res.end();
 //fetchNachrichten( function(resp) { res.write(resp);res.end(); }); 
   fetchNachrichten('www.welt.de', '/?service=Rss');
   console.log('update ran 1!')
-  fetchNachrichten('http://newsfeed.zeit.de', '/index');
-  console.log('update ran 2!')
+//  fetchNachrichten('http://newsfeed.zeit.de', '/index');
+//  console.log('update ran 2!')
   
   
 }).listen(process.env.VCAP_APP_PORT);
