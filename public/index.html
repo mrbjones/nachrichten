@@ -8,7 +8,8 @@
 <body ng-app="putter">
 <div id=main ng-controller="ListNews">
 <center></center><form novalidate class="simple-form" >
-Nachrichten von der Welt <input value='' ng-model="newser.search" ng-keyup="update(newser)">
+Nachrichten von der Welt 
+<input value='' ng-model="newser.search" ng-keyup="update(newser)">
 <input ng-model="newser.pager" name='pager' value='15' type=hidden>
 
 <input type=button ng-click="update(newser)" value="suchen" >
@@ -28,18 +29,26 @@ Nachrichten von der Welt <input value='' ng-model="newser.search" ng-keyup="upda
 </div>
 
 
-<script>var myApp=angular.module('putter', []);
+<script>
+
+var myApp=angular.module('putter', []);
 myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
- $scope.listnewz = function() { $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results }); };
+ 
+ $scope.starter = function(newser) { $scope.newser.searcher='';$scope.newser.pager='15'; }
+ 
+ $scope.listnewz = function() { $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results }); starter(newser); };
+ 
  $scope.update = function(newser) {
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search}}).success(function(data, status, headers, config) 
  {$scope.newslist=[]; $scope.newslist=data.body.results;$scope.newser.pager='15';  }); };
  
   $scope.pager = function(newser) {
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search, offs: newser.pager}}).success(function(data, status, headers, config) 
- {$scope.newslist=[]; $scope.newslist=data.body.results;  
+ {$scope.newslist=[]; $scope.newslist=data.body.results;   });
+ 
+ 
   
- });
+
 
    
   };
