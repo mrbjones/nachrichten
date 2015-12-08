@@ -37,11 +37,9 @@ myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
  
   $scope.pager = function(newser) {
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search, offs: newser.pager}}).success(function(data, status, headers, config) 
- {$scope.newslist=[]; $scope.newslist=data.body.results;  $scope.newser.pager=parseInt($scope.newser.pager, 10)+15; if (parseInt($scope.newser.pager, 10)+15 >= parseInt(data.body.total_count,10)) {
-$scope.newser.nexter.show=false;
+ {$scope.newslist=[]; $scope.newslist=data.body.results;  
   
-  
- };  });
+ });
 
    
   };
