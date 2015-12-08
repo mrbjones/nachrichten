@@ -24,7 +24,7 @@ Nachrichten von der Welt
 
 </tr>
 
-<tr><td style=text-align:right;><input ng-hide="false" ng-model="newser.nexter" type=button value='next' ng-click="pager(newser)"></td></tr>
+<tr><td style=text-align:right;><input ng-hide="hider" ng-model="newser.nexter" type=button value='next' ng-click="pager(newser)"></td></tr>
 </table>
 </div>
 
@@ -41,7 +41,7 @@ myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
 
 
  
- $scope.listnewz = function(newser) {  alert('FIRED!');     $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results;   }); ; };
+ $scope.listnewz = function(newser) {      $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results;   }); ; };
  
  $scope.update = function(newser) {
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search}}).success(function(data, status, headers, config) 
@@ -51,7 +51,7 @@ myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search, offs: newser.pager}}).success(function(data, status, headers, config) 
  {$scope.newslist=[]; $scope.newslist=data.body.results;   
   $scope.newser.pager=parseInt($scope.newser.pager, 10)+15; if (parseInt($scope.newser.pager, 10) >= parseInt(data.body.total_count,10)) {
-  $scope.newser.pager.hide=true;
+  hider=true;
    }; 
   
   
