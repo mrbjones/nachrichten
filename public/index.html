@@ -33,12 +33,12 @@ myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
  $scope.listnewz = function() { $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data }); };
  $scope.update = function(newser) {
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search}}).success(function(data, status, headers, config) 
- {$scope.newslist=[]; $scope.newslist=data;$scope.newser.pager='15'  });
+ {$scope.newslist=[]; $scope.newslist=data;$scope.newser.pager='15'  }); };
  
   $scope.pager = function(newser) {
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search, offs: newser.pager}}).success(function(data, status, headers, config) 
  {$scope.newslist=[]; $scope.newslist=data;  $scope.newser.pager=parseInt($scope.newser.pager, 10)+15; });
-
+};
  
 }]);
 
