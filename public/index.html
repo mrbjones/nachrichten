@@ -6,8 +6,8 @@
 </head>
 
 <body ng-app="putter">
-<div id=main ng-controller="ListNews">
-<center></center><form novalidate class="simple-form" onload="starter(newser)">
+<div id=main ng-controller="ListNews" onload="starter(newser)">
+<center></center><form novalidate class="simple-form" >
 Nachrichten von der Welt 
 <input value='' ng-model="newser.search" ng-keyup="update(newser)">
 <input ng-model="newser.pager" name='pager' value='15' type=hidden>
@@ -44,7 +44,12 @@ myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
  
   $scope.pager = function(newser) {
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search, offs: newser.pager}}).success(function(data, status, headers, config) 
- {$scope.newslist=[]; $scope.newslist=data.body.results;   });
+ {$scope.newslist=[]; $scope.newslist=data.body.results;   
+  $scope.newser.pager=parseInt($scope.newser.pager, 10)+15; if (parseInt($scope.newser.pager, 10)+15 >= parseInt(data.body.total_count,10)) {
+   }; 
+  
+  
+ });
  
  
   
