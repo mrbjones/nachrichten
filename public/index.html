@@ -30,7 +30,7 @@ Nachrichten von der Welt <input value='' ng-model="newser.search" ng-keyup="upda
 
 <script>var myApp=angular.module('putter', []);
 myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
- $scope.listnewz = function(newser) { $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data }); };
+ $scope.listnewz = function() { $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data }); };
  $scope.update = function(newser) {
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search}}).success(function(data, status, headers, config) 
  {$scope.newslist=[]; $scope.newslist=data;$scope.newser.pager='15'  });
