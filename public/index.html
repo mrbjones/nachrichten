@@ -19,12 +19,15 @@ Nachrichten von der Welt
 {{news.value.pubDate}}<br>
 {{news.value.description}}</td>
 </tr>
-<tr><td style=text-align:right;><input ng-hide="parseInt($scope.newser.pager, 10) >= parseInt(data.body.total_count,10)" ng-model="newser.nexter" type=button value='next' ng-click="pager(newser)"></td></tr>
+<tr><td style=text-align:right;><input ng-hide="mydisabled" ng-model="newser.nexter" type=button value='next' ng-click="pager(newser)"></td></tr>
 </table>
 </div>
 <script>
 var myApp=angular.module('putter', []);
 myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
+ 
+ $scope.mydisabled=false; 
+ 
  $scope.listnewz = function(newser) {hider=false;      $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results;   })  ; };
  
  $scope.update = function(newser) {
@@ -35,7 +38,7 @@ myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search, offs: newser.pager}}).success(function(data, status, headers, config) 
  {$scope.newslist=[]; $scope.newslist=data.body.results;   
   $scope.newser.pager=parseInt($scope.newser.pager, 10)+15; if (parseInt($scope.newser.pager, 10)+15 >= parseInt(data.body.total_count,10)) {
-  $scope.hider=true;alert(hider);
+  $scope.mydisabled=true;alert(hider);
    }; 
   
   
