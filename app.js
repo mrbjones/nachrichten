@@ -85,8 +85,8 @@ setInterval(function() {
 //  console.log('update ran!')
   fetchNachrichten('www.welt.de', '/?service=Rss');
   console.log('update ran 1!')
-  fetchNachrichten('http://newsfeed.zeit.de', '/index');
-  console.log('update ran 2!')
+//  fetchNachrichten('http://newsfeed.zeit.de', '/index');
+//  console.log('update ran 2!')
 }, the_interval);
 
 
