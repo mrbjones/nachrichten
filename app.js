@@ -23,7 +23,7 @@ var db = require("orchestrate")(orchestrate_api_key,orchestrate_api_endpoint);
 function getter(cb) {
 db.search('nachrichten', '*', {  sort: 'value.pubDate:desc',  limit: 15} )
 .then(function (result) {
-var items = result.body.results;
+//var items = result.body.results;
 // cb(JSON.stringify(items, ['path', 'key', 'value', 'title', 'description', 'category', 'pubDate', 'link']));
 //cb(JSON.stringify(items))
 cb(JSON.stringify(result))
@@ -32,7 +32,7 @@ cb(JSON.stringify(result))
 function searcher(a,b,cb) {
 db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b} )
 .then(function (result) {
-var items = result.body.results;
+//var items = result.body.results;
 // cb(JSON.stringify(items, ['path', 'key', 'value', 'title', 'description', 'category', 'pubDate', 'link']));
 //cb(JSON.stringify(result.count))
 //cb(JSON.stringify(items))
