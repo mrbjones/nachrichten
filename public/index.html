@@ -24,7 +24,7 @@ Nachrichten von der Welt
 
 </tr>
 
-<tr><td style=text-align:right;><input ng-show="true" ng-model="newser.nexter" type=button value='next' ng-click="pager(newser)"></td></tr>
+<tr><td style=text-align:right;><input ng-model="newser.nexter" type=button value='next' ng-click="starter(newser);pager(newser)"></td></tr>
 </table>
 </div>
 
@@ -36,7 +36,7 @@ myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
  
  $scope.starter = function(newser) { $scope.newser.searcher='';$scope.newser.pager='15'; }
  
- $scope.listnewz = function() { $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results }); starter(newser); };
+ $scope.listnewz = function() { $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results }); ; };
  
  $scope.update = function(newser) {
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search}}).success(function(data, status, headers, config) 
