@@ -15,7 +15,7 @@ Nachrichten von der Welt
 <input type=button ng-click="update(newser)" value="suchen" >
 </form></center>
 
-<div ng-init="listnewz(newser)"></div>
+<div onload="listnewz(newser)"></div>
 <table><tr ng-repeat="news in newslist">
 <td style=font-family:verdana;font-size:11px>
 <b><a href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
@@ -51,7 +51,7 @@ myApp.controller('ListNews', ['$scope', '$http', function($scope,$http) {
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: newser.search, offs: newser.pager}}).success(function(data, status, headers, config) 
  {$scope.newslist=[]; $scope.newslist=data.body.results;   
   $scope.newser.pager=parseInt($scope.newser.pager, 10)+15; if (parseInt($scope.newser.pager, 10) >= parseInt(data.body.total_count,10)) {
-  hider=true;
+  hider=true;alert(hider);
    }; 
   
   
