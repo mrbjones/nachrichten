@@ -16,16 +16,22 @@ orchestrate_api_endpoint = node.credentials.ORCHESTRATE_API_HOST
 }
 };
 var db = require("orchestrate")(orchestrate_api_key,orchestrate_api_endpoint);
-function putter(title,link,category,pubDate,description,guid) {
+function putter(title,link,category,pubDate,description,guid,c) {
         var jsonTitle=title.toString().replace(/\"/g,'\\"');
+        var jsonLink=link.toString().replace(/\"/g,'\\"');
         var jsonDesc=description.toString().replace(/\"/g,'\\"');
-var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+link+"\", \"category\":\""+category+"\", \"pubDate\":\""+pubDate+"\", \"description\":\""+jsonDesc+"\"}";
+        var jsonCat=category.toString().replace(/\"/g,'\\"');
+        var jsonDate=pubDate.toString().replace(/\"/g,'\\"');
+        
+        
+        
+var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+jsonLink+"\", \"category\":\""+jsonCat+"\", \"pubDate\":\""+jsonDate+"\", \"description\":\""+jsonDesc+"\", \"source\":\""+c+"\" }";
 console.log(jsonString)
 var jsonObj = JSON.parse(jsonString);
 db.put('nachrichten', guid, jsonObj, false);
 };
 
-function fetchNachrichten(a,b){
+function fetchNachrichten(a,b,c){
 return http.get({
         host: a,
         path: b
@@ -57,7 +63,7 @@ return http.get({
                                      if (bbb=="description"){ description=json1[rss][xxx][yyy][zzz][aaa][bbb];   }
                                        if (bbb=="guid"){  guid=json1[rss][xxx][yyy][zzz][aaa][bbb] }
  }
-  putter(title,link,category,pubDate,description,guid);
+  putter(title,link,category,pubDate,description,guid,c);
                                
                        }
     
@@ -73,12 +79,12 @@ res.writeHead(200, {'Content-Type': 'text/plain'});
 res.write('serverUP!');res.end();
 // fetchNachrichten( function(resp) { res.write(resp);res.end(); }); 
 
- fetchNachrichten('www.welt.de', '/?service=Rss');
- fetchNachrichten('newsfeed.zeit.de', '/index');
- fetchNachrichten('www.faz.net', '/rss/aktuell/');
- fetchNachrichten('www.stern.de', '/feed/standard/all/');
- fetchNachrichten('www.spiegel.de', '/schlagzeilen/tops/index.rss');
- fetchNachrichten('rss2.focus.de', '/c/32191/f/443312/index.rss');
+ fetchNachrichten('www.welt.de', '/?service=Rss', 'die Welt');
+ fetchNachrichten('newsfeed.zeit.de', '/index', 'die Zeit');
+ fetchNachrichten('www.faz.net', '/rss/aktuell/', 'FAZ');
+ fetchNachrichten('www.stern.de', '/feed/standard/all/', 'der Stern');
+ fetchNachrichten('www.spiegel.de', '/schlagzeilen/tops/index.rss', 'der Spiegel');
+ fetchNachrichten('rss2.focus.de', '/c/32191/f/443312/index.rss', 'Focus');
 
   console.log('update ran 3!')
   
@@ -89,12 +95,12 @@ res.write('serverUP!');res.end();
 var minutes = 30, the_interval = minutes * 60 * 1000;
 setInterval(function() {
         
- fetchNachrichten('www.welt.de', '/?service=Rss');
- fetchNachrichten('newsfeed.zeit.de', '/index');
- fetchNachrichten('www.faz.net', '/rss/aktuell/');
- fetchNachrichten('www.stern.de', '/feed/standard/all/');
- fetchNachrichten('www.spiegel.de', '/schlagzeilen/tops/index.rss');
- fetchNachrichten('rss2.focus.de', '/c/32191/f/443312/index.rss');
+ fetchNachrichten('www.welt.de', '/?service=Rss', 'die Welt');
+ fetchNachrichten('newsfeed.zeit.de', '/index', 'die Zeit');
+ fetchNachrichten('www.faz.net', '/rss/aktuell/', 'FAZ');
+ fetchNachrichten('www.stern.de', '/feed/standard/all/', 'der Stern');
+ fetchNachrichten('www.spiegel.de', '/schlagzeilen/tops/index.rss', 'der Spiegel');
+ fetchNachrichten('rss2.focus.de', '/c/32191/f/443312/index.rss', 'Focus');
  
 }, the_interval);
 
