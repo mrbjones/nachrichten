@@ -74,8 +74,11 @@ res.write('serverUP!');res.end();
 //fetchNachrichten( function(resp) { res.write(resp);res.end(); }); 
  // fetchNachrichten('www.welt.de', '/?service=Rss');
 //  console.log('update ran 1!')
-  fetchNachrichten('newsfeed.zeit.de', '/index');
-  console.log('update ran 2!')
+//  fetchNachrichten('newsfeed.zeit.de', '/index');
+//  console.log('update ran 2!')
+ fetchNachrichten('www.faz.net', '/rss/aktuell/');
+  console.log('update ran 3!')
+  
   
   
 }).listen(process.env.VCAP_APP_PORT);
