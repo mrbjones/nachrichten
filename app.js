@@ -22,13 +22,15 @@ function putter(title,link,category,pubDate,description,guid,c) {
         var jsonDesc=description.toString().replace(/\"/g,'\\"');
         var jsonCat=category.toString().replace(/\"/g,'\\"');
         var jsonDate=pubDate.toString().replace(/\"/g,'\\"');
+        var jsonGuid=guid.toString().replace(/\"/g,'\\"');
         
         
         
 var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+jsonLink+"\", \"category\":\""+jsonCat+"\", \"pubDate\":\""+jsonDate+"\", \"description\":\""+jsonDesc+"\", \"source\":\""+c+"\" }";
-console.log(jsonString)
+//console.log(jsonString)
+console.log(c +'|'+jsonGuid)
 var jsonObj = JSON.parse(jsonString);
-db.put('nachrichten', guid, jsonObj, false);
+db.put('nachrichten', jsonGuid, jsonObj, false);
 };
 
 function fetchNachrichten(a,b,c){
