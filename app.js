@@ -20,6 +20,7 @@ function putter(title,link,category,pubDate,description,guid,c) {
         var jsonTitle=title.toString().replace(/\"/g,'\\"');
         var jsonLink=link.toString().replace(/\"/g,'\\"');
         var jsonDesc=description.toString().replace(/\"/g,'\\"');
+         jsonDesc=jsonDesc.toString().replace(/\r?\n|\r/g,' ');
        // var jsonDesc1=jsonDesc.substr(0,100)
         var jsonCat=category.toString().replace(/\"/g,'\\"');
         var jsonDate=pubDate.toString().replace(/\"/g,'\\"');
