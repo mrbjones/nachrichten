@@ -26,8 +26,8 @@ function putter(title,link,category,pubDate,description,guid,c) {
         var jsonID=guid.toString().replace(/\"/g,'\\"');
         //var jsonID=JSON.stringify(jsonGuid)  
       
-if (c=="Focus" && jsonDesc.indexOf("<br clear='all'/>")) {
-                jsonDesc=jsonDesc.substr(0,jsonDesc.indexof("<br clear='all'/>"))       }           
+if (c=="Focus" && jsonDesc.toString().indexOf("<br clear='all'/>")) {
+                jsonDesc=jsonDesc.toString().substr(0,jsonDesc.indexof("<br clear='all'/>"))       }           
         
 
 var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+jsonLink+"\", \"category\":\""+jsonCat+"\", \"pubDate\":\""+jsonDate+"\", \"description\":\""+jsonDesc+"\", \"source\":\""+c+"\" }";
