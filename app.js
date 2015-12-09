@@ -7,18 +7,14 @@ var jsesc = require('jsesc');
 if (process.env.VCAP_SERVICES)
 {
 var services = JSON.parse(process.env.VCAP_SERVICES);
-
 var orchestrateConfig = services["orchestrate"];
 if (orchestrateConfig) {
-
-
 var node = orchestrateConfig[0];
 orchestrate_api_key = node.credentials.ORCHESTRATE_API_KEY
 orchestrate_api_endpoint = node.credentials.ORCHESTRATE_API_HOST
-var n
-for (n in node)
-{console.log(node[n])}
-        
+//var n
+//for (n in node)
+//{console.log(node[n])}
 }
 };
 var db = require("orchestrate")(orchestrate_api_key,orchestrate_api_endpoint);
@@ -38,6 +34,10 @@ if (c=="Focus" && jsonDesc.toString().indexOf("<br clear='all'/>")) {
         
 if (c=="FAZ" && jsonDesc.toString().indexOf(".jpg /><p>")) {
                 jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf(".jpg /><p>", jsonDesc.toString().length-4))       }    
+
+if (c=="die Zeit" && jsonDesc.toString().indexOf("></a>")) {
+                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("></a>", jsonDesc.toString().length))       }
+
                 
                 
 var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+jsonLink+"\", \"category\":\""+jsonCat+"\", \"pubDate\":\""+jsonDate+"\", \"description\":\""+jsonDesc+"\", \"source\":\""+c+"\" }";
