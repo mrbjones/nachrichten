@@ -42,7 +42,7 @@ if (c=="die Zeit" && jsonDesc.toString().indexOf("></a>")) {
                 
 var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+jsonLink+"\", \"category\":\""+jsonCat+"\", \"pubDate\":\""+jsonDate+"\", \"description\":\""+jsonDesc+"\", \"source\":\""+c+"\" }";
 //console.log(jsonString)
-//console.log(c +'|'+jsonLink)
+console.log(c +' done!')
 var jsonObj = JSON.parse(jsonString);
 //db.put('nachrichten', jsonID, jsonObj, false);
 db.put('nachrichten', jsonLink, jsonObj, false);
