@@ -78,7 +78,7 @@ res.write('serverUP!');res.end();
  fetchNachrichten('www.faz.net', '/rss/aktuell/');
  fetchNachrichten('www.stern.de', '/feed/standard/all/');
  fetchNachrichten('www.spiegel.de', '/schlagzeilen/tops/index.rss');
- fetchNachrichten(rss2.focus.de', '/c/32191/f/443312/index.rss');
+ fetchNachrichten('rss2.focus.de', '/c/32191/f/443312/index.rss');
 
   console.log('update ran 3!')
   
@@ -94,7 +94,7 @@ setInterval(function() {
  fetchNachrichten('www.faz.net', '/rss/aktuell/');
  fetchNachrichten('www.stern.de', '/feed/standard/all/');
  fetchNachrichten('www.spiegel.de', '/schlagzeilen/tops/index.rss');
- fetchNachrichten(rss2.focus.de', '/c/32191/f/443312/index.rss');
+ fetchNachrichten('rss2.focus.de', '/c/32191/f/443312/index.rss');
  
 }, the_interval);
 
