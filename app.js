@@ -24,9 +24,10 @@ function putter(title,link,category,pubDate,description,guid,c) {
         var jsonCat=category.toString().replace(/\"/g,'\\"');
         var jsonDate=pubDate.toString().replace(/\"/g,'\\"');
         var jsonID=guid.toString().replace(/\"/g,'\\"');
-        //var jsonID=JSON.stringify(jsonGuid)    
+        //var jsonID=JSON.stringify(jsonGuid)  
+      
 if (c=="Focus" && jsonDesc.indexOf("<br clear='all'/>")) {
-                jsonDesc=jsonDesc.substr(0,jsonDesc.indexof('<br clear='all'/>'))       }           
+                jsonDesc=jsonDesc.substr(0,jsonDesc.indexof("<br clear='all'/>"))       }           
         
 
 var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+jsonLink+"\", \"category\":\""+jsonCat+"\", \"pubDate\":\""+jsonDate+"\", \"description\":\""+jsonDesc+"\", \"source\":\""+c+"\" }";
