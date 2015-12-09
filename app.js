@@ -15,8 +15,9 @@ if (orchestrateConfig) {
 var node = orchestrateConfig[0];
 orchestrate_api_key = node.credentials.ORCHESTRATE_API_KEY
 orchestrate_api_endpoint = node.credentials.ORCHESTRATE_API_HOST
-for each n in node
-{console.log(n.toString())}
+var n
+for (n in node)
+{console.log(node[n])}
         
 }
 };
