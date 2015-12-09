@@ -71,7 +71,7 @@ return http.get({
 var server = http.createServer(function(req, res) {
 res.writeHead(200, {'Content-Type': 'text/plain'});
 res.write('serverUP!');res.end();
- fetchNachrichten( function(resp) { res.write(resp);res.end(); }); 
+// fetchNachrichten( function(resp) { res.write(resp);res.end(); }); 
 
  fetchNachrichten('www.welt.de', '/?service=Rss');
  fetchNachrichten('newsfeed.zeit.de', '/index');
