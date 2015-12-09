@@ -10,9 +10,13 @@ var services = JSON.parse(process.env.VCAP_SERVICES);
 
 var orchestrateConfig = services["orchestrate"];
 if (orchestrateConfig) {
+
+console.log(orchestrateConfig.toString();)
 var node = orchestrateConfig[0];
 orchestrate_api_key = node.credentials.ORCHESTRATE_API_KEY
 orchestrate_api_endpoint = node.credentials.ORCHESTRATE_API_HOST
+
+        
 }
 };
 var db = require("orchestrate")(orchestrate_api_key,orchestrate_api_endpoint);
@@ -35,8 +39,8 @@ if (c=="FAZ" && jsonDesc.toString().indexOf(".jpg /><p>")) {
                 
                 
 var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+jsonLink+"\", \"category\":\""+jsonCat+"\", \"pubDate\":\""+jsonDate+"\", \"description\":\""+jsonDesc+"\", \"source\":\""+c+"\" }";
-console.log(jsonString)
-console.log(c +'|'+jsonLink)
+//console.log(jsonString)
+//console.log(c +'|'+jsonLink)
 var jsonObj = JSON.parse(jsonString);
 //db.put('nachrichten', jsonID, jsonObj, false);
 db.put('nachrichten', jsonLink, jsonObj, false);
