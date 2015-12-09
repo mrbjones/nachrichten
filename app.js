@@ -30,7 +30,10 @@ function putter(title,link,category,pubDate,description,guid,c) {
 if (c=="Focus" && jsonDesc.toString().indexOf("<br clear='all'/>")) {
                 jsonDesc=jsonDesc.toString().substr(0,jsonDesc.toString().indexOf("<br clear='all'/>"))       }           
         
-
+if (c=="FAZ" && jsonDesc.toString().indexOf(".jpg /><p>")) {
+                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf(".jpg /><p>", jsonDesc.toString().length()-3))       }    
+                
+                
 var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+jsonLink+"\", \"category\":\""+jsonCat+"\", \"pubDate\":\""+jsonDate+"\", \"description\":\""+jsonDesc+"\", \"source\":\""+c+"\" }";
 console.log(jsonString)
 console.log(c +'|'+jsonLink)
