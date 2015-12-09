@@ -20,15 +20,13 @@ function putter(title,link,category,pubDate,description,guid,c) {
         var jsonTitle=title.toString().replace(/\"/g,'\\"');
         var jsonLink=link.toString().replace(/\"/g,'\\"');
         var jsonDesc=description.toString().replace(/\"/g,'\\"');
-        var jsonDesc1=jsonDesc.substr(0,100)
+       // var jsonDesc1=jsonDesc.substr(0,100)
         var jsonCat=category.toString().replace(/\"/g,'\\"');
         var jsonDate=pubDate.toString().replace(/\"/g,'\\"');
         var jsonID=guid.toString().replace(/\"/g,'\\"');
         //var jsonID=JSON.stringify(jsonGuid)    
-if (c=="Focus") {
-        if jsonDesc.indexOf("<br clear='all'/>") {
-                jsonDesc=jsonDesc.substr(0,jsonDesc.indexof('<br clear='all'/>'))  
-        }    }        
+if (c=="Focus" && jsonDesc.indexOf("<br clear='all'/>") {
+                jsonDesc=jsonDesc.substr(0,jsonDesc.indexof('<br clear='all'/>'))       }           
         
 
 var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+jsonLink+"\", \"category\":\""+jsonCat+"\", \"pubDate\":\""+jsonDate+"\", \"description\":\""+jsonDesc+"\", \"source\":\""+c+"\" }";
