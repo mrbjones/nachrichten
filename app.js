@@ -72,10 +72,10 @@ var server = http.createServer(function(req, res) {
 res.writeHead(200, {'Content-Type': 'text/plain'});
 res.write('serverUP!');res.end();
 //fetchNachrichten( function(resp) { res.write(resp);res.end(); }); 
-  fetchNachrichten('www.welt.de', '/?service=Rss');
-  console.log('update ran 1!')
-//  fetchNachrichten('http://newsfeed.zeit.de', '/index');
-//  console.log('update ran 2!')
+ // fetchNachrichten('www.welt.de', '/?service=Rss');
+//  console.log('update ran 1!')
+  fetchNachrichten('http://newsfeed.zeit.de', '/index');
+  console.log('update ran 2!')
   
   
 }).listen(process.env.VCAP_APP_PORT);
