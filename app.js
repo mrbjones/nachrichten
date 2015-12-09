@@ -23,7 +23,7 @@ function putter(title,link,category,pubDate,description,guid,c) {
         var jsonCat=category.toString().replace(/\"/g,'\\"');
         var jsonDate=pubDate.toString().replace(/\"/g,'\\"');
         var jsonGuid=guid.toString().replace(/\"/g,'\\"');
-        var jsonID=stringify(jsonGuid)    
+        var jsonID=JSON.stringify(jsonGuid)    
 
 var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+jsonLink+"\", \"category\":\""+jsonCat+"\", \"pubDate\":\""+jsonDate+"\", \"description\":\""+jsonDesc+"\", \"source\":\""+c+"\" }";
 //console.log(jsonString)
