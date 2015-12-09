@@ -80,14 +80,14 @@ res.writeHead(200, {'Content-Type': 'text/plain'});
 res.write('serverUP!');res.end();
 // fetchNachrichten( function(resp) { res.write(resp);res.end(); }); 
 
-// fetchNachrichten('www.welt.de', '/?service=Rss', 'die Welt');
-// fetchNachrichten('newsfeed.zeit.de', '/index', 'die Zeit');
-// fetchNachrichten('www.spiegel.de', '/schlagzeilen/tops/index.rss', 'der Spiegel');
- fetchNachrichten('www.faz.net', '/rss/aktuell/', 'FAZ');
- fetchNachrichten('www.stern.de', '/feed/standard/all/', 'der Stern');
- fetchNachrichten('rss2.focus.de', '/c/32191/f/443312/index.rss', 'Focus');
+ fetchNachrichten('www.welt.de', '/?service=Rss', 'die Welt');
+ fetchNachrichten('newsfeed.zeit.de', '/index', 'die Zeit');
+ fetchNachrichten('www.spiegel.de', '/schlagzeilen/tops/index.rss', 'der Spiegel');
+// fetchNachrichten('www.faz.net', '/rss/aktuell/', 'FAZ');
+// fetchNachrichten('www.stern.de', '/feed/standard/all/', 'der Stern');
+// fetchNachrichten('rss2.focus.de', '/c/32191/f/443312/index.rss', 'Focus');
 
-  console.log('update ran 3!')
+
   
   
   
@@ -96,12 +96,12 @@ res.write('serverUP!');res.end();
 var minutes = 30, the_interval = minutes * 60 * 1000;
 setInterval(function() {
         
-// fetchNachrichten('www.welt.de', '/?service=Rss', 'die Welt');
-// fetchNachrichten('newsfeed.zeit.de', '/index', 'die Zeit');
-// fetchNachrichten('www.spiegel.de', '/schlagzeilen/tops/index.rss', 'der Spiegel');
- fetchNachrichten('www.faz.net', '/rss/aktuell/', 'FAZ');
- fetchNachrichten('www.stern.de', '/feed/standard/all/', 'der Stern');
- fetchNachrichten('rss2.focus.de', '/c/32191/f/443312/index.rss', 'Focus');
+ fetchNachrichten('www.welt.de', '/?service=Rss', 'die Welt');
+ fetchNachrichten('newsfeed.zeit.de', '/index', 'die Zeit');
+ fetchNachrichten('www.spiegel.de', '/schlagzeilen/tops/index.rss', 'der Spiegel');
+// fetchNachrichten('www.faz.net', '/rss/aktuell/', 'FAZ');
+// fetchNachrichten('www.stern.de', '/feed/standard/all/', 'der Stern');
+// fetchNachrichten('rss2.focus.de', '/c/32191/f/443312/index.rss', 'Focus');
  
 }, the_interval);
 
