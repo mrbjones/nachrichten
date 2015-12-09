@@ -20,6 +20,7 @@ function putter(title,link,category,pubDate,description,guid) {
         var jsonTitle=title.toString().replace(/\"/g,'\\"');
         var jsonDesc=description.toString().replace(/\"/g,'\\"');
 var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+link+"\", \"category\":\""+category+"\", \"pubDate\":\""+pubDate+"\", \"description\":\""+jsonDesc+"\"}";
+console.log(jsonString)
 var jsonObj = JSON.parse(jsonString);
 db.put('nachrichten', guid, jsonObj, false);
 };
@@ -40,7 +41,7 @@ return http.get({
        var parser = new xml2js.Parser();      
       parser.parseString(body.substring(0, body.length), function (err, result) {
       var json = JSON.stringify(result, ["rss", "$", "channel", "item", "title", "link", "category", "pubDate", "description", "guid"]);
-      cb(json)
+  //    cb(json)
       var json1 = JSON.parse(json);
    for(var rss in json1) {
      for(var xxx in json1[rss]) {
