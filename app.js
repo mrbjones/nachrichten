@@ -41,14 +41,14 @@ if (c=="FAZ" && (jsonDesc.toString().indexOf("<p>") )) {
                 }    
 
 if (c=="die Zeit" && jsonDesc.toString().indexOf("</a>")) {
-                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("</a>")+3, jsonDesc.toString().length);
-         // console.log(jsonDesc); 
+                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("</a>"), jsonDesc.toString().length);
+          console.log(jsonDesc); 
                 }
 
                 
                 
 var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+jsonLink+"\", \"category\":\""+jsonCat+"\", \"pubDate\":\""+jsonDate+"\", \"description\":\""+jsonDesc+"\", \"source\":\""+c+"\" }";
-//console.log(jsonString)
+console.log(jsonString)
 console.log(c +' done!')
 var jsonObj = JSON.parse(jsonString);
 //db.put('nachrichten', jsonID, jsonObj, false);
