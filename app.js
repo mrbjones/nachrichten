@@ -17,16 +17,8 @@ orchestrate_api_endpoint = node.credentials.ORCHESTRATE_API_HOST
 };
 var db = require("orchestrate")(orchestrate_api_key,orchestrate_api_endpoint);
 function putter(title,link,category,pubDate,description,guid,c) {
- /*  if (c == "der Spiegel") {
-        title=encodeURI(title);
-        link=encodeURI(link);
-        category=encodeURI(category);
-        description=encodeURI(description);}
-   */
-   
         var jsonTitle=title.toString().replace(/\"/g,'\\"');
          jsonTitle=jsonTitle.toString().replace(/\r?\n|\r/g,' ');
-
         var jsonLink=link.toString().replace(/\"/g,'\\"');
         var jsonDesc=description.toString().replace(/\"/g,'\\"');
          jsonDesc=jsonDesc.toString().replace(/\r?\n|\r/g,' ');
@@ -72,7 +64,7 @@ return http.get({
         var body = '';
         response.on('data', function(d) {
             body += d;
-        }}
+        }}}
         });
         response.on('end', function() {
          var extractedData = "";
