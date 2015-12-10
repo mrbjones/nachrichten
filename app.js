@@ -19,6 +19,7 @@ orchestrate_api_endpoint = node.credentials.ORCHESTRATE_API_HOST
 };
 var db = require("orchestrate")(orchestrate_api_key,orchestrate_api_endpoint);
 function putter(title,link,category,pubDate,description,guid,c) {
+        console.log(c)
         var jsonTitle=title.toString().replace(/\"/g,'\\"');
         var jsonLink=link.toString().replace(/\"/g,'\\"');
         var jsonDesc=description.toString().replace(/\"/g,'\\"');
@@ -31,17 +32,17 @@ function putter(title,link,category,pubDate,description,guid,c) {
       
 if (c=="Focus" && jsonDesc.toString().indexOf("<br clear='all'/>")) {
                 jsonDesc=jsonDesc.toString().substr(0,jsonDesc.toString().indexOf("<br clear='all'/>")) ;
-                console.log(jsonDesc);}           
+               // console.log(jsonDesc);}           
         
 if (c=="FAZ" && (jsonDesc.toString().indexOf("<p>") )) {
                 jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("<p>")+3, jsonDesc.toString().length-4);
                    jsonID=guid.toString().replace("</p>","");
-                   console.log(jsonDesc);
+                //   console.log(jsonDesc);
                 }    
 
 if (c=="die Zeit" && jsonDesc.toString().indexOf("</a>")) {
                 jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("</a>")+3, jsonDesc.toString().length);
-                console.log(jsonDesc); 
+         // console.log(jsonDesc); 
                 }
 
                 
