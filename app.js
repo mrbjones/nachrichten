@@ -63,8 +63,8 @@ return http.get({
         var body = '';
         response.on('data', function(d) {
             body += d;
-        
-        )};}
+        }
+        )};
         response.on('end', function() {
          var extractedData = "";
          var parser = new xml2js.Parser();
