@@ -3,6 +3,7 @@ var url = require('url');
 var express = require('express');
 var xml2js = require('xml2js');
 var jsesc = require('jsesc');
+var iconv = require('iconv');
 
 if (process.env.VCAP_SERVICES)
 {
@@ -46,8 +47,9 @@ if (c=="die Zeit" && jsonDesc.toString().indexOf("</a>")) {
                 
                 
 var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+jsonLink+"\", \"category\":\""+jsonCat+"\", \"pubDate\":\""+jsonDate+"\", \"description\":\""+jsonDesc+"\", \"source\":\""+c+"\" }";
-console.log(jsonString)
-console.log(c +' done!')
+
+if (c=="der Spiegel") {console.log(jsonString)}
+//console.log(c +' done!')
 var jsonObj = JSON.parse(jsonString);
 //db.put('nachrichten', jsonID, jsonObj, false);
 //db.put('nachrichten', jsonLink, jsonObj, false);
@@ -59,9 +61,18 @@ return http.get({
         path: b
     }, function(response) {
        response.setEncoding("binary");
+       
+       if (c=="der Spiegel"){
+       var ic = new iconv.Iconv('iso-8859-1', 'utf-8');
+        var buf = ic.convert(body);
+        var body = buf.toString('utf-8');
+        console.log(body);}
+        
+        if (c!="der Spiegel"){
         var body = '';
         response.on('data', function(d) {
             body += d;
+        }
         });
         response.on('end', function() {
          var extractedData = "";
