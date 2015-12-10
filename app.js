@@ -29,10 +29,10 @@ function putter(title,link,category,pubDate,description,guid,c) {
         var jsonID=guid.toString().replace(/\"/g,'\\"');
         //var jsonID=JSON.stringify(jsonGuid)  
       
-if (c=="Focus" && jsonDesc.toString().indexOf("<br clear='all'/>")) {
-                jsonDesc=jsonDesc.toString().substr(0,jsonDesc.toString().indexOf("<br clear='all'/>"))       }           
+//if (c=="Focus" && jsonDesc.toString().indexOf("<br clear='all'/>")) {
+//                jsonDesc=jsonDesc.toString().substr(0,jsonDesc.toString().indexOf("<br clear='all'/>"))       }           
         
-if (c=="FAZ" && jsonDesc.toString().indexOf(".jpg /><p>")) {
+if (c=="FAZ" && (jsonDesc.toString().indexOf(".jpg /><p>") || jsonDesc.toString().indexOf("/&gt;&lt;p&gt;"))) {
                 jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf(".jpg /><p>", jsonDesc.toString().length-5))       }    
 
 if (c=="die Zeit" && jsonDesc.toString().indexOf("></a>")) {
@@ -110,7 +110,7 @@ res.write('serverUP!');res.end();
   
 }).listen(process.env.VCAP_APP_PORT);
 
-var minutes = 30, the_interval = minutes * 60 * 1000;
+var minutes = 60, the_interval = minutes * 60 * 1000;
 setInterval(function() {
         
  fetchNachrichten('www.welt.de', '/?service=Rss', 'die Welt');
