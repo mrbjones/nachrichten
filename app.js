@@ -40,7 +40,7 @@ if (c=="FAZ" && (jsonDesc.toString().indexOf(".jpg /><p>") || jsonDesc.toString(
                 }    
 
 if (c=="die Zeit" && jsonDesc.toString().indexOf("></a>")) {
-                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("></a>"), jsonDesc.toString().length));
+                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("></a>"), jsonDesc.toString().length);
                 console.log(jsonDesc);}
 
                 
