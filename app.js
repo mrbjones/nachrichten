@@ -34,12 +34,13 @@ if (c=="Focus" && jsonDesc.toString().indexOf("<br clear='all'/>")) {
                 console.log(jsonDesc);}           
         
 if (c=="FAZ" && (jsonDesc.toString().indexOf("<p>") )) {
-                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("<p>")+4, jsonDesc.toString().length-4);
+                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("<p>")+3, jsonDesc.toString().length-4);
+                   jsonID=guid.toString().replace("</p>","");
                    console.log(jsonDesc);
                 }    
 
 if (c=="die Zeit" && jsonDesc.toString().indexOf("</a>")) {
-                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("</a>")+4, jsonDesc.toString().length);
+                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("</a>")+3, jsonDesc.toString().length);
                 console.log(jsonDesc); 
                 }
 
@@ -108,14 +109,12 @@ res.write('serverUP!');res.end();
  fetchNachrichten('www.faz.net', '/rss/aktuell/', 'FAZ');
  fetchNachrichten('www.stern.de', '/feed/standard/all/', 'der Stern');
  fetchNachrichten('rss2.focus.de', '/c/32191/f/443312/index.rss', 'Focus');
-
-
-  
-  
-  
+console.log('done1')
 }).listen(process.env.VCAP_APP_PORT);
 
+console.log('done2')
 var minutes = 60; the_interval = minutes * 60 * 1000;
+console.log('done3')
 setInterval(function() {
         
  fetchNachrichten('www.welt.de', '/?service=Rss', 'die Welt');
