@@ -12,37 +12,27 @@ if (orchestrateConfig) {
 var node = orchestrateConfig[0];
 orchestrate_api_key = node.credentials.ORCHESTRATE_API_KEY
 orchestrate_api_endpoint = node.credentials.ORCHESTRATE_API_HOST
-//var n
-//for (n in node)
-//{console.log(node[n])}
 }
 };
 var db = require("orchestrate")(orchestrate_api_key,orchestrate_api_endpoint);
 function putter(title,link,category,pubDate,description,guid,c) {
-        console.log(c)
         var jsonTitle=title.toString().replace(/\"/g,'\\"');
+         jsonTitle=jsonTitle.toString().replace(/\r?\n|\r/g,' ');
         var jsonLink=link.toString().replace(/\"/g,'\\"');
         var jsonDesc=description.toString().replace(/\"/g,'\\"');
          jsonDesc=jsonDesc.toString().replace(/\r?\n|\r/g,' ');
-       // var jsonDesc1=jsonDesc.substr(0,100)
         var jsonCat=category.toString().replace(/\"/g,'\\"');
         var jsonDate=pubDate.toString().replace(/\"/g,'\\"');
         var jsonID=guid.toString().replace(/\"/g,'\\"');
-        //var jsonID=JSON.stringify(jsonGuid)  
-      
 if (c=="Focus" && jsonDesc.toString().indexOf("<br clear='all'/>")) {
                 jsonDesc=jsonDesc.toString().substr(0,jsonDesc.toString().indexOf("<br clear='all'/>")) ;
                }           
-        
 if (c=="FAZ" && (jsonDesc.toString().indexOf("<p>") )) {
                 jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("<p>")+3, jsonDesc.toString().length-4);
                    jsonID=guid.toString().replace("</p>","");
-                //   console.log(jsonDesc);
                 }    
-
 if (c=="die Zeit" && jsonDesc.toString().indexOf("</a>")) {
-                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("</a>"), jsonDesc.toString().length);
-          console.log(jsonDesc); 
+                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("</a>")+3, jsonDesc.toString().length);
                 }
 
                 
@@ -71,7 +61,6 @@ return http.get({
        var parser = new xml2js.Parser();      
       parser.parseString(body.substring(0, body.length), function (err, result) {
       var json = JSON.stringify(result, ["rss", "$", "channel", "item", "title", "link", "category", "pubDate", "description", "guid"]);
-  //    cb(json)
       var json1 = JSON.parse(json);
    for(var rss in json1) {
      for(var xxx in json1[rss]) {
@@ -102,8 +91,6 @@ return http.get({
 var server = http.createServer(function(req, res) {
 res.writeHead(200, {'Content-Type': 'text/plain'});
 res.write('serverUP!');res.end();
-// fetchNachrichten( function(resp) { res.write(resp);res.end(); }); 
-
  fetchNachrichten('www.welt.de', '/?service=Rss', 'die Welt');
  fetchNachrichten('newsfeed.zeit.de', '/index', 'die Zeit');
  fetchNachrichten('www.spiegel.de', '/schlagzeilen/tops/index.rss', 'der Spiegel');
