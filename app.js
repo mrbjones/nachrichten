@@ -52,9 +52,8 @@ return http.get({
         host: a,
         path: b
     }, function(response) {
-       response.setEncoding("binary");
-       
        if (c=="der Spiegel"){
+       response.setEncoding("binary");
        var ic = new iconv.Iconv('iso-8859-1', 'utf-8');
         var buf = ic.convert(body);
         var body = buf.toString('utf-8');
@@ -64,8 +63,8 @@ return http.get({
         var body = '';
         response.on('data', function(d) {
             body += d;
-        }}}
-        });
+        
+        )};}
         response.on('end', function() {
          var extractedData = "";
          var parser = new xml2js.Parser();
@@ -112,9 +111,9 @@ res.write('serverUP!');res.end();
 console.log('done1')
 }).listen(process.env.VCAP_APP_PORT);
 
-console.log('done2')
+
 var minutes = 60; the_interval = minutes * 60 * 1000;
-console.log('done3')
+
 setInterval(function() {
         
  fetchNachrichten('www.welt.de', '/?service=Rss', 'die Welt');
