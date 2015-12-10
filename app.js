@@ -58,7 +58,7 @@ return http.get({
         host: a,
         path: b
     }, function(response) {
-       response.setEncoding(null);
+       response.setEncoding("binary");
         var body = '';
         response.on('data', function(d) {
             body += d;
