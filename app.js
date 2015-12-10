@@ -115,7 +115,7 @@ res.write('serverUP!');res.end();
   
 }).listen(process.env.VCAP_APP_PORT);
 
-var minutes = 60, the_interval = minutes * 60 * 1000;
+var minutes = 60; the_interval = minutes * 60 * 1000;
 setInterval(function() {
         
  fetchNachrichten('www.welt.de', '/?service=Rss', 'die Welt');
