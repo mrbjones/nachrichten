@@ -29,17 +29,19 @@ function putter(title,link,category,pubDate,description,guid,c) {
         var jsonID=guid.toString().replace(/\"/g,'\\"');
         //var jsonID=JSON.stringify(jsonGuid)  
       
-//if (c=="Focus" && jsonDesc.toString().indexOf("<br clear='all'/>")) {
-//                jsonDesc=jsonDesc.toString().substr(0,jsonDesc.toString().indexOf("<br clear='all'/>"))       }           
+if (c=="Focus" && jsonDesc.toString().indexOf("<br clear='all'/>")) {
+                jsonDesc=jsonDesc.toString().substr(0,jsonDesc.toString().indexOf("<br clear='all'/>")) ;
+                console.log(jsonDesc);}           
         
 if (c=="FAZ" && (jsonDesc.toString().indexOf(".jpg /><p>") || jsonDesc.toString().indexOf("/&gt;&lt;p&gt;"))) {
                 jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf(".jpg /><p>", jsonDesc.toString().length-5)) ;
                  jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("/&gt;&lt;p&gt;", jsonDesc.toString().length-5)) ;
-                 console.log("jsonDesc");
+                 console.log(jsonDesc);
                 }    
 
 if (c=="die Zeit" && jsonDesc.toString().indexOf("></a>")) {
-                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("></a>", jsonDesc.toString().length))       }
+                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("></a>", jsonDesc.toString().length));
+                console.log(jsonDesc);}
 
                 
                 
@@ -48,7 +50,7 @@ var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+jsonLink+"\", \"c
 console.log(c +' done!')
 var jsonObj = JSON.parse(jsonString);
 //db.put('nachrichten', jsonID, jsonObj, false);
-db.put('nachrichten', jsonLink, jsonObj, false);
+//db.put('nachrichten', jsonLink, jsonObj, false);
 };
 
 function fetchNachrichten(a,b,c){
