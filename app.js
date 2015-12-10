@@ -33,15 +33,15 @@ if (c=="Focus" && jsonDesc.toString().indexOf("<br clear='all'/>")) {
                 jsonDesc=jsonDesc.toString().substr(0,jsonDesc.toString().indexOf("<br clear='all'/>")) ;
                 console.log(jsonDesc);}           
         
-if (c=="FAZ" && (jsonDesc.toString().indexOf(".jpg /><p>") || jsonDesc.toString().indexOf("/&gt;&lt;p&gt;"))) {
-                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf(".jpg /><p>"), jsonDesc.toString().length-4) ;
-                 jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("/&gt;&lt;p&gt;"), jsonDesc.toString().length-4) ;
-                 console.log(jsonDesc);
+if (c=="FAZ" && (jsonDesc.toString().indexOf("<p>") )) {
+                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("<p>")+4, jsonDesc.toString().length-4);
+                   console.log(jsonDesc);
                 }    
 
-if (c=="die Zeit" && jsonDesc.toString().indexOf("></a>")) {
-                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("></a>"), jsonDesc.toString().length);
-                console.log(jsonDesc);}
+if (c=="die Zeit" && jsonDesc.toString().indexOf("</a>")) {
+                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("</a>")+4, jsonDesc.toString().length);
+                console.log(jsonDesc); 
+                }
 
                 
                 
