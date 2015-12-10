@@ -34,8 +34,8 @@ if (c=="Focus" && jsonDesc.toString().indexOf("<br clear='all'/>")) {
                 console.log(jsonDesc);}           
         
 if (c=="FAZ" && (jsonDesc.toString().indexOf(".jpg /><p>") || jsonDesc.toString().indexOf("/&gt;&lt;p&gt;"))) {
-                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf(".jpg /><p>"), jsonDesc.toString().length-5)) ;
-                 jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("/&gt;&lt;p&gt;"), jsonDesc.toString().length-5)) ;
+                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf(".jpg /><p>"), jsonDesc.toString().length-4) ;
+                 jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("/&gt;&lt;p&gt;"), jsonDesc.toString().length-4) ;
                  console.log(jsonDesc);
                 }    
 
