@@ -78,6 +78,7 @@ return http.get({
                                  if (bbb=="category"){  category=json1[rss][xxx][yyy][zzz][aaa][bbb] }
                                    if (bbb=="pubDate"){  pubDate=json1[rss][xxx][yyy][zzz][aaa][bbb] }
                                      if (bbb=="description"){ description=json1[rss][xxx][yyy][zzz][aaa][bbb];   }
+                                     if(c=="Focus"){ if (bbb=="media:description") {description=json1[rss][xxx][yyy][zzz][aaa][bbb];  } }
                                        if (bbb=="guid"){  guid=json1[rss][xxx][yyy][zzz][aaa][bbb] }
  }
   putter(title,link,category,pubDate,description,guid,c);
