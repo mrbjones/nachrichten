@@ -32,7 +32,7 @@ function putter(title,link,category,pubDate,description,guid,c) {
       
 if (c=="Focus" && jsonDesc.toString().indexOf("<br clear='all'/>")) {
                 jsonDesc=jsonDesc.toString().substr(0,jsonDesc.toString().indexOf("<br clear='all'/>")) ;
-               // console.log(jsonDesc);}           
+               }           
         
 if (c=="FAZ" && (jsonDesc.toString().indexOf("<p>") )) {
                 jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("<p>")+3, jsonDesc.toString().length-4);
