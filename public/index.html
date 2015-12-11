@@ -44,19 +44,9 @@ $scope.pager = function() {
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: $scope.searchz, offs: $scope.pagerz}}).success(function(data, status, headers, config) 
  {$scope.newslist=[]; $scope.newslist=data.body.results;   
   $scope.pagerz=parseInt($scope.pagerz, 10)+15; if (parseInt($scope.pagerz, 10) >= parseInt(data.body.total_count,10)) {
-  $scope.mydisabled=true;   };  };
-  
-  
- });
- 
- 
-  
-
-
-   
-  };
- 
-}]);
+  $scope.mydisabled=true;   };    });
+};
+ }]);
 
 
 </script>
