@@ -44,7 +44,7 @@ var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+jsonLink+"\", \"c
 console.log(jsonString)
 var jsonObj = JSON.parse(jsonString);
 //db.put('nachrichten', jsonID, jsonObj, false);
-//db.put('nachrichten', jsonLink, jsonObj, false);
+db.put('nachrichten', jsonLink, jsonObj, false);
 };
 
 function fetchNachrichten(a,b,c){
