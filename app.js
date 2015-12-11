@@ -52,14 +52,7 @@ return http.get({
         host: a,
         path: b
     }, function(response) {
-       if (c=="der Spiegel"){
-       response.setEncoding("binary");
-       var ic = new iconv.Iconv('iso-8859-1', 'utf-8');
-        var buf = ic.convert(body);
-        var body = buf.toString('utf-8');
-        console.log(body);}
-        
-        if (c!="der Spiegel"){
+      
         var body = '';
         response.on('data', function(d) {
             body += d;
@@ -118,7 +111,7 @@ setInterval(function() {
         
  fetchNachrichten('www.welt.de', '/?service=Rss', 'die Welt');
  fetchNachrichten('newsfeed.zeit.de', '/index', 'die Zeit');
- fetchNachrichten('www.spiegel.de', '/schlagzeilen/tops/index.rss', 'der Spiegel');
+// fetchNachrichten('www.spiegel.de', '/schlagzeilen/tops/index.rss', 'der Spiegel');
  fetchNachrichten('www.faz.net', '/rss/aktuell/', 'FAZ');
  fetchNachrichten('www.stern.de', '/feed/standard/all/', 'der Stern');
  fetchNachrichten('rss2.focus.de', '/c/32191/f/443312/index.rss', 'Focus');
