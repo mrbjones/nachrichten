@@ -40,8 +40,8 @@ if (c=="die Zeit" && jsonDesc.toString().indexOf("</a>")) {
                 
 var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+jsonLink+"\", \"category\":\""+jsonCat+"\", \"pubDate\":\""+jsonDate+"\", \"description\":\""+jsonDesc+"\", \"source\":\""+c+"\" }";
 
-if (c=="der Spiegel") {console.log(jsonString)}
-//console.log(c +' done!')
+//if (c=="der Spiegel") {console.log(jsonString)}
+console.log(jsonString)
 var jsonObj = JSON.parse(jsonString);
 //db.put('nachrichten', jsonID, jsonObj, false);
 //db.put('nachrichten', jsonLink, jsonObj, false);
