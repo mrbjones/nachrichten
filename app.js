@@ -26,11 +26,9 @@ function putter(title,link,category,pubDate,description,guid,c) {
         var jsonDate=pubDate.toString().replace(/\"/g,'\\"');
         var jsonID=guid.toString().replace(/\"/g,'\\"');
 
-if (c=="Focus" && jsonDesc.toString().indexOf("<br clear='all'/>")) {
+if (c=="Focus") {
         
-        if (jsonDesc.toString().indexOf("Langschläfer")) {console.log(jsonDesc.toString().indexOf("<br clear='all'/>"))};
-        
-        if (jsonDesc.toString().indexOf("<br clear='all'/>") > 0){
+         if (jsonDesc.toString().indexOf("<br clear='all'/>") > 0){
                 jsonDesc=jsonDesc.toString().substr(0,jsonDesc.toString().indexOf("<br clear='all'/>")) ;}
          if (jsonDesc.toString().indexOf("<br clear='all'/>") == 0) {
                 jsonDesc=""}        
