@@ -1,9 +1,9 @@
 var http = require('http');
 var url = require('url');
-var express = require('express');
+//var express = require('express');
 var xml2js = require('xml2js');
-var jsesc = require('jsesc');
-var iconv = require('iconv');
+//var jsesc = require('jsesc');
+//var iconv = require('iconv');
 
 if (process.env.VCAP_SERVICES)
 {
@@ -26,9 +26,9 @@ function putter(title,link,category,pubDate,description,guid,c) {
         var jsonDate=pubDate.toString().replace(/\"/g,'\\"');
         var jsonID=guid.toString().replace(/\"/g,'\\"');
 if (c=="Focus" && jsonDesc.toString().indexOf("<br clear='all'/>")) {
-        if (jsonDesc.toString().indexOf("<br clear='all'/>")>2){
+        if (jsonDesc.toString().indexOf("<br clear='all'/>") > 2){
                 jsonDesc=jsonDesc.toString().substr(0,jsonDesc.toString().indexOf("<br clear='all'/>")) ;}
-         if (jsonDesc.toString().indexOf("<br clear='all'/>")=<2){
+         if (jsonDesc.toString().indexOf("<br clear='all'/>") <= 2){
                 jsonDesc=""}        
         
                }           
