@@ -1,14 +1,12 @@
 {
   "scripts" : { "start" : "node app.js" },
    "engines": {
-        "node": "0.10.38"
+        "node": "0.12.7"
     },
     
 "dependencies": {
 "orchestrate": "*",
 "express": ">= 1.2.0",
-"xml2js": "*",
-"jsesc": "*",
 "mime" : "~1.2.7"
 }
     
