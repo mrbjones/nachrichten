@@ -26,18 +26,18 @@ function putter(title,link,category,pubDate,description,guid,c) {
         var jsonDate=pubDate.toString().replace(/\"/g,'\\"');
         var jsonID=guid.toString().replace(/\"/g,'\\"');
 if (c=="Focus" && jsonDesc.toString().indexOf("<br clear='all'/>")) {
-        console.log(jsonDesc.toString())
-        console.log(jsonDesc.toString().indexOf("<br clear='all'/>"))
-                jsonDesc=jsonDesc.toString().substr(0,jsonDesc.toString().indexOf("<br clear='all'/>")) ;
-        console.log(jsonDesc.toString())
-                
+        if (jsonDesc.toString().indexOf("<br clear='all'/>")>2){
+                jsonDesc=jsonDesc.toString().substr(0,jsonDesc.toString().indexOf("<br clear='all'/>")) ;}
+         if (jsonDesc.toString().indexOf("<br clear='all'/>")=<2){
+                jsonDesc=""}        
+        
                }           
 if (c=="FAZ" && (jsonDesc.toString().indexOf("<p>") )) {
                 jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("<p>")+3, jsonDesc.toString().length-4);
                    jsonID=guid.toString().replace("</p>","");
                 }    
 if (c=="die Zeit" && jsonDesc.toString().indexOf("</a>")) {
-                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("</a>")+3, jsonDesc.toString().length);
+                jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("</a>")+5, jsonDesc.toString().length);
                 }
 
                 
