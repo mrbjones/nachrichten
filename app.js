@@ -26,7 +26,11 @@ function putter(title,link,category,pubDate,description,guid,c) {
         var jsonDate=pubDate.toString().replace(/\"/g,'\\"');
         var jsonID=guid.toString().replace(/\"/g,'\\"');
 if (c=="Focus" && jsonDesc.toString().indexOf("<br clear='all'/>")) {
+        console.log(jsonDesc.toString())
+        console.log(jsonDesc.toString().indexOf("<br clear='all'/>"))
                 jsonDesc=jsonDesc.toString().substr(0,jsonDesc.toString().indexOf("<br clear='all'/>")) ;
+        console.log(jsonDesc.toString())
+                
                }           
 if (c=="FAZ" && (jsonDesc.toString().indexOf("<p>") )) {
                 jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("<p>")+3, jsonDesc.toString().length-4);
@@ -44,7 +48,7 @@ var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+jsonLink+"\", \"c
 console.log(jsonString)
 var jsonObj = JSON.parse(jsonString);
 //db.put('nachrichten', jsonID, jsonObj, false);
-db.put('nachrichten', jsonLink, jsonObj, false);
+//db.put('nachrichten', jsonLink, jsonObj, false);
 };
 
 function fetchNachrichten(a,b,c){
