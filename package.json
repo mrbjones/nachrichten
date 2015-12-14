@@ -1,15 +1,11 @@
 {
   "scripts" : { "start" : "node app.js" },
    "engines": {
-        "node": "0.10.38"
+        "node": "0.12.7"
     },
-    
 "dependencies": {
-"orchestrate": "git://github.com/orchestrate-io/orchestrate.js.git",
-"express": ">= 1.2.0",
-"xml2js": "*",
-"jsesc": "*",
-"iconv": "*"
+"orchestrate": "*",
+"xml2js": "*"
 }
     
 }
