@@ -18,8 +18,8 @@
 <table><tr ng-repeat="news in newslist">
 <td style=font-family:verdana;font-size:11px>
 <b><a href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
-{{news.value.pubDate}}<br>
-{{news.value.description}}</td>
+<span>{{news.value.pubDate}}</span><br>
+{{news.value.description}}<br><hr></td>
 </tr>
 <tr><td style=text-align:right;><input ng-disabled="mydisabled" ng-model="nexter" type=button value='next' ng-click="pager()"></td></tr>
 </table>
