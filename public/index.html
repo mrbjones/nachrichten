@@ -26,7 +26,7 @@
 </div>
 <script>
 var myApp=angular.module('putter', []);
-myApp.controller('ListNews', ['$scope', '$http', '$element', function($scope,$http,$element) {
+myApp.controller('ListNews', ['$scope', '$http', '$element','$location', '$anchorScroll', function($scope,$http,$element,$scope,$anchorScroll) {
 $scope.mydisabled=false; 
 
 $scope.searchz=" ";
@@ -38,13 +38,14 @@ $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params:
 //$scope.listnewz = function(newser) {     $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results;   }); $scope.newser.search="";$scope.newser.pager="15" ; };
 $scope.update = function() { $scope.mydisabled=false; 
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: $scope.searchz}}).success(function(data, status, headers, config) 
- {$scope.newslist=[]; $scope.newslist=data.body.results;$scope.pagerz='15';if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; }  }); };
+ {$scope.newslist=[]; $scope.newslist=data.body.results;$scope.pagerz='15';if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; } 
+  $location.hash('topp');  $anchorScroll(); }); };
 
 $scope.pager = function() {
    $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 's',search: $scope.searchz, offs: $scope.pagerz}}).success(function(data, status, headers, config) 
  {$scope.newslist=[]; $scope.newslist=data.body.results;   
   $scope.pagerz=parseInt($scope.pagerz, 10)+15; if (parseInt($scope.pagerz, 10) >= parseInt(data.body.total_count,10)) {
-  $scope.mydisabled=true;   };   $($element)   });
+  $scope.mydisabled=true;   };   $location.hash('topp');  $anchorScroll(); });
 };
  }]);
  
