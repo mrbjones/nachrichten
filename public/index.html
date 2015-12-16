@@ -4,11 +4,13 @@
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-sanitize.js"></script>
  <link rel="stylesheet" href="mystyle.css"> 
  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >
 </head>
 <body ng-app="putter">
  <a id="topp"></a>
 <div id=main ng-controller="ListNews" >
-<center><br><br><img src=zeitung.PNG ><br><form novalidate class="simple-form" >
+<center><br><br><a href=index.html style=text-decoration:none;><img src=zeitung.PNG ></a>
+<br><form novalidate class="simple-form" >
 
 <input ng-value="search1"  ng-model="searchz" ng-keyup="update()">
 <input ng-value="pager1" ng-model="pagerz" name='pager'  type=hidden>
