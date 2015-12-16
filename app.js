@@ -47,7 +47,7 @@ if (c=="die Zeit" && jsonDesc.toString().indexOf("</a>")) {
 var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+jsonLink+"\", \"category\":\""+jsonCat+"\", \"pubDate\":\""+jsonDate+"\", \"description\":\""+jsonDesc+"\", \"source\":\""+c+"\" }";
 
 //if (c=="der Spiegel") {console.log(jsonString)}
-console.log(c)
+//console.log(c)
 var jsonObj = JSON.parse(jsonString);
 //db.put('nachrichten', jsonID, jsonObj, false);
 db.put('nachrichten', jsonLink, jsonObj, false);
@@ -105,8 +105,8 @@ res.write('serverUP!');res.end();
  fetchNachrichten('newsfeed.zeit.de', '/index', 'die Zeit');
 // fetchNachrichten('www.spiegel.de', '/schlagzeilen/tops/index.rss', 'der Spiegel');
  fetchNachrichten('www.faz.net', '/rss/aktuell/', 'FAZ');
- fetchNachrichten('www.stern.de', '/feed/standard/all/', 'der Stern');
- fetchNachrichten('rss2.focus.de', '/c/32191/f/443312/index.rss', 'Focus');
+// fetchNachrichten('www.stern.de', '/feed/standard/all/', 'der Stern');
+// fetchNachrichten('rss2.focus.de', '/c/32191/f/443312/index.rss', 'Focus');
 console.log('done1')
 }).listen(process.env.VCAP_APP_PORT);
 
@@ -119,8 +119,8 @@ setInterval(function() {
  fetchNachrichten('newsfeed.zeit.de', '/index', 'die Zeit');
 // fetchNachrichten('www.spiegel.de', '/schlagzeilen/tops/index.rss', 'der Spiegel');
  fetchNachrichten('www.faz.net', '/rss/aktuell/', 'FAZ');
- fetchNachrichten('www.stern.de', '/feed/standard/all/', 'der Stern');
- fetchNachrichten('rss2.focus.de', '/c/32191/f/443312/index.rss', 'Focus');
+// fetchNachrichten('www.stern.de', '/feed/standard/all/', 'der Stern');
+// fetchNachrichten('rss2.focus.de', '/c/32191/f/443312/index.rss', 'Focus');
  
 }, the_interval);
 
