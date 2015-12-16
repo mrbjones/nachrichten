@@ -34,7 +34,8 @@ if (c=="Focus") {
                 jsonDesc=""}        
         
                }           
-if (c=="FAZ" && (jsonDesc.toString().indexOf("<p>") )) {
+//if (c=="FAZ" && (jsonDesc.toString().indexOf("<p>") )) {
+if (c=="FAZ") {
                 jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("<p>")+3, jsonDesc.toString().length-4);
                    jsonID=guid.toString().replace("</p>","");
                    jsonID=guid.toString().replace("&lt;/p&gt;","");
