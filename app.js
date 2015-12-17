@@ -1,9 +1,7 @@
 var http = require('http');
 var url = require('url');
-//var express = require('express');
 var xml2js = require('xml2js');
-//var jsesc = require('jsesc');
-//var iconv = require('iconv');
+
 
 if (process.env.VCAP_SERVICES)
 {
@@ -34,18 +32,8 @@ if (c=="Focus") {
                 jsonDesc=""}        
         
                }           
-//if (c=="FAZ" && (jsonDesc.toString().indexOf("<p>") )) {
 if (c=="FAZ") {
-        //console.log(jsonDesc)
-           //     jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("<p>")+3, jsonDesc.toString().length-4);
            jsonDesc=jsonDesc.toString().substring(jsonDesc.toString().indexOf("<p>")+3, jsonDesc.toString().indexOf("</p>"));
-            //       jsonID=guid.toString().replace("</p>","");
-            //       jsonID=guid.toString().replace("&lt;/p&gt;","");
-            //       jsonDesc.toString().substr(0, jsonDesc.toString().length - 5);
-            
-         // console.log(jsonDesc.toString().indexOf("<p>"))
-         //   console.log(jsonDesc.toString().indexOf("</p>"))
-        console.log(jsonDesc)
                 }    
 if (c=="die Zeit" && jsonDesc.toString().indexOf("</a>")) {
                 jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("</a>")+5, jsonDesc.toString().length);
@@ -53,10 +41,7 @@ if (c=="die Zeit" && jsonDesc.toString().indexOf("</a>")) {
 
 var jsonString = "{\"title\":\"" +jsonTitle+ "\", \"link\":\""+jsonLink+"\", \"category\":\""+jsonCat+"\", \"pubDate\":\""+jsonDate+"\", \"description\":\""+jsonDesc+"\", \"source\":\""+c+"\" }";
 
-//if (c=="der Spiegel") {console.log(jsonString)}
-//console.log(c)
 var jsonObj = JSON.parse(jsonString);
-//db.put('nachrichten', jsonID, jsonObj, false);
 db.put('nachrichten', jsonLink, jsonObj, false);
 };
 
