@@ -36,10 +36,12 @@ if (c=="Focus") {
                }           
 //if (c=="FAZ" && (jsonDesc.toString().indexOf("<p>") )) {
 if (c=="FAZ") {
+        console.log(jsonDesc)
                 jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("<p>")+3, jsonDesc.toString().length-4);
                    jsonID=guid.toString().replace("</p>","");
                    jsonID=guid.toString().replace("&lt;/p&gt;","");
                    jsonDesc.toString().substr(0, jsonDesc.toString().length - 5);
+        console.log(jsonDesc)
                 }    
 if (c=="die Zeit" && jsonDesc.toString().indexOf("</a>")) {
                 jsonDesc=jsonDesc.toString().substr(jsonDesc.toString().indexOf("</a>")+5, jsonDesc.toString().length);
