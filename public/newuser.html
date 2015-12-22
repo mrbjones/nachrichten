@@ -25,7 +25,7 @@ myApp.controller('logger', ['$scope', '$http', '$element','$location', '$anchorS
 $scope.mydisabled=false; 
 
 $scope.login = function() {
-   $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 'l',user: $scope.logg, offs: $scope.passw}}).success(function(data, status, headers, config) 
+   $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 'nu',user: $scope.logg, offs: $scope.passw}}).success(function(data, status, headers, config) 
  { alert(data); };
  }]);
  
