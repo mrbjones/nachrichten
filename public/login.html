@@ -23,7 +23,13 @@ PassW: <input type=password name=passw ng-model="passw"><br>
 <script>
 var myApp=angular.module('logg', []);
 myApp.controller('logger', ['$scope', '$http', '$element','$location', '$anchorScroll', function($scope,$http,$element,$location,$anchorScroll) {
-$scope.mydisabled=true; 
+$scope.mydisabled=false; 
+
+$scope.login = function() {
+   $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 'l',user: $scope.logg, offs: $scope.passw}}).success(function(data, status, headers, config) 
+ { alert(data); };
+ }]);
+ 
 }]);
 
 </script>
