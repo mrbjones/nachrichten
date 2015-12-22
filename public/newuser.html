@@ -26,8 +26,8 @@ $scope.mydisabled=false;
 
 $scope.login = function() {
    $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 'nu',user: $scope.logg, passw: $scope.passw}}).success(function(data, status, headers, config) 
- { alert(data); };
- }]);
+ { alert(data); })
+ }
  
 }]);
 
