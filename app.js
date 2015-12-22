@@ -34,7 +34,7 @@ var hash1 = math.random();
 var hash = (hash1 * 1000000000);
 var jsonString = "{\"username\":\"" +user+ "\", \"password\":\""+passw+"\", \"status\":\""+"inactive"+"\", \"hash\":\""+hash+"\" }";
 var jsonObj = JSON.parse(jsonString);
-db.put('nachrichten', user, jsonObj, false);
+db.put('nachrichten', user, jsonObj, false)
 .then(function (result) {
 cb(JSON.stringify(result))
 })};
