@@ -30,7 +30,7 @@ cb(JSON.stringify(result))
 })};
 
 function newuser(user,passw,cb) {
-var hash1 = math.random();
+var hash1 = Math.random();
 var hash = (hash1 * 1000000000);
 var jsonString = "{\"username\":\"" +user+ "\", \"password\":\""+passw+"\", \"status\":\""+"inactive"+"\", \"hash\":\""+hash+"\" }";
 var jsonObj = JSON.parse(jsonString);
