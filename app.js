@@ -29,6 +29,15 @@ db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b
 cb(JSON.stringify(result))
 })};
 
+function newuser(user,passw,cb) {
+var hash1 = math.random();
+var hash = (hash1 * 1000000000);
+var jsonString = "{\"username\":\"" +user+ "\", \"password\":\""+passw+"\", \"status\":\""+"inactive"+"\", \"hash\":\""+hash+"\" }";
+var jsonObj = JSON.parse(jsonString);
+db.put('nachrichten', user, jsonObj, false);
+.then(function (result) {
+cb(JSON.stringify(result))
+})};
 
 function send404(response) {
 response.writeHead(404, {"Content-type" : "text/plain"});
@@ -71,6 +80,12 @@ searcher(queryData.search+'*', offs, function(resp)
 {response.write(resp);response.end();
 }); }
 
+//this creates a new user
+if (queryData.o == "nu") {
+response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
+newuser(queryData.user, queryData.passw, function(resp)
+{response.write(resp);response.end();
+}); }
 
 
 
