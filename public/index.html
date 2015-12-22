@@ -37,7 +37,6 @@ $http({ url: window.location.hostname+'/app.js', method: "GET", params: {o: 'g'}
 
 
 
-//$scope.listnewz = function(newser) {     $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results;   }); $scope.newser.search="";$scope.newser.pager="15" ; };
 $scope.update = function() { $scope.mydisabled=false; 
    $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 's',search: $scope.searchz}}).success(function(data, status, headers, config) 
  {$scope.newslist=[]; $scope.newslist=data.body.results;$scope.pagerz='15';if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; } 
