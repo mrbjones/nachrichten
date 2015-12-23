@@ -38,9 +38,11 @@ var hash1 = Math.random();
 var hasher = (hash1 * 100000000000000000); 
 var hesher="{\"hash\":\"" +hasher+ "\"}"
 //db.merge('users', user, hesher)
-.then(cb(hasher))
-
+//.then(cb(hasher))
+cb(hasher)
 }
+     if (result.body.password == passw){cb("Password Matches!")}
+     if (result.body.statusr == 'active'){cb("Login IS active!")}
      if (result.body.password != passw){cb("Password Doesn't Match")}
      if (result.body.statusr != 'active'){cb("Login not active")}
      cb('no idea!')
