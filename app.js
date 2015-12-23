@@ -101,7 +101,9 @@ send404(response);
 }
 });
 }
+//start server!
 var server = http.createServer(function(request, response) {
+    
   var queryData = url.parse(request.url, true).query;
 //this one just sends the json from ochestrate
 if (queryData.o == "g") {
@@ -127,9 +129,9 @@ newuser(queryData.user, queryData.passw, function(resp)
 
 //this activates an account
 if (queryData.o == "act" ) {
-var hash=queryData.hash
-var user=queryData.user
-activateAct(user,hash);
+hash1=queryData.hash
+user1=queryData.user
+activateAct(user1,hash1);
 filePath = "public/login.html";
 var absPath = filePath;
 serverWorking(response, absPath); 
@@ -147,5 +149,7 @@ filePath = "public" + request.url;
 }
 var absPath = "./" + filePath;
 serverWorking(response, absPath); }
+
+//end server!
 }).listen(process.env.VCAP_APP_PORT);
 
