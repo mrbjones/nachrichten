@@ -8,7 +8,8 @@
 "orchestrate": "*",
 "express": ">= 1.2.0",
 "mime" : "~1.2.7",
-"nodemailer" : "*"
+"nodemailer" : "*",
+"nodemailer-smtp-transport": "*"
 }
     
 }
