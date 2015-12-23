@@ -37,7 +37,7 @@ db.get('users', user)
 var hash1 = Math.random();
 var hasher = (hash1 * 100000000000000000); 
 var hesher="{\"hash\":\"" +hasher+ "\"}"
-db.merge('users', user, hesher)
+//db.merge('users', user, hesher)
 .then(cb(hasher))
 
 }
