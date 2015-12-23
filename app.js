@@ -5,7 +5,8 @@ var fs = require("fs");
 var path = require("path");
 var mime = require("mime");
 
-console.log(process.env.alias);
+mailalias=process.env.mailalias;
+mailpassword=process.env.mailpassword;
 
 if (process.env.VCAP_SERVICES)
 {
