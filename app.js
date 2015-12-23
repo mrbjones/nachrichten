@@ -29,7 +29,7 @@ db.search('nachrichten', '*', {  sort: 'value.pubDate:desc',  limit: 15} )
 cb(JSON.stringify(result))
 })};
 
-function activateAct(user,hash,cb) {
+function activateAct(user,hash) {
 db.get('users', user)
 .then(function (result) {
     if (result.hash == hash){
@@ -54,7 +54,7 @@ var jsonObj = JSON.parse(jsonString);
 db.put('users', user, jsonObj, false)
 .then(function (result) {
 mailer(user,hash);
-cb(JSON.stringify(result))
+cb('You will receive an email to activate this account.')
 
 })};
 
@@ -129,7 +129,7 @@ newuser(queryData.user, queryData.passw, function(resp)
 if (queryData.o == "act" ) {
 var hash=queryData.hash
 var user=queryData.user
-activateAct(user,hash,cb);
+activateAct(user,hash);
 filePath = "public/login.html";
 var absPath = filePath;
 serverWorking(response, absPath); 
