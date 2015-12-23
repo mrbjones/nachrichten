@@ -35,7 +35,7 @@ db.get('users', user)
      console.log('u:'+user+'p:'+passw+ JSON.stringify(result))
      if (result.body.password == passw && result.body.status == 'active'){
 var hash1 = Math.random();
-var hasher = (hash1 * 10000000000000000);   
+var hasher = (hash1 * 100000000000000000);   
 db.merge('users', user, {  "hash": hasher  })
 cb(hasher)
 
@@ -63,7 +63,7 @@ cb(JSON.stringify(result))
 
 function newuser(user,passw,cb) {
 var hash1 = Math.random();
-var hash = (hash1 * 10000000000000000);
+var hash = (hash1 * 100000000000000000);
 var jsonString = "{\"username\":\"" +user+ "\", \"password\":\""+passw+"\", \"status\":\""+"inactive"+"\", \"hash\":\""+hash+"\" }";
 var jsonObj = JSON.parse(jsonString);
 db.put('users', user, jsonObj, true)
@@ -145,7 +145,10 @@ newuser(queryData.user, queryData.passw, function(resp)
 if (queryData.o == "logg") {
 response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
 loggIn(queryData.user, queryData.passw, function(resp)
-{response.write(resp);response.end();
+{
+     response.cookie('hesher', resp, { maxAge: 900000, httpOnly: true })
+     response.cookie('user', queryData.user, { maxAge: 900000, httpOnly: true })
+     response.write(resp);response.end();
 }); }
 
 //this activates an account
