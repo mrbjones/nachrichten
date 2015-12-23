@@ -41,7 +41,7 @@ db.get('users', user)
 //.then(cb(hasher))
 //cb(hasher)
 //}
-     if (result.body.password == passw){cb("Password Matches!")}
+     if (result.body.password == passw && result.body.statusr == 'active'){cb("Password Matches & Active!")}
      if (result.body.password != passw){cb("Password Doesn't Match")}
      if (result.body.statusr == 'active'){cb("Login IS active!")}
      if (result.body.statusr != 'active'){cb("Login not active")}
