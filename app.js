@@ -54,7 +54,7 @@ var jsonObj = JSON.parse(jsonString);
 db.put('users', user, jsonObj, false)
 .then(function (result) {
 mailer(user,hash);
-cb('You will receive an email to activate this account.')
+cb('You will receive an email to activate this account.');
 
 })};
 
@@ -74,6 +74,7 @@ transporter.sendMail({
     subject: 'Please confirm your Zeitung account',
    html: 'Please click the link to confirm your new Zeitung account<br><ahref=http://loggin.uswest.appfog.ctl.io/?o=act&user='+mail+'&hash='+hash+' >http://loggin.uswest.appfog.ctl.io/?o=act&hash='+hash+'</a>'
 });
+console.log(mail);
 }
 
 
