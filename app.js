@@ -38,7 +38,7 @@ var hasher = (hash1 * 10000000000000000);
 db.merge('users', user, {  "hash": hasher  })
 cb(hasher)
 
-}}
+}}}
 
 function activateAct(user,hash) {
     console.log('u:'+user)
