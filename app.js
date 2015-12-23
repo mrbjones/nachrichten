@@ -33,7 +33,7 @@ function loggIn(user,passw,cb){
 db.get('users', user)    
 .then(function (result) {
      console.log('u:'+user+'p:'+passw+ JSON.stringify(result))
-     if (result.body.password == passw && result.body.status == 'active'){
+     if (result.body.password == passw && result.body.statusr == 'active'){
 var hash1 = Math.random();
 var hasher = (hash1 * 100000000000000000);   
 db.merge('users', user, {  "hash": hasher  })
@@ -49,7 +49,7 @@ db.get('users', user)
     //console.log(JSON.stringify(result))
     if (result.body.hash == hash){
     console.log('activate!');
-db.merge('users', user, {  "status": "active"  })
+db.merge('users', user, {  "statusr": "active"  })
 }})
 .fail(function (err) {console.log(err)})
 };
@@ -64,7 +64,7 @@ cb(JSON.stringify(result))
 function newuser(user,passw,cb) {
 var hash1 = Math.random();
 var hash = (hash1 * 100000000000000000);
-var jsonString = "{\"username\":\"" +user+ "\", \"password\":\""+passw+"\", \"status\":\""+"inactive"+"\", \"hash\":\""+hash+"\" }";
+var jsonString = "{\"username\":\"" +user+ "\", \"password\":\""+passw+"\", \"statusr\":\""+"inactive"+"\", \"hash\":\""+hash+"\" }";
 var jsonObj = JSON.parse(jsonString);
 db.put('users', user, jsonObj, true)
 .then(function (result) {
