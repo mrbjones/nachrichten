@@ -4,6 +4,8 @@ var express = require('express');
 var fs = require("fs");
 var path = require("path");
 var mime = require("mime");
+var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
 
 mailalias=process.env.mailalias;
 mailpassword=process.env.mailpassword;
