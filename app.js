@@ -12,23 +12,6 @@ mailpassword=process.env.mailpassword;
 mailhost=process.env.mailhost;
 mailport=process.env.mailport;
 
-var transporter = nodemailer.createTransport(smtpTransport({
-    host: mailhost,
-    port: mailport,
-    auth: {
-        user: mailalias,
-        pass: mailpassword
-    }
-}));
-
-transporter.sendMail({
-    from: 'mrbrettjones@gmail.com',
-    to: 'mrbrettjones@gmail.com',
-    subject: 'Please confirm your Zeitung account',
-   // text: 'hello world!'
-   html: 'Please click the link to confirm your new account<br><a href=www.google.com>google!</a>'
-});
-
 if (process.env.VCAP_SERVICES)
 {
 var services = JSON.parse(process.env.VCAP_SERVICES);
@@ -60,8 +43,29 @@ var jsonString = "{\"username\":\"" +user+ "\", \"password\":\""+passw+"\", \"st
 var jsonObj = JSON.parse(jsonString);
 db.put('nachrichten', user, jsonObj, false)
 .then(function (result) {
+mailer(user,hash);
 cb(JSON.stringify(result))
+
 })};
+
+function mailer(mail,hash){ 
+var transporter = nodemailer.createTransport(smtpTransport({
+    host: mailhost,
+    port: mailport,
+    auth: {
+        user: mailalias,
+        pass: mailpassword
+    }
+}));
+
+transporter.sendMail({
+    from: 'noreplay@t3mx.com',
+    to: mail,
+    subject: 'Please confirm your Zeitung account',
+   html: 'Please click the link to confirm your new account<br>' + hash
+});
+}
+
 
 function send404(response) {
 response.writeHead(404, {"Content-type" : "text/plain"});
