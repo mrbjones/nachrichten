@@ -51,7 +51,7 @@ var hash1 = Math.random();
 var hash = (hash1 * 10000000000000000);
 var jsonString = "{\"username\":\"" +user+ "\", \"password\":\""+passw+"\", \"status\":\""+"inactive"+"\", \"hash\":\""+hash+"\" }";
 var jsonObj = JSON.parse(jsonString);
-db.put('users', user, jsonObj, false)
+db.put('users', user, jsonObj, true)
 .then(function (result) {
 mailer(user,hash);
 cb('You will receive an email to activate this account.');
