@@ -30,6 +30,7 @@ cb(JSON.stringify(result))
 })};
 
 function activateAct(user,hash) {
+    console.log('u:'+user)
 db.get('users', user)
 .then(function (result) {
     if (result.hash == hash){
@@ -65,14 +66,12 @@ var transporter = nodemailer.createTransport(smtpTransport({
     auth: {
         user: mailalias,
         pass: mailpassword
-    }
-}));
-
+    }}));
 transporter.sendMail({
     from: 'noreplay@t3mx.com',
     to: mail,
     subject: 'Please confirm your Zeitung account',
-   html: 'Please click the link to confirm your new Zeitung account<br><ahref=http://loggin.uswest.appfog.ctl.io/?o=act&user='+mail+'&hash='+hash+' >http://loggin.uswest.appfog.ctl.io/?o=act&hash='+hash+'</a>'
+   html: 'Please click the link to confirm your new Zeitung account<br><a href=http://loggin.uswest.appfog.ctl.io/?o=act&user='+mail+'&hash='+hash+' >http://loggin.uswest.appfog.ctl.io/?o=act&user='+mail+'&hash='+hash+'</a>'
 });
 console.log(mail);
 }
