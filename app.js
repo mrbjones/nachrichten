@@ -32,8 +32,8 @@ cb(JSON.stringify(result))
 function loggIn(user,passw,cb){
 db.get('users', user)    
 .then(function (result) {
-     console.log('u:'+user+'p:'+passw+ JSON.stringify(result))
-     if (result.body.password == passw && result.body.statusr == 'active'){
+     console.log('u:'+user+'p:'+passw+'/'+result.body.password+'/'+ result.body.statusr)
+     if (result.body.password === passw && result.body.statusr === 'active'){
 var hash1 = Math.random();
 var hasher = (hash1 * 100000000000000000);   
 db.merge('users', user, {  "hash": hasher  })
