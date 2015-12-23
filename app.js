@@ -5,7 +5,7 @@ var fs = require("fs");
 var path = require("path");
 var mime = require("mime");
 
-console.log(process.env.ALIAS);
+console.log(process.env.alias);
 
 if (process.env.VCAP_SERVICES)
 {
