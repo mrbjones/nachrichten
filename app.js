@@ -33,7 +33,7 @@ function loggIn(user,passw,cb){
 db.get('users', user)    
 .then(function (result) {
      console.log('u:'+user+'p:'+passw+ JSON.stringify(result))
-     if (result.body.passw == passw && result.body.status == 'active'){
+     if (result.body.password == passw && result.body.status == 'active'){
 var hash1 = Math.random();
 var hasher = (hash1 * 10000000000000000);   
 db.merge('users', user, {  "hash": hasher  })
