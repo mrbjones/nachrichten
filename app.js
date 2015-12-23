@@ -146,8 +146,8 @@ if (queryData.o == "logg") {
 response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
 loggIn(queryData.user, queryData.passw, function(resp)
 {
-     response.cookie('hesher', resp, { maxAge: 900000, httpOnly: true })
-     response.cookie('user', queryData.user, { maxAge: 900000, httpOnly: true })
+  //   response.cookie('hesher', resp, { maxAge: 900000, httpOnly: true })
+  //   response.cookie('user', queryData.user, { maxAge: 900000, httpOnly: true })
      response.write(resp);response.end();
 }); }
 
