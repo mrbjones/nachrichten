@@ -29,11 +29,22 @@ db.search('nachrichten', '*', {  sort: 'value.pubDate:desc',  limit: 15} )
 cb(JSON.stringify(result))
 })};
 
+function loggIn(user,passw,cb){
+db.get('users', user)    
+.then(function (result) {
+     if (result.body.passw == passw && results.body.status == 'active'){
+var hash1 = Math.random();
+var hasher = (hash1 * 10000000000000000);   
+db.merge('users', user, {  "hash": hasher  })
+cb(hasher)
+
+}}
+
 function activateAct(user,hash) {
     console.log('u:'+user)
 db.get('users', user)
 .then(function (result) {
-     console.log(result.hash+'|'+hash)
+     console.log(result.body.hash+'|'+hash)
     //console.log(JSON.stringify(result))
     if (result.body.hash == hash){
     console.log('activate!');
@@ -126,6 +137,13 @@ searcher(queryData.search+'*', offs, function(resp)
 if (queryData.o == "nu") {
 response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
 newuser(queryData.user, queryData.passw, function(resp)
+{response.write(resp);response.end();
+}); }
+
+//this logs in a user
+if (queryData.o == "logg") {
+response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
+loggIn(queryData.user, queryData.passw, function(resp)
 {response.write(resp);response.end();
 }); }
 
