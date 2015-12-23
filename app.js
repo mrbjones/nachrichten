@@ -5,6 +5,8 @@ var fs = require("fs");
 var path = require("path");
 var mime = require("mime");
 
+console.log(process.env.ALIAS);
+
 if (process.env.VCAP_SERVICES)
 {
 var services = JSON.parse(process.env.VCAP_SERVICES);
