@@ -33,9 +33,9 @@ function activateAct(user,hash) {
     console.log('u:'+user)
 db.get('users', user)
 .then(function (result) {
-    // console.log(result.hash+'|'+hash)
-    console.log(JSON.stringify(result))
-    if (result.hash == hash){
+     console.log(result.hash+'|'+hash)
+    //console.log(JSON.stringify(result))
+    if (result.body.hash == hash){
     console.log('activate!');
 db.merge('users', user, {  "status": "active"  })
 }})
