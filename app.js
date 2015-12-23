@@ -29,6 +29,16 @@ db.search('nachrichten', '*', {  sort: 'value.pubDate:desc',  limit: 15} )
 cb(JSON.stringify(result))
 })};
 
+function activateAct(user,hash,cb) {
+db.get('users', user)
+.then(function (result) {
+    if (result.hash == hash){
+    console.log('activate!');
+db.merge('users', user, {  "status": "active"  })
+}})
+.fail(function (err) {console.log(err)})
+};
+
 function searcher(a,b,cb) {
 db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b} )
 .then(function (result) {
@@ -38,10 +48,10 @@ cb(JSON.stringify(result))
 
 function newuser(user,passw,cb) {
 var hash1 = Math.random();
-var hash = (hash1 * 1000000000);
+var hash = (hash1 * 10000000000000000);
 var jsonString = "{\"username\":\"" +user+ "\", \"password\":\""+passw+"\", \"status\":\""+"inactive"+"\", \"hash\":\""+hash+"\" }";
 var jsonObj = JSON.parse(jsonString);
-db.put('nachrichten', user, jsonObj, false)
+db.put('users', user, jsonObj, false)
 .then(function (result) {
 mailer(user,hash);
 cb(JSON.stringify(result))
@@ -62,7 +72,7 @@ transporter.sendMail({
     from: 'noreplay@t3mx.com',
     to: mail,
     subject: 'Please confirm your Zeitung account',
-   html: 'Please click the link to confirm your new account<br>' + hash
+   html: 'Please click the link to confirm your new Zeitung account<br><ahref=http://loggin.uswest.appfog.ctl.io/?o=act&user='+mail+'&hash='+hash+' >http://loggin.uswest.appfog.ctl.io/?o=act&hash='+hash+'</a>'
 });
 }
 
@@ -114,6 +124,17 @@ response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
 newuser(queryData.user, queryData.passw, function(resp)
 {response.write(resp);response.end();
 }); }
+
+//this activates an account
+if (queryData.o == "act" ) {
+var hash=queryData.hash
+var user=queryData.user
+activateAct(user,hash,cb);
+filePath = "public/login.html";
+var absPath = filePath;
+serverWorking(response, absPath); }
+}).listen(process.env.VCAP_APP_PORT);
+}
 
 
 
