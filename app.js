@@ -45,7 +45,7 @@ db.get('users', user)
      if (result.body.password != passw){cb("Password Doesn't Match")}
      if (result.body.statusr == 'active'){cb("Login IS active!")}
      if (result.body.statusr != 'active'){cb("Login not active")}
-     cb('no idea!')
+    
      
 })}
 
