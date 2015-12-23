@@ -132,8 +132,7 @@ var user=queryData.user
 activateAct(user,hash,cb);
 filePath = "public/login.html";
 var absPath = filePath;
-serverWorking(response, absPath); }
-}).listen(process.env.VCAP_APP_PORT);
+serverWorking(response, absPath); 
 }
 
 
