@@ -7,6 +7,8 @@ var mime = require("mime");
 
 mailalias=process.env.mailalias;
 mailpassword=process.env.mailpassword;
+mailhost=process.env.mailhost;
+mailport=process.env.mailport;
 
 if (process.env.VCAP_SERVICES)
 {
