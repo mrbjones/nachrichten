@@ -32,7 +32,7 @@ cb(JSON.stringify(result))
 function loggIn(user,passw,cb){
 db.get('users', user)    
 .then(function (result) {
-//     console.log('u:'+user+'p:'+passw+'/'+result.body.password+'/'+ result.body.statusr)
+     console.log('u:'+user+'p:'+passw+'/'+result.body.password+'/'+ result.body.statusr)
 //     if (result.body.password == passw && result.body.statusr == 'active'){
 //var hash1 = Math.random();
 //var hasher = (hash1 * 100000000000000000); 
@@ -42,12 +42,14 @@ db.get('users', user)
 //cb(hasher)
 //}
      if (result.body.password == passw && result.body.statusr == 'active'){
-     var hash2 = Math.random();var hasher = (hash2 * 100000000000000000);cb("hasher"+hasher)
+     var hash2 = Math.random();var hasher = (hash2 * 100000000000000000);
+     var hesher="{\"hash\":\"" +hasher+ "\"}";
+     db.merge('users', user, hesher).then(cb("hasher"+hasher))
           
      }
-     if (result.body.password != passw){cb("Password Doesn't Match")}
-     if (result.body.statusr != 'active'){cb("Login not active")}
-    
+     if (result.body.password != passw){cb("Password Doesn't Match.")}
+     if (result.body.statusr != 'active'){cb("Login not active.")}
+     if (! result.body.username) {cb("Login not found.")}
      
 })
      
