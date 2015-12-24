@@ -42,16 +42,16 @@ db.get('users', user)
 //cb(hasher)
 //}
      if (result.body.password == passw && result.body.statusr == 'active'){
-     var hash1 = Math.random();
-     hasher = (hash1 * 100000000000000000);  
-     cb(hasher)
+     var hash2 = Math.random();var hasher = (hash2 * 100000000000000000);cb("hasher"+hasher)
           
      }
      if (result.body.password != passw){cb("Password Doesn't Match")}
      if (result.body.statusr != 'active'){cb("Login not active")}
     
      
-})}
+})
+     
+}
 
 function activateAct(user,hash) {
     console.log('u:'+user)
