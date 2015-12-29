@@ -47,12 +47,10 @@ db.get('users', user)
 function checker(user,hash,cb){
 db.get('users', user)    
 .then(function (result) {
-     if (result.body.hash == hash && result.body.statusr == 'active'){
-          cb('true')
-     }
-           cb('false')
-     )
-}}
+     if (result.body.hash == hash && result.body.statusr == 'active'){cb('true')}
+      else {cb('false')}
+     
+})}
 
 function activateAct(user,hash) {
     console.log('u:'+user)
