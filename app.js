@@ -186,6 +186,8 @@ filePath = "public/index.html";
 filePath = "public" + request.url;
 }
 var cookies = new Cookies( request, response )
+var em1='dummy'
+var ha1='123'
 em1=cookies.get("email")
 ha1=cookies.get("hash")
 checker(em1, ha1, function(resp) {
