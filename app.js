@@ -196,12 +196,10 @@ if (request.url == "/index.html"||request.url == "index.html"||request.url=="/"|
           em1=cookies.get("email")
           ha1=cookies.get("hash")
                checker(em1, ha1, function(resp) {
-               if (resp == "true"){filePath = "public/index.html"}
-               else {filePath = "public/login.html"}
+               if (resp == "true"){filePath = "public/index.html";absPath = "./" + filePath;serverWorking(response, absPath)}
+               else {filePath = "public/login.html";absPath = "./" + filePath;serverWorking(response, absPath)}
                }
-absPath = "./" + filePath;
-console.log(absPath)
-serverWorking(response, absPath)
+
                
                )}
 else {filePath = "public" + request.url;
