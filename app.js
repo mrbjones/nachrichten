@@ -152,8 +152,13 @@ loggIn(queryData.user, queryData.passw, function(resp)
 var cookies = new Cookies( request, response )
       cookies.set( "email", queryData.user, { httpOnly: false } );
       cookies.set( "hash", resp, { httpOnly: false } );
+console.log(resp)      
   response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
-  response.write(resp);response.end();
+ console.log('1')
+  response.write(resp);
+  console.log('2')
+  response.end();
+  console.log('3')
 }); }
 
 //this activates an account
