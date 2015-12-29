@@ -198,11 +198,17 @@ if (request.url == "/index.html"||request.url == "index.html"||request.url=="/"|
                checker(em1, ha1, function(resp) {
                if (resp == "true"){filePath = "public/index.html"}
                else {filePath = "public/login.html"}
-               })}
-else {filePath = "public" + request.url;}
-var absPath = "./" + filePath;
+               }
+absPath = "./" + filePath;
 console.log(absPath)
 serverWorking(response, absPath)
+               
+               )}
+else {filePath = "public" + request.url;
+absPath = "./" + filePath;
+console.log(absPath)
+serverWorking(response, absPath)
+} 
 }
 //end server!
 }).listen(process.env.VCAP_APP_PORT);
