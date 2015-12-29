@@ -46,10 +46,10 @@ db.get('users', user)
 
 function checker(user,hash,cb){
      if (user==='' || user==undefined|| !user){user='dummy'};
-     console.log(user)
+     console.log(user+hash)
 db.get('users', user)    
 .then(function (result) {
-     if (result.body.hash == hash && result.body.statusr == 'active'){cb("true")}
+     if (result.body.hash == hash && result.body.statusr == 'active'){cb('true')}
       else {cb('false')}
      
 })}
@@ -192,11 +192,10 @@ var em1='dummy'
 var ha1='123'
 em1=cookies.get("email")
 ha1=cookies.get("hash")
-// console.log('e:'+em1+':h:'+ha1)
+ console.log('e:'+em1+':h:'+ha1)
 if (request.url == "/index.html"||request.url == "index.html"||request.url=="/"||request.url==""||request.url=="public/index.html"||!request.url) {
 checker(em1, ha1, function(resp) {
-     console.log(resp)
-if (resp === "true"){filePath = "public/index.html"}
+if (resp == "true"){filePath = "public/index.html"}
 else {filePath = "public/login.html"}
 })
 }
