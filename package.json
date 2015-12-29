@@ -10,7 +10,7 @@
 "mime" : "~1.2.7",
 "nodemailer" : "*",
 "nodemailer-smtp-transport": "*",
-"cookie-parser": "*"
+"cookies": "*"
 }
     
 }
