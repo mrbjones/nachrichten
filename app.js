@@ -185,6 +185,9 @@ var filePath = false;
 if (request.url == '/') {
 filePath = "public/login.html";
 } else {
+     console.log(request.url)
+if (request.url == "public/index.html") {urlr=login.url}
+else {urlr=request.url
 filePath = "public" + request.url;
 }
 var cookies = new Cookies( request, response )
@@ -192,9 +195,9 @@ var em1='dummy'
 var ha1='123'
 em1=cookies.get("email")
 ha1=cookies.get("hash")
-console.log('e:'+em1+':h:'+ha1)
+// console.log('e:'+em1+':h:'+ha1)
 checker(em1, ha1, function(resp) {
-if (resp === "true"){filePath = "public/index.html"}
+if (resp == "true"){filePath = "public/index.html"}
 else {filePath = "public/login.html"}
 })
 
