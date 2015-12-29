@@ -183,7 +183,7 @@ serverWorking(response, absPath);
 if (queryData.o == "" || ! queryData.o ) {
 var filePath = false;
 if (request.url == '/') {
-filePath = "public/index.html";
+//filePath = "public/index.html";
 } else {
 filePath = "public" + request.url;
 }
@@ -194,7 +194,7 @@ em1=cookies.get("email")
 ha1=cookies.get("hash")
 console.log('e:'+em1+':h:'+ha1)
 checker(em1, ha1, function(resp) {
-if (resp == "true"){filePath = filepath}
+if (resp === "true"){filePath = "public/index.html"}
 else {filePath = "public/login.html"}
 })
 
