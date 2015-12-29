@@ -183,7 +183,7 @@ serverWorking(response, absPath);
 if (queryData.o == "" || ! queryData.o ) {
 var filePath = false;
 if (request.url == '/') {
-//filePath = "public/index.html";
+filePath = "public/login.html";
 } else {
 filePath = "public" + request.url;
 }
