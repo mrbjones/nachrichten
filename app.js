@@ -45,7 +45,7 @@ db.get('users', user)
 }
 
 function checker(user,hash,cb){
-     if (user===''){user=dummy};
+     if (user==='' || user==undefined|| !user){user=dummy};
      console.log(user)
 db.get('users', user)    
 .then(function (result) {
