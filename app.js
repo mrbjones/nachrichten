@@ -44,6 +44,16 @@ db.get('users', user)
 })
 }
 
+function checker(user,hash,cb){
+db.get('users', user)    
+.then(function (result) {
+     if (result.body.hash == hash && result.body.statusr == 'active'){
+          cb('true')
+     }
+           cb('false')
+     )
+}}
+
 function activateAct(user,hash) {
     console.log('u:'+user)
 db.get('users', user)
@@ -152,13 +162,9 @@ loggIn(queryData.user, queryData.passw, function(resp)
 var cookies = new Cookies( request, response )
       cookies.set( "email", queryData.user, { httpOnly: false } );
       cookies.set( "hash", resp, { httpOnly: false } );
-console.log(resp)      
   response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
- console.log('1')
   response.write(" ");
-  console.log('2')
   response.end();
-  console.log('3')
 }); }
 
 //this activates an account
@@ -181,6 +187,14 @@ filePath = "public/index.html";
 } else {
 filePath = "public" + request.url;
 }
+var cookies = new Cookies( request, response )
+em1=cookies.get("email")
+ha1=cookies.get("hash")
+loggIn(em1, ha1, function(resp)
+if (resp == "true"){filePath = "public/index.html"}
+else {filePath = "public/login.html"}
+)
+
 var absPath = "./" + filePath;
 serverWorking(response, absPath); }
 
