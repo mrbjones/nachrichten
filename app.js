@@ -95,7 +95,7 @@ cb('You will receive an email to activate this account.');
 
 })
 }     
-else {console.log('taken!'); cb('Username already taken.) }          
+else {console.log('taken!'); cb('Username already taken.') }          
 })
 }
 
