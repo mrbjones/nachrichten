@@ -50,13 +50,16 @@ db.newPatchBuilder('users', user)
 function checker(user,hash,cb){
      if (user==='' || user==undefined|| !user){user='dummy'};
      console.log(user+hash)
+     if (user != 'dummy') {
 db.get('users', user)    
 .then(function (result) {
      console.log(result.body.hash +' '+result.body.statusr)
      if (result.body.hash == hash && result.body.statusr == 'active'){console.log('true');cb("true")}
       else {console.log('false');cb('false')}
+}
+else {console.log('false');cb('false')}
      
-})}
+)}}
 
 function activateAct(user,hash) {
     console.log('u:'+user)
