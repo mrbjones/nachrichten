@@ -82,9 +82,9 @@ var hasher = (hash1 * 100000000000000000);
   .replace('hash', hasher)
   .apply()
   .then(
-   mailpw(user,hasher)
-   cb('Please check your email for a password reset link.'))        
-    }
+   mailpw(user,hasher);
+   cb('Please check your email for a password reset link.')
+   )}
     else {cb('Not Found.')}
 })}
 
