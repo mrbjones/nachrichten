@@ -1,7 +1,7 @@
 
 <head>
 <!doctype html><html lang="de"><meta http-equiv="content-language" content="de"> <meta charset="UTF-8"><html><head><title>Nachrichten Scraper</title> 
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-cookies.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-sanitize.js"></script>
  <link rel="stylesheet" href="mystyle.css"> 
@@ -11,6 +11,7 @@
 <body ng-app="putter">
  <a id="topp"></a>
 <div id=main ng-controller="ListNews" >
+ <div style=float:right>{{$scope.emailer}}</div>
 <center><br><br><a href=index.html style=text-decoration:none;><img src=zeitung.PNG ></a>
 <br><form novalidate class="simple-form" >
 
@@ -30,11 +31,12 @@
 </div>
 <script>
 var myApp=angular.module('putter', []);
-myApp.controller('ListNews', ['$scope', '$http', '$element','$location', '$anchorScroll', function($scope,$http,$element,$location,$anchorScroll) {
+myApp.controller('ListNews', ['$scope', '$http', '$element','$location', '$anchorScroll', '$cookies', function($scope,$http,$element,$location,$anchorScroll,$cookies) {
 $scope.mydisabled=false; 
-
+$scope.emailer=$cookies.get('email');
 $scope.searchz=" ";
 $scope.pagerz=15;
+
 $http({ url: window.location.hostname+'/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results; if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; };  }); 
 
 
