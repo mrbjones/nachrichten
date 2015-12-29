@@ -71,6 +71,25 @@ db.merge('users', user, {  "statusr": "active"  })
 .fail(function (err) {console.log(err)})
 };
 
+function rpw1(user,cb){
+ db.get('users', user )
+.then(function (result) { 
+    if (result.body.username == user)
+    {
+var hash1 = Math.random();
+var hasher = (hash1 * 100000000000000000);
+ db.newPatchBuilder('users', user)
+  .replace('hash', hasher)
+  .apply()
+  .then(
+   mailpw(user,hasher)
+   cb('Please check your email for a password reset link.'))        
+    }
+    else {cb('Not Found.')}
+})}
+
+function rpw2(user,passw,hash,cb){}
+
 function searcher(a,b,cb) {
 db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b} )
 .then(function (result) {
@@ -107,11 +126,27 @@ transporter.sendMail({
     from: 'noreply@t3mx.com',
     to: mail,
     subject: 'Please confirm your Zeitung account',
-   html: 'Please click the link to confirm your new Zeitung account<br><a href=http://loggin.uswest.appfog.ctl.io/?o=act&user='+mail+'&hash='+hash+' >http://loggin.uswest.appfog.ctl.io/?o=act&user='+mail+'&hash='+hash+'</a>'
+    html: 'Please click the link to confirm your new Zeitung account<br><a href=http://loggin.uswest.appfog.ctl.io/?o=act&user='+mail+'&hash='+hash+' >http://loggin.uswest.appfog.ctl.io/?o=act&user='+mail+'&hash='+hash+'</a>'
 });
 console.log(mail);
 }
 
+function mailpw(mail,hash){ 
+var transporter = nodemailer.createTransport(smtpTransport({
+    host: mailhost,
+    port: mailport,
+    auth: {
+        user: mailalias,
+        pass: mailpassword
+    }}));
+transporter.sendMail({
+    from: 'noreply@t3mx.com',
+    to: mail,
+    subject: 'Please reset your Zeitung password',
+    html: 'Please click the link to reset your  Zeitung password<br><a href=http://loggin.uswest.appfog.ctl.io/?o=resetpw2&user='+mail+'&hash='+hash+' >http://loggin.uswest.appfog.ctl.io/?o=resetpw2&user='+mail+'&hash='+hash+'</a>'
+});
+console.log(mail);
+}
 
 function send404(response) {
 response.writeHead(404, {"Content-type" : "text/plain"});
@@ -162,6 +197,28 @@ response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
 newuser(queryData.user, queryData.passw, function(resp)
 {response.write(resp);response.end();
 }); }
+
+//this is the first resetpw
+if (queryData.o == "resetpw1") {
+   rpw1(queryData.user,  function(resp) {
+        
+        
+    response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
+    response.write(resp);resonse.end();
+       
+   } 
+}
+
+//this is the second resetpw
+if (queryData.o == "resetpw2") {
+   rpw2(queryData.user,  function(resp) {
+        
+        
+    response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
+    response.write(resp);resonse.end();
+       
+   } 
+}
 
 //this logs in a user
 if (queryData.o == "logg") {
