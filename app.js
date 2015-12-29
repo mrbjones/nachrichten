@@ -187,7 +187,7 @@ serverWorking(response, absPath);
 
 //this one sends the page!
 if (queryData.o == "" || ! queryData.o ) {
-var filePath = "";
+filePath = "";
 //if (request.url == '/') {filePath = "public/index.html";}
 if (request.url == "/index.html"||request.url == "index.html"||request.url=="/"||request.url==""||request.url=="public/index.html"||!request.url||request.url==undefined) {
           var cookies = new Cookies( request, response )
