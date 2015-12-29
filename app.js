@@ -89,7 +89,14 @@ var hasher = (hash1 * 100000000000000000);
     else {cb('Not Found.')}
 })}
 
-function rpw2(user,passw,hash,cb){}
+function rpw2(user,passw,hash,cb){
+      db.get('users', user )
+.then(function (result) { 
+if (result.body.username==user&&result.body.hash==hash)
+{cb('true')}
+else
+{cb('false')}
+})}
 
 function searcher(a,b,cb) {
 db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b} )
@@ -202,24 +209,22 @@ newuser(queryData.user, queryData.passw, function(resp)
 //this is the first resetpw
 if (queryData.o == "resetpw1") {
    rpw1(queryData.user,  function(resp) {
-        
-        
     response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
     response.write(resp);resonse.end();
-       
    } 
 )}
 
 //this is the second resetpw
 if (queryData.o == "resetpw2") {
-   rpw2(queryData.user,  function(resp) {
-        
-        
-    response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
-    response.write(resp);resonse.end();
-       
-   } 
-)}
+     rpw1(queryData.user, queryData.hash, function(resp) {
+     if (resp == 'true'){ 
+       var cookies = new Cookies( request, response )
+       cookies.set( "email", queryData.user, { httpOnly: false } );
+       cookies.set( "hash", queryData.hash, { httpOnly: false } );
+      serverWorking(response, './public/resetpw2.html')
+     }
+  else {serverWorking(response, './public/resetpw1.html')}     
+})}
 
 //this logs in a user
 if (queryData.o == "logg") {
