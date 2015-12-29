@@ -197,17 +197,14 @@ if (request.url == "/index.html"||request.url == "index.html"||request.url=="/"|
           em1=cookies.get("email")
           ha1=cookies.get("hash")
                checker(em1, ha1, function(resp) {
-               console.log(resp);
                if (resp == "true"){filePath = "public/index.html"}
                else {filePath = "public/login.html"}
-               })
+               };var absPath = "./" + filePath;serverWorking(response, absPath);)
 }
 else {
-filePath = "public" + request.url;
+filePath = "public" + request.url;var absPath = "./" + filePath;serverWorking(response, absPath);
 }
-
-var absPath = "./" + filePath;
-serverWorking(response, absPath); }
+}
 
 //end server!
 }).listen(process.env.VCAP_APP_PORT);
