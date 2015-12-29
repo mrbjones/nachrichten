@@ -185,10 +185,10 @@ var filePath = false;
 if (request.url == '/') {
 filePath = "public/login.html";
 } else {
-     console.log(request.url)
-if (request.url == "public/index.html") {urlr=login.url}
-else {urlr=request.url
-filePath = "public" + request.url;
+     console.log(request.url) 
+if (request.url == "index.html") {urlr=request.url}
+else {urlr=request.url}
+filePath = "public" + urlr;
 }
 var cookies = new Cookies( request, response )
 var em1='dummy'
