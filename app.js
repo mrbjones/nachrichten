@@ -33,20 +33,15 @@ cb(JSON.stringify(result))
 function loggIn(user,passw,cb){
 db.get('users', user)    
 .then(function (result) {
-//     console.log('u:'+user+'p:'+passw+'/'+result.body.password+'/'+ result.body.statusr)
      if (result.body.password == passw && result.body.statusr == 'active'){
      var hash2 = Math.random();var hasher = (hash2 * 100000000000000000);
      var hesher="{\"hash\":\"" +hasher+ "\"}";
-//      console.log(hasher);
      db.merge('users', user, hesher).then(cb(hasher))
-    
           }
      if (result.body.password != passw){cb("Password Doesn't Match.")}
      if (result.body.statusr != 'active'){cb("Login not active.")}
      if (! result.body.username) {cb("Login not found.")}
-     
 })
-     
 }
 
 function activateAct(user,hash) {
@@ -65,7 +60,6 @@ db.merge('users', user, {  "statusr": "active"  })
 function searcher(a,b,cb) {
 db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b} )
 .then(function (result) {
-// cb(JSON.stringify(items, ['path', 'key', 'value', 'title', 'description', 'category', 'pubDate', 'link']));
 cb(JSON.stringify(result))
 })};
 
@@ -156,15 +150,9 @@ loggIn(queryData.user, queryData.passw, function(resp)
 {
 // console.log(resp)
 var cookies = new Cookies( request, response )
-//    console.log(resp)
-
-      console.log('go!')
       cookies.set( "email", queryData.user, { httpOnly: false } );
-       console.log(queryData.user)
-       cookies.set( "hash", resp, { httpOnly: false } );
-       console.log(resp)
-    response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
-       console.log('done!')
+      cookies.set( "hash", resp, { httpOnly: false } );
+    response.writeHead(200);
   response.write(resp);response.end;
 }); }
 
