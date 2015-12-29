@@ -151,13 +151,14 @@ if (queryData.o == "logg") {
 // response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
 loggIn(queryData.user, queryData.passw, function(resp)
 {
-  //   response.cookie('hesher', resp, { maxAge: 900000, httpOnly: true })
-  //   response.cookie('user', queryData.user, { maxAge: 900000, httpOnly: true })
-  //   response.write(resp);response.end();
-  var c1 = cookie.serialize("email", queryData.user, {httpOnly: true, path: '/', signed: true});
-  var c2 = cookie.serialize("hash", resp, {httpOnly: true, path: '/', signed: true});
-  response.setHeader('Set-Cookie', c1);
-  response.append('Set-Cookie', c2);
+
+var cookies = new Cookies( req, res, keys )
+    , unsigned, signed, tampered
+     cookies
+      // set a regular cookie 
+      .set( "email", queryData.user, { httpOnly: false } );
+      .set( "hash", resp, { httpOnly: false } );
+    response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
   response.write(resp);response.end;
 }); }
 
