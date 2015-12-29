@@ -216,7 +216,7 @@ if (queryData.o == "resetpw1") {
 
 //this is the second resetpw
 if (queryData.o == "resetpw2") {
-     rpw1(queryData.user, queryData.hash, function(resp) {
+     rpw2(queryData.user, queryData.hash, function(resp) {
      if (resp == 'true'){ 
        var cookies = new Cookies( request, response )
        cookies.set( "email", queryData.user, { httpOnly: false } );
