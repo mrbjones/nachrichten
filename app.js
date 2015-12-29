@@ -218,7 +218,7 @@ if (queryData.o == "resetpw2") {
     response.write(resp);resonse.end();
        
    } 
-}
+)}
 
 //this logs in a user
 if (queryData.o == "logg") {
