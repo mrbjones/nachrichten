@@ -32,7 +32,7 @@ var cooker=$cookies.get('email'); alert(cooker);
 
 $scope.login = function($cookies) {
    $http({ url: '/app.js', method: "GET", params: {o: 'logg',user: $scope.logg, passw: $scope.passw}}).success(function($cookies) 
- {  })
+ { var cooker=$cookies.get('email'); alert('cook:'+cooker); })
  }
  
 }]);
