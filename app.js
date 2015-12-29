@@ -49,6 +49,7 @@ function checker(user,hash,cb){
      console.log(user+hash)
 db.get('users', user)    
 .then(function (result) {
+     console.log(result.body.hash +' '+result.body.statusr)
      if (result.body.hash == hash && result.body.statusr == 'active'){console.log('true');cb("true")}
       else {console.log('false');cb('false')}
      
