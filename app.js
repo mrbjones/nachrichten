@@ -35,8 +35,6 @@ db.get('users', user)
 .then(function (result) {
      if (result.body.password == passw && result.body.statusr == 'active'){
      var hash2 = Math.random();var hasher = (hash2 * 100000000000000000);
-//     var hesher="{\"hash\":\"" +hasher+ "\"}";
-//     db.merge('users', user, hesher).then(cb(hasher))
 db.newPatchBuilder('users', user)
   .replace('hash', hasher)
   .apply()
@@ -80,8 +78,10 @@ cb(JSON.stringify(result))
 })};
 
 function newuser(user,passw,cb) {
+     if (user == undefined || passw ==undefined) {cb('Please Choose Username and Password.')}
 db.search('users', user )
-.then(function (result) {     
+.then(function (result) { 
+     console.log(JSON.stringify(result))
 console.log(result.body.username)     
 if (result.body.username == undefined || ! result.body.username){     
 var hash1 = Math.random();
