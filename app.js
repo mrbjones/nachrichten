@@ -198,7 +198,7 @@ if (request.url == "/index.html"||request.url == "index.html"||request.url=="/"|
                checker(em1, ha1, function(resp) {
                if (resp == "true"){filePath = "public/index.html"}
                else {filePath = "public/login.html"}
-               }}
+               })}
 else {filePath = "public" + request.url;}
 var absPath = "./" + filePath;
 console.log(absPath)
