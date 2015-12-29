@@ -33,11 +33,11 @@ cb(JSON.stringify(result))
 function loggIn(user,passw,cb){
 db.get('users', user)    
 .then(function (result) {
-     console.log('u:'+user+'p:'+passw+'/'+result.body.password+'/'+ result.body.statusr)
+//     console.log('u:'+user+'p:'+passw+'/'+result.body.password+'/'+ result.body.statusr)
      if (result.body.password == passw && result.body.statusr == 'active'){
      var hash2 = Math.random();var hasher = (hash2 * 100000000000000000);
      var hesher="{\"hash\":\"" +hasher+ "\"}";
-      console.log(hasher);
+//      console.log(hasher);
      db.merge('users', user, hesher).then(cb(hasher))
     
           }
@@ -154,15 +154,14 @@ if (queryData.o == "logg") {
 // response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
 loggIn(queryData.user, queryData.passw, function(resp)
 {
-console.log(resp)
+// console.log(resp)
 var cookies = new Cookies( request, response )
-    console.log(resp)
-     cookies
-      // set a regular cookie 
+//    console.log(resp)
+
       console.log('go!')
-      .set( "email", queryData.user, { httpOnly: false } );
+      cookies.set( "email", queryData.user, { httpOnly: false } );
        console.log(queryData.user)
-       .set( "hash", resp, { httpOnly: false } );
+       cookies.set( "hash", resp, { httpOnly: false } );
        console.log(resp)
     response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
        console.log('done!')
