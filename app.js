@@ -187,9 +187,8 @@ serverWorking(response, absPath);
 
 //this one sends the page!
 if (queryData.o == "" || ! queryData.o ) {
-var filePath = false;
+var filePath = "";
 //if (request.url == '/') {filePath = "public/index.html";}
-
 if (request.url == "/index.html"||request.url == "index.html"||request.url=="/"||request.url==""||request.url=="public/index.html"||!request.url||request.url==undefined) {
           var cookies = new Cookies( request, response )
           var em1='dummy'
@@ -199,12 +198,15 @@ if (request.url == "/index.html"||request.url == "index.html"||request.url=="/"|
                checker(em1, ha1, function(resp) {
                if (resp == "true"){filePath = "public/index.html"}
                else {filePath = "public/login.html"}
-               };var absPath = "./" + filePath;serverWorking(response, absPath);)
-}
+               }
+console.log(filePath)}
 else {
-filePath = "public" + request.url;var absPath = "./" + filePath;serverWorking(response, absPath);
+filePath = "public" + request.url;
 }
 }
+var absPath = "./" + filePath;
+console.log(absPath)
+serverWorking(response, absPath);)
 
 //end server!
 }).listen(process.env.VCAP_APP_PORT);
