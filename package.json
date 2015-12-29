@@ -9,7 +9,8 @@
 "express": ">= 1.2.0",
 "mime" : "~1.2.7",
 "nodemailer" : "*",
-"nodemailer-smtp-transport": "*"
+"nodemailer-smtp-transport": "*",
+"cookie-parser": "*"
 }
     
 }
