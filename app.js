@@ -6,6 +6,7 @@ var path = require("path");
 var mime = require("mime");
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
+var Cookies = require( "cookies" )
 
 mailalias=process.env.mailalias;
 mailpassword=process.env.mailpassword;
@@ -154,10 +155,10 @@ loggIn(queryData.user, queryData.passw, function(resp)
 
 var cookies = new Cookies( req, res, keys )
     , unsigned, signed, tampered
-     cookies
+    
       // set a regular cookie 
-      .set( "email", queryData.user, { httpOnly: false } );
-      .set( "hash", resp, { httpOnly: false } );
+       cookies.set( "email", queryData.user, { httpOnly: false } );
+       cookies.set( "hash", resp, { httpOnly: false } );
     response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
   response.write(resp);response.end;
 }); }
