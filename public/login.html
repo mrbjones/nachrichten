@@ -32,7 +32,7 @@ $scope.mydisabled=false;
 
 $scope.login = function($cookies) {
    $http({ url: '/app.js', method: "GET", params: {o: 'logg',user: $scope.logg, passw: $scope.passw}}).success(function($cookies) 
- { alert($cookies.get('hash')); })
+ { var cooker=$cookies.get('hash'); alert(cooker); })
  }
  
 }]);
