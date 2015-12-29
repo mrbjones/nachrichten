@@ -29,8 +29,8 @@ var myApp=angular.module('logg', ['ngCookies']);
 myApp.controller('logger', ['$scope', '$http', '$element','$location', '$anchorScroll', $cookies, function($scope,$http,$element,$location,$anchorScroll,$cookies) {
 $scope.mydisabled=false; 
 
-$scope.login = function() {
-   $http({ url: '/app.js', method: "GET", params: {o: 'logg',user: $scope.logg, passw: $scope.passw}}).success(function() 
+$scope.login = function($cookies) {
+   $http({ url: '/app.js', method: "GET", params: {o: 'logg',user: $scope.logg, passw: $scope.passw}}).success(function($cookies) 
  { alert($cookies.get('hash')); })
  }
  
