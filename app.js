@@ -32,21 +32,12 @@ cb(JSON.stringify(result))
 function loggIn(user,passw,cb){
 db.get('users', user)    
 .then(function (result) {
-     console.log('u:'+user+'p:'+passw+'/'+result.body.password+'/'+ result.body.statusr)
-//     if (result.body.password == passw && result.body.statusr == 'active'){
-//var hash1 = Math.random();
-//var hasher = (hash1 * 100000000000000000); 
-//var hesher="{\"hash\":\"" +hasher+ "\"}"
-//db.merge('users', user, hesher)
-//.then(cb(hasher))
-//cb(hasher)
-//}
+    // console.log('u:'+user+'p:'+passw+'/'+result.body.password+'/'+ result.body.statusr)
      if (result.body.password == passw && result.body.statusr == 'active'){
      var hash2 = Math.random();var hasher = (hash2 * 100000000000000000);
      var hesher="{\"hash\":\"" +hasher+ "\"}";
      db.merge('users', user, hesher).then(cb("hasher"+hasher))
-          
-     }
+          }
      if (result.body.password != passw){cb("Password Doesn't Match.")}
      if (result.body.statusr != 'active'){cb("Login not active.")}
      if (! result.body.username) {cb("Login not found.")}
@@ -162,7 +153,12 @@ loggIn(queryData.user, queryData.passw, function(resp)
 {
   //   response.cookie('hesher', resp, { maxAge: 900000, httpOnly: true })
   //   response.cookie('user', queryData.user, { maxAge: 900000, httpOnly: true })
-     response.write(resp);response.end();
+  //   response.write(resp);response.end();
+  var c1 = cookie.serialize("email", queryData.user, {httpOnly: true, path: '/', signed: true});
+  var c2 = cookie.serialize("hash", resp, {httpOnly: true, path: '/', signed: true});
+  result.setHeader('Set-Cookie', c1);
+  result.append('Set-Cookie', c2);
+  result.write(resp);result.end;
 }); }
 
 //this activates an account
