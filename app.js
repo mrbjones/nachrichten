@@ -148,7 +148,7 @@ newuser(queryData.user, queryData.passw, function(resp)
 
 //this logs in a user
 if (queryData.o == "logg") {
-response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
+// response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
 loggIn(queryData.user, queryData.passw, function(resp)
 {
   //   response.cookie('hesher', resp, { maxAge: 900000, httpOnly: true })
@@ -156,9 +156,9 @@ loggIn(queryData.user, queryData.passw, function(resp)
   //   response.write(resp);response.end();
   var c1 = cookie.serialize("email", queryData.user, {httpOnly: true, path: '/', signed: true});
   var c2 = cookie.serialize("hash", resp, {httpOnly: true, path: '/', signed: true});
-  result.setHeader('Set-Cookie', c1);
-  result.append('Set-Cookie', c2);
-  result.write(resp);result.end;
+  response.setHeader('Set-Cookie', c1);
+  response.append('Set-Cookie', c2);
+  response.write(resp);response.end;
 }); }
 
 //this activates an account
