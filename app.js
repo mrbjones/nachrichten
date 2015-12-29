@@ -80,16 +80,23 @@ cb(JSON.stringify(result))
 })};
 
 function newuser(user,passw,cb) {
+db.search('users', user )
+.then(function (result) {     
+console.log(result.body.username)     
+if (result.body.username == undefined || ! result.body.username){     
 var hash1 = Math.random();
 var hash = (hash1 * 100000000000000000);
 var jsonString = "{\"username\":\"" +user+ "\", \"password\":\""+passw+"\", \"statusr\":\""+"inactive"+"\", \"hash\":\""+hash+"\" }";
 var jsonObj = JSON.parse(jsonString);
-db.put('users', user, jsonObj, true)
+db.put('users', user, jsonObj, false)
 .then(function (result) {
 mailer(user,hash);
 cb('You will receive an email to activate this account.');
 
-})};
+})
+}     
+else {cb('Username taken')}          
+};
 
 function mailer(mail,hash){ 
 var transporter = nodemailer.createTransport(smtpTransport({
