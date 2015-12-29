@@ -185,7 +185,6 @@ var filePath = false;
 if (request.url == '/') {
 filePath = "public/login.html";
 } else {
-     console.log(request.url) 
 filePath = "public" + request.url;
 }
 var cookies = new Cookies( request, response )
@@ -194,7 +193,7 @@ var ha1='123'
 em1=cookies.get("email")
 ha1=cookies.get("hash")
 // console.log('e:'+em1+':h:'+ha1)
-if (request.url == "/index.html"||request.url == "index.html"||request.url=='/'||request.url=''||request.url='public/index.html'||!request.url) {
+if (request.url == "/index.html"||request.url == "index.html"||request.url=="/"||request.url==""||request.url=="public/index.html"||!request.url) {
 checker(em1, ha1, function(resp) {
 if (resp == "true"){filePath = "public/index.html"}
 else {filePath = "public/login.html"}
