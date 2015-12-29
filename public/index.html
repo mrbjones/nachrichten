@@ -30,7 +30,7 @@
 </table>
 </div>
 <script>
-var myApp=angular.module('putter', []);
+var myApp=angular.module('putter', ['ngCookies']);
 myApp.controller('ListNews', ['$scope', '$http', '$element','$location', '$anchorScroll', '$cookies', function($scope,$http,$element,$location,$anchorScroll,$cookies) {
 $scope.mydisabled=false; 
 $scope.emailer=$cookies.get('email');
