@@ -35,8 +35,13 @@ db.get('users', user)
 .then(function (result) {
      if (result.body.password == passw && result.body.statusr == 'active'){
      var hash2 = Math.random();var hasher = (hash2 * 100000000000000000);
-     var hesher="{\"hash\":\"" +hasher+ "\"}";
-     db.merge('users', user, hesher).then(cb(hasher))
+//     var hesher="{\"hash\":\"" +hasher+ "\"}";
+//     db.merge('users', user, hesher).then(cb(hasher))
+db.newPatchBuilder('users', user)
+  .replace('hash', hasher)
+  .apply()
+  .then(cb(hasher))
+
           }
      if (result.body.password != passw){cb("Password Doesn't Match.")}
      if (result.body.statusr != 'active'){cb("Login not active.")}
