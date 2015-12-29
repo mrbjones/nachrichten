@@ -37,8 +37,9 @@ db.get('users', user)
      if (result.body.password == passw && result.body.statusr == 'active'){
      var hash2 = Math.random();var hasher = (hash2 * 100000000000000000);
      var hesher="{\"hash\":\"" +hasher+ "\"}";
+      console.log(hasher);
      db.merge('users', user, hesher).then(cb(hasher))
-     console.log(hasher)
+    
           }
      if (result.body.password != passw){cb("Password Doesn't Match.")}
      if (result.body.statusr != 'active'){cb("Login not active.")}
