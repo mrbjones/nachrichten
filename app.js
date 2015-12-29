@@ -188,10 +188,10 @@ filePath = "public" + request.url;
 var cookies = new Cookies( request, response )
 em1=cookies.get("email")
 ha1=cookies.get("hash")
-loggIn(em1, ha1, function(resp)
-if (resp == "true"){filePath = "public/index.html"}
+checker(em1, ha1, function(resp) {
+if (resp == "true"){filePath = filepath}
 else {filePath = "public/login.html"}
-)
+})
 
 var absPath = "./" + filePath;
 serverWorking(response, absPath); }
