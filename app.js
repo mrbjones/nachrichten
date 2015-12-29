@@ -206,7 +206,7 @@ filePath = "public" + request.url;
 }
 var absPath = "./" + filePath;
 console.log(absPath)
-serverWorking(response, absPath);)
+serverWorking(response, absPath)
 
 //end server!
 }).listen(process.env.VCAP_APP_PORT);
