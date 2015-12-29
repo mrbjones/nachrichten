@@ -157,9 +157,13 @@ var cookies = new Cookies( req, res, keys )
     , unsigned, signed, tampered
     
       // set a regular cookie 
+      console.log('go!')
        cookies.set( "email", queryData.user, { httpOnly: false } );
+       console.log(queryData.user)
        cookies.set( "hash", resp, { httpOnly: false } );
+       console.log(resp)
     response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
+       console.log('done!')
   response.write(resp);response.end;
 }); }
 
