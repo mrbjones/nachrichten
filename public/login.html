@@ -30,8 +30,8 @@ myApp.controller('logger', ['$scope', '$http', '$element','$location', '$anchorS
 $scope.mydisabled=false; 
 
 $scope.login = function($cookies) {
-   $http({ url: '/app.js', method: "GET", params: {o: 'logg',user: $scope.logg, passw: $scope.passw}}).success(function() 
- { var cooker=$cookies.get('hash'); alert(cooker); })
+   $http({ url: '/app.js', method: "GET", params: {o: 'logg',user: $scope.logg, passw: $scope.passw}}).success(function($cookies) 
+ { var cooker=$cookies.get('email'); alert(cooker); })
  }
  
 }]);
