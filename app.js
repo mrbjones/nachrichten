@@ -81,10 +81,10 @@ var hasher = (hash1 * 100000000000000000);
  db.newPatchBuilder('users', user)
   .replace('hash', hasher)
   .apply()
-  .then(
-   mailpw(user,hasher);
+  .then(function (result) {
+    mailpw(user,hasher);
    cb('Please check your email for a password reset link.')
-   )}
+   })}
     else {cb('Not Found.')}
 })}
 
