@@ -16,7 +16,7 @@
 Reset Password</td><td></td></tr><tr><td>
 Email:</td><td><input name=user ng-model="logg"></td></tr>
 
-<tr><td><input type=button value="Login" ng-click="login()"  ng-disabled="mydisabled">
+<tr><td><input type=button value="Reset" ng-click="login()"  ng-disabled="mydisabled">
 </td><td></td></tr>
 <tr><td> </td><td> </td></tr>
 <tr><td> </td><td> </td></tr>
@@ -34,7 +34,7 @@ $scope.mydisabled=false;
 
 
 $scope.login = function($cookies) {
-   $http({ url: '/app.js', method: "GET", params: {o: 'resetpw',user: $scope.logg }}).success(function(data) 
+   $http({ url: '/app.js', method: "GET", params: {o: 'resetpw1',user: $scope.logg }}).success(function(data) 
  {if (data = " ") {window.location.href='resetpw2.html'}})
  }
  
