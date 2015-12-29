@@ -189,22 +189,23 @@ serverWorking(response, absPath);
 if (queryData.o == "" || ! queryData.o ) {
 var filePath = false;
 if (request.url == '/') {
-filePath = "public/login.html";
+//filePath = "public/index.html";
 } else {
 filePath = "public" + request.url;
 }
-var cookies = new Cookies( request, response )
-var em1='dummy'
-var ha1='123'
-em1=cookies.get("email")
-ha1=cookies.get("hash")
- console.log(request.url)
+
+
 if (request.url == "/index.html"||request.url == "index.html"||request.url=="/"||request.url==""||request.url=="public/index.html"||!request.url||request.url==undefined) {
-checker(em1, ha1, function(resp) {
-     console.log(resp);
-if (resp == "true"){filePath = "public/index.html"}
-else {filePath = "public/login.html"}
-})
+          var cookies = new Cookies( request, response )
+          var em1='dummy'
+          var ha1='123'
+          em1=cookies.get("email")
+          ha1=cookies.get("hash")
+               checker(em1, ha1, function(resp) {
+               console.log(resp);
+               if (resp == "true"){filePath = "public/index.html"}
+               else {filePath = "public/login.html"}
+               })
 }
 
 var absPath = "./" + filePath;
