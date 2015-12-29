@@ -155,7 +155,7 @@ var cookies = new Cookies( request, response )
 console.log(resp)      
   response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
  console.log('1')
-  response.write(resp);
+  response.write(" ");
   console.log('2')
   response.end();
   console.log('3')
