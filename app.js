@@ -188,12 +188,7 @@ serverWorking(response, absPath);
 //this one sends the page!
 if (queryData.o == "" || ! queryData.o ) {
 var filePath = false;
-if (request.url == '/') {
-//filePath = "public/index.html";
-} else {
-filePath = "public" + request.url;
-}
-
+//if (request.url == '/') {filePath = "public/index.html";}
 
 if (request.url == "/index.html"||request.url == "index.html"||request.url=="/"||request.url==""||request.url=="public/index.html"||!request.url||request.url==undefined) {
           var cookies = new Cookies( request, response )
@@ -206,6 +201,9 @@ if (request.url == "/index.html"||request.url == "index.html"||request.url=="/"|
                if (resp == "true"){filePath = "public/index.html"}
                else {filePath = "public/login.html"}
                })
+}
+else {
+filePath = "public" + request.url;
 }
 
 var absPath = "./" + filePath;
