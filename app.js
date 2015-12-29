@@ -155,8 +155,7 @@ if (queryData.o == "logg") {
 loggIn(queryData.user, queryData.passw, function(resp)
 {
 console.log(resp)
-var cookies = new Cookies( req, res, keys )
-    , unsigned, signed, tampered
+var cookies = new Cookies( request, response, keys, resp ), unsigned, signed, tampered
     console.log(resp)
       // set a regular cookie 
       console.log('go!')
