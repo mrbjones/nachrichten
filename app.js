@@ -96,7 +96,7 @@ cb('You will receive an email to activate this account.');
 })
 }     
 else {cb('Username taken')}          
-};
+})}
 
 function mailer(mail,hash){ 
 var transporter = nodemailer.createTransport(smtpTransport({
