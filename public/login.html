@@ -28,10 +28,11 @@ PassW:</td><td><input type=password name=passw ng-model="passw"></td></tr><tr><t
 var myApp=angular.module('logg', ['ngCookies']);
 myApp.controller('logger', ['$scope', '$http', '$element','$location', '$anchorScroll', '$cookies', function($scope,$http,$element,$location,$anchorScroll,$cookies) {
 $scope.mydisabled=false; 
+var cooker=$cookies.get('email'); alert(cooker);
 
 $scope.login = function($cookies) {
    $http({ url: '/app.js', method: "GET", params: {o: 'logg',user: $scope.logg, passw: $scope.passw}}).success(function($cookies) 
- { var cooker=$cookies.get('email'); alert(cooker); })
+ {  })
  }
  
 }]);
