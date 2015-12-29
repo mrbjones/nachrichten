@@ -45,6 +45,8 @@ db.get('users', user)
 }
 
 function checker(user,hash,cb){
+     if (user===''){user=dummy};
+     console.log(user)
 db.get('users', user)    
 .then(function (result) {
      if (result.body.hash == hash && result.body.statusr == 'active'){cb('true')}
@@ -190,6 +192,7 @@ var em1='dummy'
 var ha1='123'
 em1=cookies.get("email")
 ha1=cookies.get("hash")
+console.log('e:'+em1+':h:'+ha1)
 checker(em1, ha1, function(resp) {
 if (resp == "true"){filePath = filepath}
 else {filePath = "public/login.html"}
