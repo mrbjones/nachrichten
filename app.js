@@ -79,10 +79,8 @@ cb(JSON.stringify(result))
 
 function newuser(user,passw,cb) {
      if (user == undefined || passw ==undefined) {cb('Please Choose a Username and a Password.')}
-db.search('users', user )
+db.get('users', user )
 .then(function (result) { 
-     console.log(JSON.stringify(result))
-console.log(result.body.username)     
 if (result.body.username == undefined){     
 var hash1 = Math.random();
 var hash = (hash1 * 100000000000000000);
