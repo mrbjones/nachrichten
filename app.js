@@ -155,13 +155,14 @@ if (queryData.o == "logg") {
 loggIn(queryData.user, queryData.passw, function(resp)
 {
 console.log(resp)
-var cookies = new Cookies( request, response, keys, resp ), unsigned, signed, tampered
+var cookies = new Cookies( request, response )
     console.log(resp)
+     cookies
       // set a regular cookie 
       console.log('go!')
-       cookies.set( "email", queryData.user, { httpOnly: false } );
+      .set( "email", queryData.user, { httpOnly: false } );
        console.log(queryData.user)
-       cookies.set( "hash", resp, { httpOnly: false } );
+       .set( "hash", resp, { httpOnly: false } );
        console.log(resp)
     response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
        console.log('done!')
