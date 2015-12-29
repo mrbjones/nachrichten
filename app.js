@@ -207,7 +207,7 @@ if (queryData.o == "resetpw1") {
     response.write(resp);resonse.end();
        
    } 
-}
+)}
 
 //this is the second resetpw
 if (queryData.o == "resetpw2") {
