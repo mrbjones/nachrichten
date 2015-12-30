@@ -37,7 +37,7 @@ hashr=$cookies.get('hash')
 $scope.login = function($cookies) {
  if ($scope.passw1 === $scope.passw2){
    $http({ url: '/app.js', method: "GET", params: {o: 'resetpw3',user: usern, hash: hashr, passw1: $scope.passw1 }}).success(function(data) 
- {$scope.returner=data})
+ {window.location.href='index.html'})
  }
  else
  {alert('Passwords do not match!')}
