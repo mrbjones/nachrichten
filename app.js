@@ -34,14 +34,12 @@ function loggIn(user,passw,cb){
 db.get('users', user)    
 .then(function (result) {
      if (result.body.password == passw && result.body.statusr == 'active'){
-          console.log('match')
      var hash2 = Math.random();var hasher = (hash2 * 100000000000000000);
 db.newPatchBuilder('users', user)
   .replace('hash', hasher)
   .apply()
   .then(cb(hasher))
-
-          }
+}
      if (result.body.password != passw){cb(1)}
      if (result.body.statusr != 'active'){cb(2)}
      if (result.body.username=undefined) {cb(3)}
@@ -50,7 +48,6 @@ db.newPatchBuilder('users', user)
 
 function checker(user,hash,cb){
      if (user==='' || user==undefined|| !user){user='dummy'};
-     console.log(user+hash)
      if (user != 'dummy') {
 db.get('users', user)    
 .then(function (result) {
@@ -61,13 +58,9 @@ db.get('users', user)
 )} else {console.log('false');cb('false')} }
 
 function activateAct(user,hash) {
-    console.log('u:'+user)
-db.get('users', user)
-.then(function (result) {
-     console.log(result.body.hash+'|'+hash)
-    //console.log(JSON.stringify(result))
+  db.get('users', user)
+  .then(function (result) {
     if (result.body.hash == hash){
-    console.log('activate!');
 db.merge('users', user, {  "statusr": "active"  })
 }})
 .fail(function (err) {console.log(err)})
@@ -84,22 +77,21 @@ var hasher = (hash1 * 100000000000000000);
   .replace('hash', hasher)
   .apply()
   .then(function (result) {
-    console.log('reset1');cb('Please check your email for a password reset link.')
+    cb('Please check your email for a password reset link.')
     mailpw(user,hasher);
-  
-   })}
-     if (result.body.username == undefined || result.body.username != user ) {cb('Not Found.')}
+  })}
+     if (!result.body.username || result.body.username == undefined || result.body.username != user ) {cb('Not Found.')}
+     console.log(result.body.username)
 })}
 
 function rpw2(user,hash,cb){
       db.get('users', user )
 .then(function (result) { 
 if (result.body.username==user&&result.body.hash==hash)
-{console.log('true');cb('true')}
+{cb('true')}
 else
-{console.log('false');cb('false')}
+{cb('false')}
 })}
-
 
 function rpw3(user,hash,passw1,cb){
       db.get('users', user )
@@ -110,7 +102,7 @@ if (result.body.username==user&&result.body.hash==hash)
   .apply()
   .then(function (result) {console.log('pwreset');cb('Password Reset!')})}
 else
-{console.log('Bad Hash.');cb('Bad Hash.')}
+{cb('Bad Hash.')}
 })}
 
 function searcher(a,b,cb) {
@@ -197,8 +189,8 @@ send404(response);
 }
 //start server!
 var server = http.createServer(function(request, response) {
-    
-  var queryData = url.parse(request.url, true).query;
+ var queryData = url.parse(request.url, true).query;
+
 //this one just sends the json from ochestrate
 if (queryData.o == "g") {
 response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
@@ -213,14 +205,12 @@ if (offs==''){offs=0};
 searcher(queryData.search+'*', offs, function(resp)
 {response.write(resp);response.end();
 }); }
-
 //this creates a new user
 if (queryData.o == "nu") {
 response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
 newuser(queryData.user, queryData.passw, function(resp)
 {response.write(resp);response.end();
 }); }
-
 //this is the first resetpw
 if (queryData.o == "resetpw1") {
    rpw1(queryData.user,  function(resp) {
@@ -228,7 +218,6 @@ if (queryData.o == "resetpw1") {
     response.write(resp);response.end();
    } 
 )}
-
 //this is the second resetpw
 if (queryData.o == "resetpw2") {
      rpw2(queryData.user, queryData.hash, function(resp) {
@@ -240,8 +229,6 @@ if (queryData.o == "resetpw2") {
      }
   else {serverWorking(response, './public/resetpw1.html')}     
 })}
-
-
 //this is the third resetpw
 if (queryData.o == "resetpw3") {
    rpw3(queryData.user,queryData.hash,queryData.passw1,  function(resp) {
@@ -249,7 +236,6 @@ if (queryData.o == "resetpw3") {
     response.write(resp);response.end();
    } 
 )}
-
 //this logs in a user
 if (queryData.o == "logg") {
 // response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
@@ -266,7 +252,6 @@ var cookies = new Cookies( request, response )
   if (resp==3) {response.write("Login Not Found")}
   response.end();
 }); }
-
 //this activates an account
 if (queryData.o == "act" ) {
 hash1=queryData.hash
@@ -276,9 +261,6 @@ filePath = "public/login.html";
 var absPath = filePath;
 serverWorking(response, absPath); 
 }
-
-
-
 //this one sends the page!
 if (queryData.o == "" || ! queryData.o ) {
 filePath = "";
@@ -293,15 +275,12 @@ if (request.url == "/index.html"||request.url == "index.html"||request.url=="/"|
                if (resp == "true"){filePath = "public/index.html";absPath = "./" + filePath;serverWorking(response, absPath)}
                else {filePath = "public/login.html";absPath = "./" + filePath;serverWorking(response, absPath)}
                }
-
-               
                )}
 else {filePath = "public" + request.url;
 absPath = "./" + filePath;
 console.log(absPath)
 serverWorking(response, absPath)
-} 
-}
+} }
 //end server!
 }).listen(process.env.VCAP_APP_PORT);
 
