@@ -43,7 +43,7 @@ db.newPatchBuilder('users', user)
      if (result.body.password != passw){cb(1)}
      if (result.body.statusr != 'active'){cb(2)}
      if (result.body.username=undefined) {cb(3)}
-})
+}).fail(cb(3))
 }
 
 function checker(user,hash,cb){
