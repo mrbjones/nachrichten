@@ -68,7 +68,9 @@ db.merge('users', user, {  "statusr": "active"  })
 
 function rpw1(user,cb){
  db.get('users', user )
-.then(function (result) { 
+.then(function (result) {
+     console.log(JSON.stringify(result))
+     console.log(result.body.username)
     if (result.body.username == user)
     {var hash1 = Math.random();var hasher = (hash1 * 100000000000000000);
  db.newPatchBuilder('users', user)
@@ -81,7 +83,10 @@ function rpw1(user,cb){
   {cb('Not Found.')}
   //   if (!result.body.username || result.body.username == undefined || result.body.username != user ) {cb('Not Found.')}
      console.log(result.body.username)
-})}
+})
+     cb('not found.')
+     
+}
 
 function rpw2(user,hash,cb){
       db.get('users', user )
@@ -213,7 +218,7 @@ newuser(queryData.user, queryData.passw, function(resp)
 //this is the first resetpw
 if (queryData.o == "resetpw1") {
    rpw1(queryData.user,  function(resp) {
-    response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
+   // response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
     response.write(resp);response.end();
    } 
 )}
