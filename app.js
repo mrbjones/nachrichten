@@ -98,6 +98,19 @@ else
 {console.log('false');cb('false')}
 })}
 
+
+function rpw3(user,hash,passw1,cb){
+      db.get('users', user )
+.then(function (result) { 
+if (result.body.username==user&&result.body.hash==hash)
+{db.newPatchBuilder('users', user)
+  .replace('password', passw1)
+  .apply()
+  .then(function (result) {console.log('pwreset');cb('Password Reset!')})}
+else
+{console.log('Bad Hash.');cb('Bad Hash.')}
+})}
+
 function searcher(a,b,cb) {
 db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b} )
 .then(function (result) {
@@ -225,6 +238,15 @@ if (queryData.o == "resetpw2") {
      }
   else {serverWorking(response, './public/resetpw1.html')}     
 })}
+
+
+//this is the third resetpw
+if (queryData.o == "resetpw3") {
+   rpw3(queryData.user,queryData.hash,queryData.passw1,  function(resp) {
+    response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
+    response.write(resp);resonse.end();
+   } 
+)}
 
 //this logs in a user
 if (queryData.o == "logg") {
