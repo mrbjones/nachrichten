@@ -89,13 +89,13 @@ var hasher = (hash1 * 100000000000000000);
     else {cb('Not Found.')}
 })}
 
-function rpw2(user,passw,hash,cb){
+function rpw2(user,hash,cb){
       db.get('users', user )
 .then(function (result) { 
 if (result.body.username==user&&result.body.hash==hash)
-{cb('true')}
+{console.log('true');cb('true')}
 else
-{cb('false')}
+{console.log('false');cb('false')}
 })}
 
 function searcher(a,b,cb) {
