@@ -11,7 +11,7 @@
 <body ng-app="putter">
  <a id="topp"></a>
 <div id=main ng-controller="ListNews" >
- <div style=float:right>{{emailer}} | <a ng-click="logout()">Logout</a></div>
+ <div style=float:right>{{emailer}} | <a style=color:blue;cursor:hand; ng-click="ListNews.loggout()">Logout</a></div>
 <center><br><br><a href=index.html style=text-decoration:none;><img src=zeitung.PNG ></a>
 <br><form novalidate class="simple-form" >
 
@@ -55,7 +55,7 @@ $scope.pager = function() {
   $scope.mydisabled=true;   };   $location.hash('topp');  $anchorScroll(); });
 };
 
-$scope.logout = function($cookies){
+$scope.loggout = function($cookies){
  $cookies.put('email', ''); $cookies.put('hash','123'); window.location.href='login.html'
  
 }
