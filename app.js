@@ -39,7 +39,7 @@ db.get('users', user)
 db.newPatchBuilder('users', user)
   .replace('hash', hasher)
   .apply()
-  .then(console.log('mathc2');cb(hasher))
+  .then(cb(hasher))
 
           }
      if (result.body.password != passw){cb(1)}
