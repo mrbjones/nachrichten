@@ -35,8 +35,8 @@ $scope.mydisabled=false;
 
 $scope.login = function($cookies) {
    $http({ url: '/app.js', method: "GET", params: {o: 'resetpw1',user: $scope.logg }}).success(function(data) 
- {$scope.returner=data}})
- }
+ {$scope.returner=data})}
+
  
 }]);
 
