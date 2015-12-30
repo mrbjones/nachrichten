@@ -87,7 +87,7 @@ var hasher = (hash1 * 100000000000000000);
     mailpw(user,hasher);
   
    })}
-    else {cb('Not Found.')}
+     if (result.body.username == undefined || result.body.username != user ) {cb('Not Found.')}
 })}
 
 function rpw2(user,hash,cb){
