@@ -14,9 +14,9 @@
 <form>
 <table><tr><td>
 Reset Password</td><td></td></tr><tr><td>
-Old Password</td><td><input name=user ng-model="logg"></td></tr>
-<tr><td>New Password</td><td><input type=password name=passw1 ng-model="passw"></td></tr>
-<tr><td>Repeat Password</td><td><input type=password name=passw2 ng-model="passw"></td></tr>
+Old Password</td><td><input name=user ng-model="passw1"></td></tr>
+<tr><td>New Password</td><td><input type=password name=passw1 ng-model="passw2"></td></tr>
+<tr><td>Repeat Password</td><td><input type=password name=passw2 ng-model="passw3"></td></tr>
 <tr><td><input type=button value="Save" ng-click="login()"  ng-disabled="mydisabled">
 </td><td></td></tr>
 <tr><td> </td><td> </td></tr>
@@ -32,11 +32,12 @@ Old Password</td><td><input name=user ng-model="logg"></td></tr>
 var myApp=angular.module('logg', ['ngCookies']);
 myApp.controller('logger', ['$scope', '$http', '$element','$location', '$anchorScroll', '$cookies', function($scope,$http,$element,$location,$anchorScroll,$cookies) {
 $scope.mydisabled=false; 
-
+usern=$cookies.get('email')
+hashr=$cookies.get('hash')
 
 $scope.login = function($cookies) {
-   $http({ url: '/app.js', method: "GET", params: {o: 'resetpw2',user: $scope.logg, $scope.passw1 }}).success(function(data) 
- {if (data = " ") {window.location.href='index.html'}})
+   $http({ url: '/app.js', method: "GET", params: {o: 'resetpw3',user: usern, hash: hashr, passw1: $scope.passw1, passw2: $scope.passw2 }}).success(function(data) 
+ {alert(data)})
  }
  
 }]);
