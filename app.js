@@ -34,11 +34,12 @@ function loggIn(user,passw,cb){
 db.get('users', user)    
 .then(function (result) {
      if (result.body.password == passw && result.body.statusr == 'active'){
+          console.log('match')
      var hash2 = Math.random();var hasher = (hash2 * 100000000000000000);
 db.newPatchBuilder('users', user)
   .replace('hash', hasher)
   .apply()
-  .then(function (result) {cb(hasher)})
+  .then(console.log('mathc2');cb(hasher))
 
           }
      if (result.body.password != passw){cb("Password Doesn't Match.")}
