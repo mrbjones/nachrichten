@@ -80,11 +80,11 @@ function rpw1(user,cb){
     cb('Please check your email for a password reset link.')
     mailpw(user,hasher);
   })} 
-  {cb('Not Found.')}
+  if (result==undefined||! result) {cb('Not Found.')}
   //   if (!result.body.username || result.body.username == undefined || result.body.username != user ) {cb('Not Found.')}
      console.log(result.body.username)
 })
-     cb('not found.')
+     
      
 }
 
