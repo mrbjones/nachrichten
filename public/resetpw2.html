@@ -13,10 +13,9 @@
 <img src=zeitung.PNG>
 <form>
 <table><tr><td>
-Reset Password</td><td></td></tr><tr><td>
-Old Password</td><td><input name=user ng-model="passw1"></td></tr>
-<tr><td>New Password</td><td><input type=password name=passw1 ng-model="passw2"></td></tr>
-<tr><td>Repeat Password</td><td><input type=password name=passw2 ng-model="passw3"></td></tr>
+Reset Password</td><td></td></tr>
+<tr><td>New Password</td><td><input type=password name=passw1 ng-model="passw1"></td></tr>
+<tr><td>Repeat Password</td><td><input type=password name=passw2 ng-model="passw2"></td></tr>
 <tr><td><input type=button value="Save" ng-click="login()"  ng-disabled="mydisabled">
 </td><td></td></tr>
 <tr><td> </td><td> </td></tr>
@@ -36,8 +35,12 @@ usern=$cookies.get('email')
 hashr=$cookies.get('hash')
 
 $scope.login = function($cookies) {
-   $http({ url: '/app.js', method: "GET", params: {o: 'resetpw3',user: usern, hash: hashr, passw1: $scope.passw1, passw2: $scope.passw2 }}).success(function(data) 
+ if ($scope.passw1 === $scope.passw2){
+   $http({ url: '/app.js', method: "GET", params: {o: 'resetpw3',user: usern, hash: hashr, passw1: $scope.passw1 }}).success(function(data) 
  {alert(data)})
+ }
+ else
+ {alert('Passwords do not match!')}
  }
  
 }]);
