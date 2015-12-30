@@ -83,8 +83,9 @@ var hasher = (hash1 * 100000000000000000);
   .replace('hash', hasher)
   .apply()
   .then(function (result) {
+    console.log('reset1');cb('Please check your email for a password reset link.')
     mailpw(user,hasher);
-   cb('Please check your email for a password reset link.')
+  
    })}
     else {cb('Not Found.')}
 })}
@@ -223,7 +224,7 @@ newuser(queryData.user, queryData.passw, function(resp)
 if (queryData.o == "resetpw1") {
    rpw1(queryData.user,  function(resp) {
     response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
-    response.write(resp);resonse.end();
+    response.write(resp);response.end();
    } 
 )}
 
@@ -244,7 +245,7 @@ if (queryData.o == "resetpw2") {
 if (queryData.o == "resetpw3") {
    rpw3(queryData.user,queryData.hash,queryData.passw1,  function(resp) {
     response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
-    response.write(resp);resonse.end();
+    response.write(resp);response.end();
    } 
 )}
 
