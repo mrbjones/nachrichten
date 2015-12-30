@@ -38,12 +38,12 @@ db.get('users', user)
 db.newPatchBuilder('users', user)
   .replace('hash', hasher)
   .apply()
-  .then(cb(hasher))
+  .then(function (result) {cb(hasher)})
 
           }
      if (result.body.password != passw){cb("Password Doesn't Match.")}
      if (result.body.statusr != 'active'){cb("Login not active.")}
-     if (! result.body.username) {cb("Login not found.")}
+     if (result.body.username=undefined) {cb("Login not found.")}
 })
 }
 
