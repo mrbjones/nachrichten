@@ -70,17 +70,16 @@ function rpw1(user,cb){
  db.get('users', user )
 .then(function (result) { 
     if (result.body.username == user)
-    {
-var hash1 = Math.random();
-var hasher = (hash1 * 100000000000000000);
+    {var hash1 = Math.random();var hasher = (hash1 * 100000000000000000);
  db.newPatchBuilder('users', user)
   .replace('hash', hasher)
   .apply()
   .then(function (result) {
     cb('Please check your email for a password reset link.')
     mailpw(user,hasher);
-  })}
-     if (!result.body.username || result.body.username == undefined || result.body.username != user ) {cb('Not Found.')}
+  })} 
+  {cb('Not Found.')}
+  //   if (!result.body.username || result.body.username == undefined || result.body.username != user ) {cb('Not Found.')}
      console.log(result.body.username)
 })}
 
