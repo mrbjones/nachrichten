@@ -36,8 +36,6 @@ $scope.mydisabled=false;
 $scope.login = function($cookies) {
    $http({ url: '/app.js', method: "GET", params: {o: 'logg',user: $scope.logg, passw: $scope.passw}}).success(function(data) 
  {alert(data);window.location.href='index.html'})}
- }
- 
 }]);
 
 </script>
