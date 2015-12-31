@@ -31,6 +31,8 @@ cb(JSON.stringify(result))
 })};
 
 function loggIn(user,passw,cb){
+      if (user==='' || user==undefined|| !user){user='dummy'};
+     if (user != 'dummy') {
 db.get('users', user)    
 .then(function (result) {
      if (result.body.password == passw && result.body.statusr == 'active'){
@@ -45,7 +47,7 @@ db.newPatchBuilder('users', user)
      if (result.body.username==undefined) {cb(3)}
      if (result==undefined) {cb(3)}
 }).done()
-}
+}}
 
 function checker(user,hash,cb){
      if (user==='' || user==undefined|| !user){user='dummy'};
