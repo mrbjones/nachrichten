@@ -93,7 +93,7 @@ function rpw1(user,cb){
   if (result==undefined||! result) {cb('Not Found.')}
   //   if (!result.body.username || result.body.username == undefined || result.body.username != user ) {cb('Not Found.')}
      console.log(result.body.username)
-}).fail(cb('Not Found.'))
+}).fail(function (err) {console.log(err)})
      
      
 }
