@@ -50,7 +50,7 @@ db.newPatchBuilder('users', user)
      if (result.body.statusr != 'active'){cb(2)}
      if (result.body.username==undefined) {cb(3)}
      if (result==undefined) {cb(3)}
-}).fail(function (err) {console.log(err);cb()})
+}).fail(function (err) {console.log(err);cb('none')})
 }}
 
 function checker(user,hash,cb){
@@ -262,7 +262,7 @@ if (queryData.o == "logg") {
 loggIn(queryData.user, queryData.passw, function(resp)
 {
 // console.log(resp)
-if (resp != "" && resp !=1 && resp !=2 && resp !=3){
+if (resp != "" && resp !=1 && resp !=2 && resp !=3 && resp!="none"){
 var cookies = new Cookies( request, response )
       cookies.set( "email", queryData.user, { httpOnly: false } );
       cookies.set( "hash", resp, { httpOnly: false } );
@@ -279,7 +279,7 @@ var cookies = new Cookies( request, response )
   if (resp==3) {response.write("Login Not Found")
         response.end();
   }
-if (resp == "") {response.write('Login or Password not found.')
+if (resp == "none") {response.write('Login or Password not found.')
 response.end();
 }
       
