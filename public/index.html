@@ -55,8 +55,8 @@ $scope.pager = function() {
   $scope.mydisabled=true;   };   $location.hash('topp');  $anchorScroll(); });
 };
 
-$scope.loggout = function($cookies) {
-alert('go!'); $cookies.put('email', ''); $cookies.put('hash','123'); window.location.href='login.html'
+$scope.loggout = function() {
+ $cookies.remove('email'); $cookies.remove('hash'); window.location.href='login.html'
  }
 
  }]);
