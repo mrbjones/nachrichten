@@ -44,7 +44,7 @@ db.get('users', user)
 db.newPatchBuilder('users', user)
   .replace('hash', hasher)
   .apply()
-  .then(cb("go"))
+  .then(cb(hasher))
 }
      if (result.body.password != passw){cb(1)}
      if (result.body.statusr != 'active'){cb(2)}
@@ -262,20 +262,24 @@ if (queryData.o == "logg") {
 loggIn(queryData.user, queryData.passw, function(resp)
 {
 // console.log(resp)
-if (resp != ""){
+if (resp != "" && resp !=1 && resp !=2 && resp !=3){
 var cookies = new Cookies( request, response )
       cookies.set( "email", queryData.user, { httpOnly: false } );
       cookies.set( "hash", resp, { httpOnly: false } );
   response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
-  if (resp == "go") {response.write("go")}
-  //response.write(resp);
-  if (resp==1) {response.write("Password Doesn't Match.")}
-  if (resp==2) {response.write("Login Not Active.")}
-  if (resp==3) {response.write("Login Not Found")}
+  response.write("go")
   response.end();
 }
-if (resp == "") 
-{response.write('Login or Password not found.')
+  if (resp==1) {response.write("Password Doesn't Match.")
+        response.end();
+  }
+  if (resp==2) {response.write("Login Not Active.")
+        response.end();
+  }
+  if (resp==3) {response.write("Login Not Found")
+        response.end();
+  }
+if (resp == "") {response.write('Login or Password not found.')
 response.end();
 }
       
