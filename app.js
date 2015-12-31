@@ -274,7 +274,7 @@ var cookies = new Cookies( request, response )
   response.end();
 }
 if (resp == "") 
-{response.write('Login or Password not found.)
+{response.write('Login or Password not found.')
 response.end();
 }
       
