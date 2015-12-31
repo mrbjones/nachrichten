@@ -127,6 +127,7 @@ function newuser(user,passw,cb) {
 db.get('users', user )
 .then(function (result) { 
       console.log(result.body.username)
+      console.log(JSON.stringify(result))
 if (result.body.username == undefined){     
 var hash1 = Math.random();
 var hash = (hash1 * 100000000000000000);
