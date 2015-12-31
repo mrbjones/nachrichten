@@ -273,8 +273,12 @@ var cookies = new Cookies( request, response )
   if (resp==3) {response.write("Login Not Found")}
   response.end();
 }
-if (resp == "") {response.write('Login or Password not found.);response.end();
-}}); }
+if (resp == "") 
+{response.write('Login or Password not found.)
+response.end();
+}
+      
+}); }
 //this activates an account
 if (queryData.o == "act" ) {
 hash1=queryData.hash
