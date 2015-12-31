@@ -68,7 +68,10 @@ function activateAct(user,hash) {
   db.get('users', user)
   .then(function (result) {
     if (result.body.hash == hash){
-db.merge('users', user, {  "statusr": "active"  })
+   db.newPatchBuilder('users', user)
+  .replace('statusr', 'active')
+  .apply()
+//db.merge('users', user, {  "statusr": "active"  })
 }})
 .fail(function (err) {console.log(err)})
 };
