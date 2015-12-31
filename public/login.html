@@ -36,7 +36,7 @@ $scope.mydisabled=false;
 $scope.login = function($cookies) {
    $http({ url: '/app.js', method: "GET", params: {o: 'logg',user: $scope.logg, passw: $scope.passw}}).success(function(data) 
  {if (data != "" && data !="go") {alert(data)} 
- if (data==""){alert("Login not found.")} 
+ if (data=="" || data=="none"){alert("Login not found.")} 
  if (data == "go") {
   if ($cookies.get('hash')){
   window.location.href='index.html'}}})}
