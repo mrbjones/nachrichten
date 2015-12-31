@@ -25,7 +25,7 @@ orchestrate_api_endpoint = node.credentials.ORCHESTRATE_API_HOST
 var db = require("orchestrate")(orchestrate_api_key,orchestrate_api_endpoint);
 
 function starter() {
-      db.put('users', 'xyz', '{username: xyz}')
+      db.put('users', 'xyz', '{username: xyz}', true).then(console.log('up!'))
 }
 
 function getter(cb) {
