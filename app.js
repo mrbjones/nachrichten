@@ -262,6 +262,7 @@ if (queryData.o == "logg") {
 loggIn(queryData.user, queryData.passw, function(resp)
 {
 // console.log(resp)
+if (resp != ""){
 var cookies = new Cookies( request, response )
       cookies.set( "email", queryData.user, { httpOnly: false } );
       cookies.set( "hash", resp, { httpOnly: false } );
@@ -271,7 +272,9 @@ var cookies = new Cookies( request, response )
   if (resp==2) {response.write("Login Not Active.")}
   if (resp==3) {response.write("Login Not Found")}
   response.end();
-}); }
+}
+if (resp == "") {response.write(Login or Password not found.);response.end();
+}}); }
 //this activates an account
 if (queryData.o == "act" ) {
 hash1=queryData.hash
