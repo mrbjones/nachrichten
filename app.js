@@ -50,7 +50,7 @@ db.newPatchBuilder('users', user)
      if (result.body.statusr != 'active'){cb(2)}
      if (result.body.username==undefined) {cb(3)}
      if (result==undefined) {cb(3)}
-}).fail(function (err) {console.log(err)})
+}).fail(function (err) {console.log(err);cb()})
 }}
 
 function checker(user,hash,cb){
