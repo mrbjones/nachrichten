@@ -24,6 +24,10 @@ orchestrate_api_endpoint = node.credentials.ORCHESTRATE_API_HOST
 }};
 var db = require("orchestrate")(orchestrate_api_key,orchestrate_api_endpoint);
 
+function starter() {
+      db.put('users', 'xyz', '{username: xyz}')
+}
+
 function getter(cb) {
 db.search('nachrichten', '*', {  sort: 'value.pubDate:desc',  limit: 15} )
 .then(function (result) {
@@ -195,6 +199,7 @@ send404(response);
 });
 }
 //start server!
+starter();
 var server = http.createServer(function(request, response) {
  var queryData = url.parse(request.url, true).query;
 
