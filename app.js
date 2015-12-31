@@ -125,10 +125,11 @@ cb(JSON.stringify(result))
 function newuser(user,passw,cb) {
      if (user == undefined || passw ==undefined) {cb('Please Choose a Username and a Password.')}
 db.get('users', user )
-.then(function (result) { 
-      console.log(result)
-      console.log(JSON.stringify(result))
-if (result.body.username == undefined){     
+.then(function(response){cb('Username Taken.')})
+.fail(function (result) { 
+//      console.log(result)
+//     console.log(JSON.stringify(result))
+//if (result.body.username == undefined){     
 var hash1 = Math.random();
 var hash = (hash1 * 100000000000000000);
 var jsonString = "{\"username\":\"" +user+ "\", \"password\":\""+passw+"\", \"statusr\":\""+"inactive"+"\", \"hash\":\""+hash+"\" }";
@@ -137,8 +138,10 @@ db.put('users', user, jsonObj, false)
 .then(function (result) {
 mailer(user,hash);
 cb('You will receive an email to activate this account.');
-})}     
-if ((result.body.username != undefined)) {console.log('taken!'); cb('Username already taken.') }          
+})
+      
+//}     
+//if ((result.body.username != undefined)) {console.log('taken!'); cb('Username already taken.') }          
 })
 }
 
