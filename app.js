@@ -31,8 +31,21 @@ function starter() {
 function getter(cb) {
 db.search('nachrichten', '*', {  sort: 'value.pubDate:desc',  limit: 15} )
 .then(function (result) {
+      console.log(JSON.stringify(result))
 cb(JSON.stringify(result))
 })};
+
+function liker(key,user,cb){
+db.newGraphBuilder()
+.create()
+.from('users', user)
+.related('follows')
+.to('nachrichten', key)
+.then(function (result) {
+  console.log(result.statusCode);
+  cb("liked!")
+});
+}
 
 function loggIn(user,passw,cb){
       if (user==='' || user==undefined|| !user){user='dummy'};
