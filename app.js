@@ -34,7 +34,7 @@ db.search('nachrichten', '*', {  sort: 'value.pubDate:desc',  limit: 15} )
       console.log(JSON.stringify(result))
 cb(JSON.stringify(result))
 })};
-/*
+
 function makeLike(user,key,cb){
 db.newGraphBuilder()
 .create()
@@ -46,7 +46,7 @@ db.newGraphBuilder()
   cb("liked!")
 });
 }
-*/
+/* */
 function loggIn(user,passw,cb){
       if (user==='' || user==undefined|| !user){user='dummy'};
      if (user != 'dummy') {
@@ -298,16 +298,16 @@ response.end();
       
 }); }
 //this creates a graph
-/*
+
 if (queryData.o="like1")
 {
        checker(queryData.user, queryData.hash, function(resp) {
             if (resp == "true"){
-            makeLike(queryData.user,queryData.key,  function(resp) {
-            response.write(resp);response.end();
+            makeLike(queryData.user,queryData.key,  function(resp1) {
+            response.write(resp1);response.end();
    })      }}
 )}
-*/
+/**/
 //this deletes a graph
 //if (queryData.o="like2")
 //{}
