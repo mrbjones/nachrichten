@@ -304,9 +304,9 @@ if (queryData.o="like1")
             if (resp == "true"){
             makeLike(queryData.user,queryData.key,  function(resp) {
             response.write(resp);response.end();
-   }  
+   })  
                }}
-}
+)}
 //this deletes a graph
 if (queryData.o="like2")
 {}
