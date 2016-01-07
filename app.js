@@ -299,7 +299,7 @@ response.end();
 }); }
 //this creates a graph
 
-if (queryData.o="like1")
+if (queryData.o == "like1")
 {
        checker(queryData.user, queryData.hash, function(resp) {
             if (resp == "true"){
