@@ -44,7 +44,8 @@ db.newGraphBuilder()
 .then(function (result) {
   console.log(result.statusCode);
   cb("liked!")
-});
+})
+.fail(function (err) {console.log(err);cb('none')})
 }
 /* */
 function loggIn(user,passw,cb){
@@ -301,12 +302,12 @@ response.end();
 
 if (queryData.o == "like1")
 {
-       checker(queryData.user, queryData.hash, function(resp) {
-            if (resp == "true"){
+      // checker(queryData.user, queryData.hash, function(resp) {
+        //    if (resp == "true"){
             makeLike(queryData.user,queryData.key,  function(resp1) {
             response.write(resp1);response.end();
-   })      }}
-)}
+   })      }
+//      })}
 /**/
 //this deletes a graph
 //if (queryData.o="like2")
