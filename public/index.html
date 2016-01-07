@@ -32,7 +32,7 @@
 </div>
 <script>
 var myApp=angular.module('putter', ['ngCookies']);
-myApp.controller('ListNews', ['$scope', '$http', '$element','$location', '$anchorScroll', '$cookies', function($scope,$http,$element,$location,$anchorScroll,$cookies) {
+myApp.controller('ListNews', ['$scope', '$http', '$element','$location', '$anchorScroll', '$cookies' '$event', function($scope,$http,$element,$location,$anchorScroll,$cookies,$event) {
 $scope.mydisabled=false;
 var cooker=$cookies.get('email');
 if (cooker == "" || cooker == undefined) {window.location.href="login.html"} 
@@ -62,7 +62,6 @@ $scope.loggout = function() {
  }
  
  $scope.checkers = function(obj) {
- ema=$cookies.get('email'); hash=$cookies.get('hash');
  var dataValue = obj.target.attributes.data.value;
  alert(dataValue)
  }
