@@ -21,6 +21,7 @@
 </form></center>
 <div ></div>
 <table><tr ng-repeat="news in newslist">
+ <td><input type=checkbox data="{{news.value.title}}" ng-mode="{{news.value.title}}" ngclick="checkers($event)"></td>
 <td style=font-family:verdana;font-size:11px>
 <b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
 <span>{{news.value.pubDate}}</span><br>
@@ -58,6 +59,12 @@ $scope.pager = function() {
 
 $scope.loggout = function() {
  $cookies.remove('email'); $cookies.remove('hash'); window.location.href='login.html'
+ }
+ 
+ $scope.checkers = function(obj) {
+ ema=$cookies.get('email'); hash=$cookies.get('hash');
+ var dataValue = obj.target.attributes.data.value;
+ alert(dataValue)
  }
 
  }]);
