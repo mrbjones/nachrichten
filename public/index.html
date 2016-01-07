@@ -67,12 +67,12 @@ $scope.loggout = function() {
  if (checky == true){
  //alert($cookies.get('email') +'|'+dataValue)
  $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 'like1',user: $cookies.get('email'), hash: $cookies.get('hash'), key: dataValue}}).success(function(data, status, headers, config) 
- {alert(data)}
+ {alert(data)})
   }
    if (checky == false){
  //alert($cookies.get('email') +'|'+dataValue)
  $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 'like2',user: $cookies.get('email'), hash: $cookies.get('hash'), key: dataValue}}).success(function(data, status, headers, config) 
- {alert(data)}
+ {alert(data)})
   }
   
  }
