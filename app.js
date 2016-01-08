@@ -42,7 +42,7 @@ function getLike(user) {
         .related('marked')
         .then(function (relres) {
             marks = relres.body;
-            console.log(marks);
+            console.log(JSON.stringify(marks));
         })
 }
 
