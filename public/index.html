@@ -40,7 +40,7 @@ $scope.emailer=cooker;
 $scope.searchz=" ";
 $scope.pagerz=15;
 
-$http({ url: window.location.hostname+'/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results; if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; };  }); 
+$http({ url: window.location.hostname+'/app.js', method: "GET", params: {o: 'g', user: $cookies.get('email')}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results; if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; };  }); 
 
 
 
