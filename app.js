@@ -46,13 +46,17 @@ function getLike(user) {
         })
 */
 
-//searcher="@path.source.collection:'users' AND @path.source.key:'"+user+"' AND @path.destination.collection:'nachrichten' AND @path.destination.key:'http://www.welt.de/?config=articleidfromurl&artid=150784491' AND @path.relation:('marked')"
-//db.newSearchBuilder()
-//.query(searcher)
-db.newGraphReader()
-.get()
-.from('users', user)
-.related('marked')
+searcher="@path.source.collection:'users' AND @path.source.key:'"+user+"' AND @path.destination.collection:'nachrichten' AND @path.destination.key:'http://www.welt.de/?config=articleidfromurl&artid=150784491' AND @path.relation:('marked')"
+router.get('/emails', function (req, res){
+  db.newSearchBuilder()
+    .collection('users')
+    .limit(50)
+    .offset(0)
+    .query(searcher)
+//db.newGraphReader()
+//.get()
+//.from('users', user)
+//.related('marked')
 //.to('nachrichten', 'http://www.welt.de/?config=articleidfromurl&artid=150784491')
 .then(function (relres) {
             marks = relres.body;
