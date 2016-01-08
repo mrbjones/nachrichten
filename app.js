@@ -53,7 +53,7 @@ db.newGraphReader()
 .get()
 .from('users', user)
 .related('marked')
-.to('nachrichten', 'http://www.welt.de/?config=articleidfromurl&artid=150784491')
+//.to('nachrichten', 'http://www.welt.de/?config=articleidfromurl&artid=150784491')
 .then(function (relres) {
             marks = relres.body;
             console.log(JSON.stringify(marks));
