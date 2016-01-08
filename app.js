@@ -48,7 +48,7 @@ function getLike(user) {
 //searcher="@path.source.collection:'users' AND @path.source.key:'"+user+"' AND @path.destination.collection:'nachrichten' AND @path.destination.key:'http://www.welt.de/?config=articleidfromurl&artid=150784491' AND @path.relation:('marked')"
 //searcher='@path.kind:relationship AND @path.source.collection:users AND @path.source.key:mrbrettjones@gmail.com'
 searcher='@path.kind:relationship AND @path.source.key:mrbrettjones@gmail.com AND @path.destination.key:http://www.zeit.de/gesellschaft/2016-01/aegypten-angriff-touristen-verletzt-terror' 
-searcher='@path.kind:relationship  AND @path.destination.key:\'http://www.zeit.de/gesellschaft/2016-01/aegypten-angriff-touristen-verletzt-terror\'' 
+searcher="@path.kind:relationship AND @path.destination.key:'http://www.zeit.de/gesellschaft/2016-01/aegypten-angriff-touristen-verletzt-terror'" 
 
 
   db.newSearchBuilder()
@@ -62,7 +62,7 @@ searcher='@path.kind:relationship  AND @path.destination.key:\'http://www.zeit.d
             marks = relres.body;
             console.log(JSON.stringify(marks));
       })
-      .fail(function (err) {console.log(err.ErrorCode);})
+      .fail(function (err) {console.log(JSON.stringify(err.Code));})
         
 }
 
