@@ -20,7 +20,7 @@
 <input type=button ng-click="update()" value="suchen" >
 </form></center>
 <div ></div>
-<table><tr ng-repeat="news in newslist">
+<table><tr><td>Mark</td><td>Story</td></tr><tr ng-repeat="news in newslist">
  <td><input id=squaredFour type=checkbox data='{{news.path.key}}'  ng-model="checker" ng-click="checkers($event)">
   <label for="squaredFour"></label></td>
 <td style=font-family:verdana;font-size:11px>
