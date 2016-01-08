@@ -28,7 +28,7 @@ function starter() {
       db.put('users', 'xyz', '{"username": "xyz", "hash": "123", "statusr": "inactive"}', true).then(console.log('up!'))
 }
 
-function getter(cb) {
+function getter(user,cb) {
 db.search('nachrichten', '*', {  sort: 'value.pubDate:desc',  limit: 15} )
 .then(function (result) {
  //     console.log(JSON.stringify(result))
@@ -235,12 +235,12 @@ send404(response);
 starter();
 getLike('mrbrettjones@gmail.com');
 var server = http.createServer(function(request, response) {
- var queryData = url.parse(request.url, true).query;
+var queryData = url.parse(request.url, true).query;
 
 //this one just sends the json from ochestrate
 if (queryData.o == "g") {
 response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
-getter( function(resp)
+getter(queryData.user, function(resp)
 {response.write(resp);response.end();
 }); }
 //this one does a search!
