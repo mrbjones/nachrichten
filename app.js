@@ -31,9 +31,20 @@ function starter() {
 function getter(cb) {
 db.search('nachrichten', '*', {  sort: 'value.pubDate:desc',  limit: 15} )
 .then(function (result) {
-      console.log(JSON.stringify(result))
+ //     console.log(JSON.stringify(result))
 cb(JSON.stringify(result))
 })};
+
+function getLike()
+{
+        db.newGraphReader()
+        .get()
+        .from('users', 'mrbrettjones@gmail.com')
+        .related('marked')
+        .then(function (relres) {
+            marks = relres.body;
+            console.log(marks);
+}
 
 function makeLike(user,key,cb){
 db.newGraphBuilder()
@@ -222,6 +233,7 @@ send404(response);
 }
 //start server!
 starter();
+getLike();
 var server = http.createServer(function(request, response) {
  var queryData = url.parse(request.url, true).query;
 
@@ -302,16 +314,16 @@ response.end();
 
 if (queryData.o == "like1")
 {
-      // checker(queryData.user, queryData.hash, function(resp) {
-        //    if (resp == "true"){
+       checker(queryData.user, queryData.hash, function(resp) {
+            if (resp == "true"){
             makeLike(queryData.user,queryData.key,  function(resp1) {
             response.write(resp1);response.end();
    })      }
-//      })}
-/**/
+      })}
+
 //this deletes a graph
-//if (queryData.o="like2")
-//{}
+if (queryData.o=="like2")
+{}
 
 //this activates an account
 if (queryData.o == "act" ) {
