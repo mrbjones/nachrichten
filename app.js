@@ -36,7 +36,7 @@ cb(JSON.stringify(result))
 })}
 
 function getLike(user) {
-        db.newGraphReader()
+/*        db.newGraphReader()
         .get()
         .from('users', user)
         .related('marked')
@@ -44,6 +44,18 @@ function getLike(user) {
             marks = relres.body;
             console.log(JSON.stringify(marks));
         })
+*/
+
+searcher='@path.source.collection:"users" AND @path.source.key:"'+user+'" AND @path.destination.collection:"nachrichten" AND @path.destination.key:"http://www.welt.de/?config=articleidfromurl&artid=150784491" AND @path.relation:("marked")'
+
+db.newSearchBuilder()
+.query(searcher)
+.then(function (relres) {
+            marks = relres.body;
+            console.log(JSON.stringify(marks));
+      })
+      .fail(function (err) {console.log(err);})
+        
 }
 
 function makeLike(user,key,cb){
