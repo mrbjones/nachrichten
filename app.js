@@ -33,17 +33,17 @@ db.search('nachrichten', '*', {  sort: 'value.pubDate:desc',  limit: 15} )
 .then(function (result) {
  //     console.log(JSON.stringify(result))
 cb(JSON.stringify(result))
-})};
+})}
 
-function getLike()
-{
+function getLike(user) {
         db.newGraphReader()
         .get()
-        .from('users', 'mrbrettjones@gmail.com')
+        .from('users', user)
         .related('marked')
         .then(function (relres) {
             marks = relres.body;
             console.log(marks);
+        })
 }
 
 function makeLike(user,key,cb){
@@ -233,7 +233,7 @@ send404(response);
 }
 //start server!
 starter();
-getLike();
+getLike('mrbrettjones@gmail.com');
 var server = http.createServer(function(request, response) {
  var queryData = url.parse(request.url, true).query;
 
