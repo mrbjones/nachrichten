@@ -46,7 +46,7 @@ function getLike(user) {
         })
 */
 //searcher="@path.source.collection:'users' AND @path.source.key:'"+user+"' AND @path.destination.collection:'nachrichten' AND @path.destination.key:'http://www.welt.de/?config=articleidfromurl&artid=150784491' AND @path.relation:('marked')"
-searcher="@path.source.kind:'relationship' AND @path.source.collection:'users' AND @path.source.key:'"+user+"'"
+searcher='@path.kind:relationship AND @path.source.collection:users AND @path.source.key:"+user+""
   db.newSearchBuilder()
 
     .query(searcher)
