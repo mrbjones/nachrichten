@@ -39,7 +39,7 @@ function getLike(user) {
 db.search('nachrichten', '*', {  sort: 'value.pubDate:desc',  limit: 15} )
 .then(function (result) {
 
-console.log(result.body.link)
+console.log(result.body.value.link)
 
 searcher='@path.kind:relationship AND @path.source.key:'+user
 searcher=searcher+' AND (@path.destination.key:`http://www.zeit.de/gesellschaft/2016-01/aegypten-angriff-touristen-verletzt-terror`)' 
@@ -192,7 +192,7 @@ transporter.sendMail({
     from: 'noreply@t3mx.com',
     to: mail,
     subject: 'Please confirm your Zeitung account',
-    html: 'Please click the link to confirm your new Zeitung account<br><a href=http://loggin.uswest.appfog.ctl.io/?o=act&user='+mail+'&hash='+hash+' >http://loggin.uswest.appfog.ctl.io/?o=act&user='+mail+'&hash='+hash+'</a>'
+    html: 'Please click the link to confirm your new Zeitung account<br><a href=http://liker.uswest.appfog.ctl.io/?o=act&user='+mail+'&hash='+hash+' >http://loggin.uswest.appfog.ctl.io/?o=act&user='+mail+'&hash='+hash+'</a>'
 });
 console.log(mail);
 }
@@ -209,7 +209,7 @@ transporter.sendMail({
     from: 'noreply@t3mx.com',
     to: mail,
     subject: 'Please reset your Zeitung password',
-    html: 'Please click the link to reset your  Zeitung password<br><a href=http://loggin.uswest.appfog.ctl.io/?o=resetpw2&user='+mail+'&hash='+hash+' >http://loggin.uswest.appfog.ctl.io/?o=resetpw2&user='+mail+'&hash='+hash+'</a>'
+    html: 'Please click the link to reset your  Zeitung password<br><a href=http://liker.uswest.appfog.ctl.io/?o=resetpw2&user='+mail+'&hash='+hash+' >http://loggin.uswest.appfog.ctl.io/?o=resetpw2&user='+mail+'&hash='+hash+'</a>'
 });
 console.log(mail);
 }
