@@ -38,8 +38,11 @@ cb(JSON.stringify(result))
 function getLike(user) {
 db.search('nachrichten', '*', {  sort: 'value.pubDate:desc',  limit: 15} )
 .then(function (result) {
+var myobject=restult.body
+for(var value.link in myobject){
+    console.log(+myobject[value.link]);
+}
 
-console.log(result.body.value.link)
 
 searcher='@path.kind:relationship AND @path.source.key:'+user
 searcher=searcher+' AND (@path.destination.key:`http://www.zeit.de/gesellschaft/2016-01/aegypten-angriff-touristen-verletzt-terror`)' 
