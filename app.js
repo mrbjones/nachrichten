@@ -40,7 +40,7 @@ db.search('nachrichten', '*', {  sort: 'value.pubDate:desc',  limit: 15} )
 .then(function (result) {
  //     console.log(JSON.stringify(result.body))
 
-var table = result.body;
+var table = result;
 
 for( var path in table ) {    
     
