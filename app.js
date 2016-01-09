@@ -39,9 +39,14 @@ function getLike(user) {
 db.search('nachrichten', '*', {  sort: 'value.pubDate:desc',  limit: 15} )
 .then(function (result) {
  //     console.log(JSON.stringify(result.body))
-var data=JSON.parse(result)
-for(var i = 0; i < data.path.length; i++) {
-     console.log(data.path[i].key)
+
+var table = result.body;
+
+for( var path in table ) {    
+    
+        console.log( table[path].KEY);
+       
+    
 }
 
 
