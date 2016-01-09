@@ -38,7 +38,8 @@ cb(JSON.stringify(result))
 function getLike(user) {
 db.search('nachrichten', '*', {  sort: 'value.pubDate:desc',  limit: 15} )
 .then(function (result) {
-var data=JSON.parse(result.body.value)
+      console.log(JSON.stringify(result))
+var data=JSON.parse(result.body)
 for(var i = 0; i < data.length; i++) {
      console.log(data[i].link)
 }
