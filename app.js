@@ -62,11 +62,11 @@ items.forEach(function(resser) {
 //      console.log(resser1.path.destination.key)
 });
 //console.log(JSON.stringify(result))
-JSON.stringify(result)
+cb(JSON.stringify(result))
 }
 if (relres.body.count > 0){
      // console.log(JSON.stringify(result))
-      JSON.stringify(result)
+      cb(JSON.stringify(result))
       }
 })
     .fail(function (res1) { 
