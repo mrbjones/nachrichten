@@ -186,7 +186,7 @@ else
 {cb('Bad Hash.')}
 })}
 
-function searcher1(a,b,cb) {
+function searcher(a,b,cb) {
 db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b} )
 .then(function (result) {
       var items = result.body.results;
@@ -196,11 +196,11 @@ db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b
       });
       sear=sear.substr(1, sear.length-4)
       sear=sear+")"
-      searcher='@path.kind:relationship AND @path.source.key:'+user
-      searcher=searcher+' AND ('+sear
-      console.log(searcher)
+      searcherer='@path.kind:relationship AND @path.source.key:'+user
+      searcherer=searcherer+' AND ('+sear
+      console.log(searcherer)
 db.newSearchBuilder()
-.query(searcher)
+.query(searcherer)
 .then(function (relres) {
       console.log(relres.body.count)
       if (relres.body.count > 0){
@@ -326,7 +326,8 @@ if (queryData.o == "s") {
 response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
 var offs=queryData.offs
 if (offs==''){offs=0};
-searcher1(queryData.search+'*', offs, function(resp)
+console.log(queryData.search)
+searcher(queryData.search+'*', offs, function(resp)
 {response.write(resp);response.end();
 }); }
 //this creates a new user
