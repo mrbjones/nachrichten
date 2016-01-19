@@ -40,11 +40,11 @@ db.search('nachrichten', '*', {sort: 'value.pubDate:desc',  limit: 15} )
 .then(function (json) {
 console.log(JSON.stringify(json))
 
-var data=JSON.parse(json.body.results)
+var data=JSON.parse(json)
 //bob.body.forEach(function(results) { console.log(results.path.key); });
- for(var i = 0; i < data.length; i++) {
+ for(var i = 0; i < data.body.results.length; i++) {
        console.log(i)
-       console.log(data[i].path.key);
+       console.log(data.body.results[i].path.key);
  }
 
 
