@@ -50,11 +50,15 @@ searcher=searcher+' AND ('+sear
 db.newSearchBuilder()
 .query(searcher)
 .then(function (relres) {
+                  console.log(JSON.stringify(relres))
+      if (relres.count > 0){
       var items1 = relres.body.results;
       items1.forEach(function(resser1) {
+
       console.log('got one!')
       console.log(resser1.destination.key)
 });
+}
       })
       .fail(function (res1) {console.log(JSON.stringify(res1));})
 })
