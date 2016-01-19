@@ -39,7 +39,7 @@ function getLike(user) {
 db.search('nachrichten', '*', {sort: 'value.pubDate:desc',  limit: 15} )
 .then(function (result) {
       var items = result.body.results;
-      var sear="("
+      sear="("
 items.forEach(function(resser) {
       sear=sear + "@path.destination.key:`"+resser.path.key+"` OR "
 });
