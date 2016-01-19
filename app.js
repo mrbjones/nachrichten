@@ -40,13 +40,13 @@ db.search('nachrichten', '*', {sort: 'value.pubDate:desc',  limit: 15} )
 .then(function (result) {
       var items = result.body.results;
       sear="("
-items.forEach(function(resser) {
+      items.forEach(function(resser) {
       sear=sear + "@path.destination.key:`"+resser.path.key+"` OR "
-});
-sear=sear.substr(1, sear.length-4)
-sear=sear+")"
-searcher='@path.kind:relationship AND @path.source.key:'+user
-searcher=searcher+' AND ('+sear
+      });
+      sear=sear.substr(1, sear.length-4)
+      sear=sear+")"
+      searcher='@path.kind:relationship AND @path.source.key:'+user
+      searcher=searcher+' AND ('+sear
 db.newSearchBuilder()
 .query(searcher)
 .then(function (relres) {
@@ -64,8 +64,9 @@ items.forEach(function(resser) {
 console.log(result)}
 if (relres.body.count > 0){console.log(result)}
 })
-      .fail(function (res1) { //console.log(JSON.stringify(res1));
-      })
+  //    .fail(function (res1) { 
+            //console.log(JSON.stringify(res1));
+   //   })
 })
 }
 
