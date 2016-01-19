@@ -189,8 +189,44 @@ else
 function searcher(a,b,cb) {
 db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b} )
 .then(function (result) {
+      var items = result.body.results;
+      sear="("
+      items.forEach(function(resser) {
+      sear=sear + "@path.destination.key:`"+resser.path.key+"` OR "
+      });
+      sear=sear.substr(1, sear.length-4)
+      sear=sear+")"
+      searcher='@path.kind:relationship AND @path.source.key:'+user
+      searcher=searcher+' AND ('+sear
+db.newSearchBuilder()
+.query(searcher)
+.then(function (relres) {
+      if (relres.body.count > 0){
+      var items1 = relres.body.results;
+      items1.forEach(function(resser1) {
+items.forEach(function(resser) {
+      if (resser1.path.destination.key == resser.path.key)
+      resser.value.liker="1===1"
+      {console.log('gotsmeone!')}
+});
+//      console.log(resser1.path.destination.key)
+});
+//console.log(JSON.stringify(result))
 cb(JSON.stringify(result))
-})};
+}
+if (relres.body.count > 0){
+     // console.log(JSON.stringify(result))
+      cb(JSON.stringify(result))
+      }
+})
+    .fail(function (res1) { 
+           console.log(JSON.stringify(res1));
+    })
+})
+}
+//.then(function (result) {
+//cb(JSON.stringify(result))
+//})};
 
 function newuser(user,passw,cb) {
      if (user == undefined || passw ==undefined) {cb('Please Choose a Username and a Password.')}
