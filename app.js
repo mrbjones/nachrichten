@@ -56,7 +56,7 @@ db.newSearchBuilder()
       items1.forEach(function(resser1) {
 items.forEach(function(resser) {
       if (resser1.path.destination.key == resser.path.key)
-      resser.value.liker="True"
+      resser.value.liker="1===1"
       {console.log('gotsmeone!')}
 });
 //      console.log(resser1.path.destination.key)
