@@ -58,15 +58,16 @@ items.forEach(function(resser) {
       //resser.value.liker="True"
       {console.log('gotsmeone!')}
 });
-
 //      console.log(resser1.path.destination.key)
 });
-console.log(result)}
-if (relres.body.count > 0){console.log(result)}
+console.log(JSON.stringify(result)}
+if (relres.body.count > 0){
+      console.log(JSON.stringify(result))
+      }
 })
-  //    .fail(function (res1) { 
-            //console.log(JSON.stringify(res1));
-   //   })
+    .fail(function (res1) { 
+           console.log(JSON.stringify(res1));
+    })
 })
 }
 
