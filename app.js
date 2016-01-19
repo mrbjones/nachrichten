@@ -39,20 +39,24 @@ function getLike(user) {
 db.search('nachrichten', '*', {sort: 'value.pubDate:desc',  limit: 15} )
 .then(function (result) {
       var items = result.body.results;
+      var sear="("
 items.forEach(function(resser) {
-    console.log(resser.path.key);
+      sear=sear + "@path.destination.key:`"+resser.path.key+"` OR "
 });
-    
+sear=sear.substr(1, sear.length-4)
+sear=sear+")"
+console.log(sear)
 
 
 
 searcher='@path.kind:relationship AND @path.source.key:'+user
-searcher=searcher+' AND (@path.destination.key:`http://www.zeit.de/gesellschaft/2016-01/aegypten-angriff-touristen-verletzt-terror`)' 
+searcher=searcher+' AND '+sear
+//searcher=searcher+' AND (@path.destination.key:`http://www.zeit.de/gesellschaft/2016-01/aegypten-angriff-touristen-verletzt-terror`)' 
 //console.log(searcher);
 db.newSearchBuilder()
 .query(searcher)
 .then(function (relres) {
-           // console.log(JSON.stringify(relres));
+            console.log(JSON.stringify(relres));
       })
       .fail(function (res1) {console.log(JSON.stringify(res1));})
 })
