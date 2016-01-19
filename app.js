@@ -46,9 +46,6 @@ items.forEach(function(resser) {
 sear=sear.substr(1, sear.length-4)
 sear=sear+")"
 console.log(sear)
-
-
-
 searcher='@path.kind:relationship AND @path.source.key:'+user
 searcher=searcher+' AND ('+sear
 //searcher=searcher+' AND (@path.destination.key:`http://www.zeit.de/gesellschaft/2016-01/aegypten-angriff-touristen-verletzt-terror`)' 
@@ -71,6 +68,19 @@ db.newGraphBuilder()
 .then(function (result) {
   console.log(result.statusCode);
   cb("liked!")
+})
+.fail(function (err) {console.log(err);cb('none')})
+}
+
+function removeLike(user,key,cb){
+db.newGraphBuilder()
+.remove()
+.from('users', user)
+.related('marked')
+.to('nachrichten', key)
+.then(function (result) {
+  console.log(result.statusCode);
+  cb("unliked!")
 })
 .fail(function (err) {console.log(err);cb('none')})
 }
@@ -339,7 +349,13 @@ if (queryData.o == "like1")
 
 //this deletes a graph
 if (queryData.o=="like2")
-{}
+{
+       checker(queryData.user, queryData.hash, function(resp) {
+            if (resp == "true"){
+            removeLike(queryData.user,queryData.key,  function(resp1) {
+            response.write(resp1);response.end();
+   })      }
+      })}
 
 //this activates an account
 if (queryData.o == "act" ) {
