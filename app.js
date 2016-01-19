@@ -51,12 +51,12 @@ db.newSearchBuilder()
 .query(searcher)
 .then(function (relres) {
                   console.log(JSON.stringify(relres))
-      if (relres.count > 0){
+      if (relres.body.count > 0){
       var items1 = relres.body.results;
       items1.forEach(function(resser1) {
 
       console.log('got one!')
-      console.log(resser1.destination.key)
+      console.log(resser1.path.destination.key)
 });
 }
       })
