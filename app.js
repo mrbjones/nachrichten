@@ -64,7 +64,7 @@ items.forEach(function(resser) {
 //console.log(JSON.stringify(result))
 cb(JSON.stringify(result))
 }
-if (relres.body.count > 0){
+if (relres.body.count == 0){
      // console.log(JSON.stringify(result))
       cb(JSON.stringify(result))
       }
@@ -215,7 +215,7 @@ items.forEach(function(resser) {
 //console.log(JSON.stringify(result))
 cb(JSON.stringify(result))
 }
-if (relres.body.count > 0){
+if (relres.body.count == 0){
      // console.log(JSON.stringify(result))
       cb(JSON.stringify(result))
       }
