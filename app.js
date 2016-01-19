@@ -189,7 +189,6 @@ else
 function searcher1(a,b,cb) {
 db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b} )
 .then(function (result) {
-      console.log(JSON.stringify(result))
       var items = result.body.results;
       sear="("
       items.forEach(function(resser) {
@@ -199,9 +198,11 @@ db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b
       sear=sear+")"
       searcher='@path.kind:relationship AND @path.source.key:'+user
       searcher=searcher+' AND ('+sear
+      console.log(searcher)
 db.newSearchBuilder()
 .query(searcher)
 .then(function (relres) {
+      console.log(relres.body.count)
       if (relres.body.count > 0){
       var items1 = relres.body.results;
       items1.forEach(function(resser1) {
@@ -210,9 +211,7 @@ items.forEach(function(resser) {
       resser.value.liker="1===1"
       {console.log('gotsmeone!')}
 });
-//      console.log(resser1.path.destination.key)
 });
-//console.log(JSON.stringify(result))
 cb(JSON.stringify(result))
 }
 if (relres.body.count < 1){
