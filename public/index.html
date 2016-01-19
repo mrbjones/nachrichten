@@ -21,7 +21,7 @@
 </form></center>
 <div ></div>
 <table><tr ng-repeat="news in newslist">
- <td><input id=squaredFour type=checkbox data='{{news.path.key}}'  ng-model="checker" ng-click="checkers($event)">
+ <td><input id=squaredFour type=checkbox data='{{news.path.key}}'  ng-model="checker" ng-click="checkers($event)" ng-checked={{news.value.liker}}>
   <label for="squaredFour"></label></td>
 <td style=font-family:verdana;font-size:11px>
 <b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
