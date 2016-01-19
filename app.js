@@ -37,18 +37,12 @@ cb(JSON.stringify(result))
 
 function getLike(user) {
 db.search('nachrichten', '*', {sort: 'value.pubDate:desc',  limit: 15} )
-.then(function (json) {
-console.log(JSON.stringify(json))
+.then(function (result) {
+      var items = result.body.results;
+      var tom=JSON.stringify(items, ['path', 'key']));
+console.log(tom)
 
-var data=JSON.parse(json)
-//bob.body.forEach(function(results) { console.log(results.path.key); });
-// for(var i = 0; i < data.body.results.length; i++) {
-//       console.log(i)
-//       console.log(data.body.results[i].path.key);
-// }
-for(var result in data.body.results){
- console.log(data.body.results[result]["path"]["key"]);
-}
+
 
 searcher='@path.kind:relationship AND @path.source.key:'+user
 searcher=searcher+' AND (@path.destination.key:`http://www.zeit.de/gesellschaft/2016-01/aegypten-angriff-touristen-verletzt-terror`)' 
