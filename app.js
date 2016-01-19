@@ -64,7 +64,8 @@ items.forEach(function(resser) {
 console.log(result)}
 if (relres.body.count > 0){console.log(result)}
 })
-      .fail(function (res1) {console.log(JSON.stringify(res1));})
+      .fail(function (res1) { //console.log(JSON.stringify(res1));
+      })
 })
 }
 
