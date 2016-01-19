@@ -42,6 +42,13 @@ db.search('nachrichten', '*', {sort: 'value.pubDate:desc',  limit: 15} )
       var tom=JSON.stringify(items, ['path', 'key']);
 console.log(tom)
 
+    for(var i=0;i<tom.length;i++){
+        var obj = tom[i];
+        for(var key in obj){
+            console.log(attrValue = obj[key]);
+        }
+    }
+
 
 
 searcher='@path.kind:relationship AND @path.source.key:'+user
