@@ -50,7 +50,7 @@ console.log(sear)
 
 
 searcher='@path.kind:relationship AND @path.source.key:'+user
-searcher=searcher+' AND '+sear
+searcher=searcher+' AND ('+sear
 //searcher=searcher+' AND (@path.destination.key:`http://www.zeit.de/gesellschaft/2016-01/aegypten-angriff-touristen-verletzt-terror`)' 
 //console.log(searcher);
 db.newSearchBuilder()
