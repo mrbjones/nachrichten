@@ -186,7 +186,7 @@ else
 {cb('Bad Hash.')}
 })}
 
-function searcher(a,b,cb) {
+function searchery(a,b,cb) {
 db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b} )
 .then(function (result) {
       var items = result.body.results;
@@ -327,7 +327,7 @@ response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
 var offs=queryData.offs
 if (offs==''){offs=0};
 console.log(queryData.search)
-searcher(queryData.search+'*', offs, function(resp)
+searchery(queryData.search+'*', offs, function(resp)
 {response.write(resp);response.end();
 }); }
 //this creates a new user
