@@ -42,11 +42,13 @@ console.log(JSON.stringify(json))
 
 var data=JSON.parse(json)
 //bob.body.forEach(function(results) { console.log(results.path.key); });
- for(var i = 0; i < data.body.results.length; i++) {
-       console.log(i)
-       console.log(data.body.results[i].path.key);
- }
-
+// for(var i = 0; i < data.body.results.length; i++) {
+//       console.log(i)
+//       console.log(data.body.results[i].path.key);
+// }
+for(var result in data.body.results){
+ console.log(data.body.results[result]["path"]["key"]);
+}
 
 searcher='@path.kind:relationship AND @path.source.key:'+user
 searcher=searcher+' AND (@path.destination.key:`http://www.zeit.de/gesellschaft/2016-01/aegypten-angriff-touristen-verletzt-terror`)' 
