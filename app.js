@@ -189,6 +189,7 @@ else
 function searcher(a,b,cb) {
 db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b} )
 .then(function (result) {
+      console.log(JSON.stringify(result))
       var items = result.body.results;
       sear="("
       items.forEach(function(resser) {
