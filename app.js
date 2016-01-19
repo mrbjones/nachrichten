@@ -28,14 +28,15 @@ function starter() {
       db.put('users', 'xyz', '{"username": "xyz", "hash": "123", "statusr": "inactive"}', true).then(console.log('up!'))
 }
 
-function getter(user,cb) {
+function OLDgetter(user,cb) {
 db.search('nachrichten', '*', {  sort: 'value.pubDate:desc',  limit: 15} )
 .then(function (result) {
  //     console.log(JSON.stringify(result))
 cb(JSON.stringify(result))
 })}
 
-function getLike(user) {
+//function getLike(user) {
+function getter(user,cb) {
 db.search('nachrichten', '*', {sort: 'value.pubDate:desc',  limit: 15} )
 .then(function (result) {
       var items = result.body.results;
@@ -60,10 +61,12 @@ items.forEach(function(resser) {
 });
 //      console.log(resser1.path.destination.key)
 });
-console.log(JSON.stringify(result))
+//console.log(JSON.stringify(result))
+JSON.stringify(result)
 }
 if (relres.body.count > 0){
-      console.log(JSON.stringify(result))
+     // console.log(JSON.stringify(result))
+      JSON.stringify(result)
       }
 })
     .fail(function (res1) { 
@@ -272,7 +275,7 @@ send404(response);
 }
 //start server!
 starter();
-getLike('mrbrettjones@gmail.com');
+//getLike('mrbrettjones@gmail.com');
 var server = http.createServer(function(request, response) {
 var queryData = url.parse(request.url, true).query;
 
