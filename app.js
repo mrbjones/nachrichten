@@ -186,7 +186,7 @@ else
 {cb('Bad Hash.')}
 })}
 
-function searcher(a,b,cb) {
+function searcher1(a,b,cb) {
 db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b} )
 .then(function (result) {
       console.log(JSON.stringify(result))
@@ -215,7 +215,7 @@ items.forEach(function(resser) {
 //console.log(JSON.stringify(result))
 cb(JSON.stringify(result))
 }
-if (relres.body.count == 0){
+if (relres.body.count < 1){
      // console.log(JSON.stringify(result))
       cb(JSON.stringify(result))
       }
@@ -327,7 +327,7 @@ if (queryData.o == "s") {
 response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
 var offs=queryData.offs
 if (offs==''){offs=0};
-searcher(queryData.search+'*', offs, function(resp)
+searcher1(queryData.search+'*', offs, function(resp)
 {response.write(resp);response.end();
 }); }
 //this creates a new user
