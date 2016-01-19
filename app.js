@@ -45,15 +45,16 @@ items.forEach(function(resser) {
 });
 sear=sear.substr(1, sear.length-4)
 sear=sear+")"
-console.log(sear)
 searcher='@path.kind:relationship AND @path.source.key:'+user
 searcher=searcher+' AND ('+sear
-//searcher=searcher+' AND (@path.destination.key:`http://www.zeit.de/gesellschaft/2016-01/aegypten-angriff-touristen-verletzt-terror`)' 
-//console.log(searcher);
 db.newSearchBuilder()
 .query(searcher)
 .then(function (relres) {
-            console.log(JSON.stringify(relres));
+      var items1 = relres.body.results;
+      items1.forEach(function(resser1) {
+      console.log('got one!')
+      console.log(resser1.destination.key)
+});
       })
       .fail(function (res1) {console.log(JSON.stringify(res1));})
 })
