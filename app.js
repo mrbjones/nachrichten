@@ -56,8 +56,8 @@ db.newSearchBuilder()
       items1.forEach(function(resser1) {
 items.forEach(function(resser) {
       if (resser1.path.destination.key == resser.path.key)
-      resser.value.liker="1===1"
-      {console.log('gotsmeone!')}
+      {resser.value.liker="1===1"
+      console.log('gotsmeone!')}
 });
 //      console.log(resser1.path.destination.key)
 });
@@ -208,8 +208,9 @@ db.newSearchBuilder()
       sitems1.forEach(function(sresser1) {
 sitems.forEach(function(sresser) {
       if (sresser1.path.destination.key == sresser.path.key)
+      {
       sresser.value.liker="1===1"
-      {console.log('gotsmeone!')}
+      console.log('gotsmeone!')}
 });
 });
 cb(JSON.stringify(sresult))
