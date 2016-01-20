@@ -197,7 +197,7 @@ db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b
       ssear=ssear.substr(1, ssear.length-4)
       ssear=ssear+")"
       ssearcherer='@path.kind:relationship AND @path.source.key:'+user
-      ssearcherer=ssearcherer+' AND ('+sear
+      ssearcherer=ssearcherer+' AND ('+ssear
       console.log(ssearcherer)
 db.newSearchBuilder()
 .query(ssearcherer)
