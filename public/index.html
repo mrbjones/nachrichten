@@ -29,10 +29,11 @@
  <td><div class=squaredFour><input id="squaredFour{{$index}}"  type=checkbox data='{{news.path.key}}'  ng-click="checkers($event)" ng-checked="{{news.value.liker}}">
   <label for="squaredFour{{$index}}"></label></div></td>
 </tr>
-<tr><td style=text-align:right;><input ng-disabled="mydisabled" ng-model="nexter" type=button value='weiter' ng-click="pager()"></td></tr>
+<tr><td></td><td style=text-align:right;><input ng-disabled="mydisabled" ng-model="nexter" type=button value='weiter' ng-click="pager()"></td></tr>
 </table>
-
+<hr>
 </div>
+<br>
 <script>
 var myApp=angular.module('putter', ['ngCookies']);
 myApp.controller('ListNews', ['$scope', '$http', '$element','$location', '$anchorScroll', '$cookies',  function($scope,$http,$element,$location,$anchorScroll,$cookies) {
