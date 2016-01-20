@@ -263,7 +263,7 @@ var transporter = nodemailer.createTransport(smtpTransport({
         pass: mailpassword
     }}));
 transporter.sendMail({
-    from: 'noreply@t3mx.com',
+    from: 'ZZRJ1-relay@t3mx.com',
     to: mail,
     subject: 'Please confirm your Zeitung account',
     html: 'Please click the link to confirm your new Zeitung account<br><a href=http://liker.uswest.appfog.ctl.io/?o=act&user='+mail+'&hash='+hash+' >http://loggin.uswest.appfog.ctl.io/?o=act&user='+mail+'&hash='+hash+'</a>'
@@ -280,7 +280,7 @@ var transporter = nodemailer.createTransport(smtpTransport({
         pass: mailpassword
     }}));
 transporter.sendMail({
-    from: 'noreply@t3mx.com',
+    from: 'ZZRJ1-relay@t3mx.com',
     to: mail,
     subject: 'Please reset your Zeitung password',
     html: 'Please click the link to reset your  Zeitung password<br><a href=http://liker.uswest.appfog.ctl.io/?o=resetpw2&user='+mail+'&hash='+hash+' >http://loggin.uswest.appfog.ctl.io/?o=resetpw2&user='+mail+'&hash='+hash+'</a>'
