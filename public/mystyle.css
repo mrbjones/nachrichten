@@ -9,12 +9,12 @@ hr {
 span {color:gray;}
 
 /* .squaredFour */
-.squaredFour {
+td .squaredFour {
   width: 20px;
   position: relative;
   margin: 20px auto;
 }
-.squaredFour label {
+td .squaredFour label {
   width: 20px;
   height: 20px;
   cursor: pointer;
@@ -27,7 +27,7 @@ span {color:gray;}
   border-radius: 4px;
   box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
 }
-.squaredFour label:after {
+td .squaredFour label:after {
   content: '';
   width: 9px;
   height: 5px;
@@ -42,13 +42,13 @@ span {color:gray;}
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
-.squaredFour label:hover::after {
+td .squaredFour label:hover::after {
   opacity: 0.5;
 }
-.squaredFour input[type=checkbox] {
+td .squaredFour input[type=checkbox] {
   visibility: hidden;
 }
-.squaredFour input[type=checkbox]:checked + label:after {
+td .squaredFour input[type=checkbox]:checked + label:after {
   opacity: 1;
 }
 
