@@ -57,7 +57,7 @@ db.newSearchBuilder()
 items.forEach(function(resser) {
       if (resser1.path.destination.key == resser.path.key)
       {resser.value.liker="1===1"
-      console.log('gotsmeone!')}
+      console.log('got some!')}
 });
 //      console.log(resser1.path.destination.key)
 });
@@ -190,7 +190,7 @@ function searchy(a,b,user,cb) {
 db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b} )
 .then(function (sresult) {
       var sitems = sresult.body.results;
-      ssear="("
+      var ssear="("
       sitems.forEach(function(sresser) {
       ssear=ssear + "@path.destination.key:`"+sresser.path.key+"` OR "
       });
@@ -213,10 +213,12 @@ sitems.forEach(function(sresser) {
       console.log('gotsmeone!')}
 });
 });
+ssear="";searcherer=""
 cb(JSON.stringify(sresult))
 }
 if (srelres.body.count < 1){
      // console.log(JSON.stringify(result))
+     ssear="";searcherer=""
       cb(JSON.stringify(sresult))
       }
 })
