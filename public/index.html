@@ -26,12 +26,12 @@
 <b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
 <span>{{news.value.pubDate}}</span><br>
 {{news.value.description}}<br><hr></td>
- <td><input id="squaredFour" class="squaredFour" type=checkbox data='{{news.path.key}}'  ng-click="checkers($event)" ng-checked="{{news.value.liker}}">
-  <label for="squaredFour"></label></td>
+ <td><div class=squaredFour><input id="squaredFour" class="squaredFour" type=checkbox data='{{news.path.key}}'  ng-click="checkers($event)" ng-checked="{{news.value.liker}}">
+  <label for="squaredFour"></label></div></td>
 </tr>
 <tr><td style=text-align:right;><input ng-disabled="mydisabled" ng-model="nexter" type=button value='weiter' ng-click="pager()"></td></tr>
 </table>
-<div class=squaredFour>tester <input id="squaredFour"  type=checkbox    >  <label for="squaredFour"></label></div>
+
 </div>
 <script>
 var myApp=angular.module('putter', ['ngCookies']);
