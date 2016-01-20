@@ -31,11 +31,9 @@ function starter() {
 function OLDgetter(user,cb) {
 db.search('nachrichten', '*', {  sort: 'value.pubDate:desc',  limit: 15} )
 .then(function (result) {
- //     console.log(JSON.stringify(result))
 cb(JSON.stringify(result))
 })}
 
-//function getLike(user) {
 function getter(user,cb) {
 db.search('nachrichten', '*', {sort: 'value.pubDate:desc',  limit: 15} )
 .then(function (result) {
@@ -57,15 +55,14 @@ db.newSearchBuilder()
 items.forEach(function(resser) {
       if (resser1.path.destination.key == resser.path.key)
       {resser.value.liker="1===1"
-      console.log('got some!')}
+      }
 });
-//      console.log(resser1.path.destination.key)
+
 });
-//console.log(JSON.stringify(result))
+
 cb(JSON.stringify(result))
 }
 if (relres.body.count == 0){
-     // console.log(JSON.stringify(result))
       cb(JSON.stringify(result))
       }
 })
@@ -138,7 +135,6 @@ function activateAct(user,hash) {
    db.newPatchBuilder('users', user)
   .replace('statusr', 'active')
   .apply()
-//db.merge('users', user, {  "statusr": "active"  })
 }})
 .fail(function (err) {console.log(err)})
 };
@@ -146,8 +142,6 @@ function activateAct(user,hash) {
 function rpw1(user,cb){
  db.get('users', user )
 .then(function (result) {
-     console.log(JSON.stringify(result))
-     console.log(result.body.username)
     if (result.body.username == user)
     {var hash1 = Math.random();var hasher = (hash1 * 100000000000000000);
  db.newPatchBuilder('users', user)
@@ -158,12 +152,9 @@ function rpw1(user,cb){
     mailpw(user,hasher);
   })} 
   if (result==undefined||! result) {cb('Email not found.')}
-  //   if (!result.body.username || result.body.username == undefined || result.body.username != user ) {cb('Not Found.')}
      console.log(result.body.username)
 }).fail(function (err) {console.log(err);cb("Email not found.")})
-     
-     
-}
+  }
 
 function rpw2(user,hash,cb){
       db.get('users', user )
@@ -183,7 +174,7 @@ if (result.body.username==user&&result.body.hash==hash)
   .apply()
   .then(function (result) {console.log('pwreset');cb('Password Reset!')})}
 else
-{cb('Bad Hash.')}
+{cb('Bad Hash, Man.')}
 })}
 
 function searchy(a,b,user,cb) {
@@ -198,7 +189,6 @@ db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b
       ssear=ssear+")"
       ssearcherer='@path.kind:relationship AND @path.source.key:'+user
       ssearcherer=ssearcherer+' AND ('+ssear
-      console.log(ssearcherer)
 db.newSearchBuilder()
 .query(ssearcherer)
 .then(function (srelres) {
@@ -210,14 +200,13 @@ sitems.forEach(function(sresser) {
       if (sresser1.path.destination.key == sresser.path.key)
       {
       sresser.value.liker="1===1"
-      console.log('gotsmeone!')}
+      }
 });
 });
 ssear="";searcherer=""
 cb(JSON.stringify(sresult))
 }
 if (srelres.body.count < 1){
-     // console.log(JSON.stringify(result))
      ssear="";searcherer=""
       cb(JSON.stringify(sresult))
       }
@@ -227,18 +216,12 @@ if (srelres.body.count < 1){
     })
 })
 }
-//.then(function (result) {
-//cb(JSON.stringify(result))
-//})};
 
 function newuser(user,passw,cb) {
      if (user == undefined || passw ==undefined) {cb('Please Choose a Username and a Password.')}
 db.get('users', user )
 .then(function(response){cb('Username Taken.')})
 .fail(function (result) { 
-//      console.log(result)
-//     console.log(JSON.stringify(result))
-//if (result.body.username == undefined){     
 var hash1 = Math.random();
 var hash = (hash1 * 100000000000000000);
 var jsonString = "{\"username\":\"" +user+ "\", \"password\":\""+passw+"\", \"statusr\":\""+"inactive"+"\", \"hash\":\""+hash+"\" }";
@@ -248,9 +231,6 @@ db.put('users', user, jsonObj, false)
 mailer(user,hash);
 cb('You will receive an email to activate this account.');
 })
-      
-//}     
-//if ((result.body.username != undefined)) {console.log('taken!'); cb('Username already taken.') }          
 })
 }
 
@@ -314,7 +294,6 @@ send404(response);
 }
 //start server!
 starter();
-//getLike('mrbrettjones@gmail.com');
 var server = http.createServer(function(request, response) {
 var queryData = url.parse(request.url, true).query;
 
@@ -367,10 +346,8 @@ if (queryData.o == "resetpw3") {
 )}
 //this logs in a user
 if (queryData.o == "logg") {
-// response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
 loggIn(queryData.user, queryData.passw, function(resp)
 {
-// console.log(resp)
 if (resp != "" && resp !=1 && resp !=2 && resp !=3 && resp!="none"){
 var cookies = new Cookies( request, response )
       cookies.set( "email", queryData.user, { httpOnly: false } );
@@ -393,8 +370,8 @@ response.end();
 }
       
 }); }
-//this creates a graph
 
+//this creates a graph
 if (queryData.o == "like1")
 {
        checker(queryData.user, queryData.hash, function(resp) {
@@ -426,7 +403,6 @@ serverWorking(response, absPath);
 //this one sends the page!
 if (queryData.o == "" || ! queryData.o ) {
 filePath = "";
-//if (request.url == '/') {filePath = "public/index.html";}
 if (request.url == "/index.html"||request.url == "index.html"||request.url=="/"||request.url==""||request.url=="public/index.html"||!request.url||request.url==undefined) {
           var cookies = new Cookies( request, response )
           var em1='dummy'
