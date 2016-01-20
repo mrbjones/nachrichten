@@ -20,7 +20,7 @@
 <input type=button ng-click="update()" value="suchen" >
 </form></center>
 <div ></div>
-<table><tr ng-repeat="news in newslist">
+<table><tr><th></th><th>Save</th></tr><tr ng-repeat="news in newslist">
 
 <td style=font-family:verdana;font-size:11px>
 <b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
