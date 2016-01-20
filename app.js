@@ -186,37 +186,37 @@ else
 {cb('Bad Hash.')}
 })}
 
-function searchery(a,b,cb) {
+function searchy(a,b,user,cb) {
 db.search('nachrichten', a, {  sort: 'value.pubDate:desc',  limit: 15, offset: b} )
-.then(function (result) {
-      var items = result.body.results;
-      sear="("
-      items.forEach(function(resser) {
-      sear=sear + "@path.destination.key:`"+resser.path.key+"` OR "
+.then(function (sresult) {
+      var sitems = sresult.body.results;
+      ssear="("
+      sitems.forEach(function(sresser) {
+      ssear=ssear + "@path.destination.key:`"+sresser.path.key+"` OR "
       });
-      sear=sear.substr(1, sear.length-4)
-      sear=sear+")"
-      searcherer='@path.kind:relationship AND @path.source.key:'+user
-      searcherer=searcherer+' AND ('+sear
-      console.log(searcherer)
+      ssear=ssear.substr(1, ssear.length-4)
+      ssear=ssear+")"
+      ssearcherer='@path.kind:relationship AND @path.source.key:'+user
+      ssearcherer=ssearcherer+' AND ('+sear
+      console.log(ssearcherer)
 db.newSearchBuilder()
-.query(searcherer)
-.then(function (relres) {
-      console.log(relres.body.count)
-      if (relres.body.count > 0){
-      var items1 = relres.body.results;
-      items1.forEach(function(resser1) {
-items.forEach(function(resser) {
-      if (resser1.path.destination.key == resser.path.key)
-      resser.value.liker="1===1"
+.query(ssearcherer)
+.then(function (srelres) {
+      console.log(srelres.body.count)
+      if (srelres.body.count > 0){
+      var sitems1 = srelres.body.results;
+      sitems1.forEach(function(sresser1) {
+sitems.forEach(function(sresser) {
+      if (sresser1.path.destination.key == sresser.path.key)
+      sresser.value.liker="1===1"
       {console.log('gotsmeone!')}
 });
 });
-cb(JSON.stringify(result))
+cb(JSON.stringify(sresult))
 }
-if (relres.body.count < 1){
+if (srelres.body.count < 1){
      // console.log(JSON.stringify(result))
-      cb(JSON.stringify(result))
+      cb(JSON.stringify(sresult))
       }
 })
     .fail(function (res1) { 
@@ -326,9 +326,10 @@ if (queryData.o == "s") {
 response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
 var offs=queryData.offs
 if (offs==''){offs=0};
-console.log(queryData.search)
-searchery(queryData.search+'*', offs, function(resp)
-{response.write(resp);response.end();
+var cookies = new Cookies( request, response )
+user=cookies.get("email")
+searchy(queryData.search+'*', offs, user, function(resp12)
+{response.write(resp12);response.end();
 }); }
 //this creates a new user
 if (queryData.o == "nu") {
