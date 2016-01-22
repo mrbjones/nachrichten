@@ -38,8 +38,12 @@ $scope.login = function($cookies) {
    $http({ url: '/app.js', method: "GET", params: {o: 'logg',user: $scope.logg, passw: $scope.passw}}).success(function(data) 
  {if (data != "" && data !="go") {alert(data)} 
  if (data=="" || data=="none"){alert("Login not found.")} 
- if (data == "go") {
-
+ if (data.substr(1,2) == "go") {
+data.split("|")
+em1=data(1)
+ha1=data(2)
+$cookies.put(email,em1)
+$cookies.put(hash,ha1)
   setTimeout(function(){window.location.href="index.html"},750) }})}
 }]);
 
