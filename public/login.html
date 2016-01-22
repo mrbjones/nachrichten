@@ -42,8 +42,8 @@ $scope.login = function($cookies) {
 var tt=data.split("|")
 em1=tt[1]
 ha1=tt[2]
-$cookies.put(email,em1)
-$cookies.put(hash,ha1)
+$cookies.put("email",em1)
+$cookies.put("hash",ha1)
   setTimeout(function(){window.location.href="index.html"},750) }})}
 }]);
 
