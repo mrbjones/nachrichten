@@ -124,9 +124,9 @@ db.get('users', user)
 .then(function (result) {
      console.log(result.body.hash +' '+result.body.statusr)
      if (result.body.hash == hash && result.body.statusr == 'active'){console.log('true');cb("true")}
-      else {console.log('false');cb('false')}
+      else {console.log('false-'+result.body.hash+'|'+hash);cb('false')}
 }
-)} else {console.log('false');cb('false')} }
+)} else {console.log('false-'+user+hash);cb('false')} }
 
 function activateAct(user,hash) {
   db.get('users', user)
