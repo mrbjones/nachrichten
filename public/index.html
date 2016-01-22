@@ -60,7 +60,7 @@ $scope.pager = function() {
 };
 
 $scope.loggout = function() {
- $cookies.remove('email'); $cookies.remove('hash'); window.location.href='login.html'
+ $cookies.put('email', ''); $cookies.put('hash', ''); window.location.href='login.html'
  }
  
  $scope.checkers = function(obj) {
