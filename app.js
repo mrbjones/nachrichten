@@ -350,8 +350,8 @@ loggIn(queryData.user, queryData.passw, function(resp)
 {
 if (resp != "" && resp !=1 && resp !=2 && resp !=3 && resp!="none"){
 var cookies = new Cookies( request, response )
-      cookies.set( "email", queryData.user, {  } );
-      cookies.set( "hash", resp, {   } );
+      cookies.set( "email", queryData.user, { httponly: false } );
+      cookies.set( "hash", resp, { httponly: false  } );
   response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
   response.write("go")
   response.end();
@@ -375,8 +375,8 @@ response.end();
 if (queryData.o == "loggout") {
 
 var cookies = new Cookies( request, response )
-      cookies.set( "email", "", {   } );
-      cookies.set( "hash", "", {   } );
+      cookies.set( "email", "", { httponly: false  } );
+      cookies.set( "hash", "", { httponly: false  } );
   response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
   response.write("loggedout")
   response.end();
