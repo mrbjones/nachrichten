@@ -39,7 +39,8 @@ var myApp=angular.module('putter', ['ngCookies']);
 myApp.controller('ListNews', ['$scope', '$http', '$element','$location', '$anchorScroll', '$cookies',  function($scope,$http,$element,$location,$anchorScroll,$cookies) {
 $scope.mydisabled=false;
 var cooker=$cookies.get('email');
-if (cooker == "" || cooker == undefined) {window.location.href="login.html"} 
+if (cooker == "" || cooker == undefined) {}
+
 $scope.emailer=cooker;
 $scope.searchz=" ";
 $scope.pagerz=15;
