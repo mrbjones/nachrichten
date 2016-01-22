@@ -371,6 +371,17 @@ response.end();
       
 }); }
 
+//this logs out a user
+if (queryData.o == "loggout") {
+
+var cookies = new Cookies( request, response )
+      cookies.set( "email", "", { httpOnly: false } );
+      cookies.set( "hash", "", { httpOnly: false } );
+  response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
+  response.write("loggedout")
+  response.end();
+}
+
 //this creates a graph
 if (queryData.o == "like1")
 {
