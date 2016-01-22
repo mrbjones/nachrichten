@@ -39,9 +39,9 @@ $scope.login = function($cookies) {
  {if (data != "" && data.substring(0,2) !="go") {alert(data)} 
  if (data=="" || data=="none"){alert("Login not found.")} 
  if (data.substring(0,2) == "go") {
-data.split("|")
-em1=data(1)
-ha1=data(2)
+var tt=data.split("|")
+em1=tt(1)
+ha1=tt(2)
 $cookies.put(email,em1)
 $cookies.put(hash,ha1)
   setTimeout(function(){window.location.href="index.html"},750) }})}
