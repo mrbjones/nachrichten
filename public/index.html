@@ -60,7 +60,7 @@ $scope.pager = function() {
 };
 
 $scope.loggout = function() {
-  $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 'loggout',search: $scope.searchz, offs: $scope.pagerz}}).success(function(data, status, headers, config) {window.location.href='login.html'} })
+  $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 'loggout',search: $scope.searchz, offs: $scope.pagerz}}).success(function(data, status, headers, config) {window.location.href='login.html'} )
  
  }
  
