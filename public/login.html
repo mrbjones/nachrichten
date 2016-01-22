@@ -30,7 +30,7 @@ Passwort:</td><td><input type=password name=passw ng-model="passw"></td></tr><tr
 </html>
 <script>
 var myApp=angular.module('logg', ['ngCookies']);
-myApp.controller('logger', ['$scope', '$http', '$element','$location', '$anchorScroll', '$cookies', function($scope,$http,$element,$location,$anchorScroll,$cookies) {
+myApp.controller('logger', ['$scope', '$http', '$cookies', function($scope,$http,$cookies) {
 $scope.mydisabled=false; 
 
 
@@ -39,11 +39,11 @@ $scope.login = function($cookies) {
  {if (data != "" && data.substring(0,2) !="go") {alert(data)} 
  if (data=="" || data=="none"){alert("Login not found.")} 
  if (data.substring(0,2) == "go") {
-var tt=data.split("|")
-em1=tt[1]
-ha1=tt[2]
-$cookies.put("email",em1)
-$cookies.put("hash",ha1)
+var tt=data.split("|");
+em1=tt[1];
+ha1=tt[2];
+$cookies.put("email",em1);
+$cookies.put("hash",ha1);
   setTimeout(function(){window.location.href="index.html"},750) }})}
 }]);
 
