@@ -353,7 +353,7 @@ var cookies = new Cookies( request, response )
       cookies.set( "email", queryData.user, { httpOnly: false } );
       cookies.set( "hash", resp, { httpOnly: false  } );
   response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
-  response.write("go"+"|"+queryData.user+"|"+hash)
+  response.write("go"+"|"+queryData.user+"|"+resp)
   response.end();
 }
   if (resp==1) {response.write("Password Doesn't Match.")
