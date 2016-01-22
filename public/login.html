@@ -32,9 +32,10 @@ Passwort:</td><td><input type=password name=passw ng-model="passw"></td></tr><tr
 var myApp=angular.module('logg', ['ngCookies']);
 myApp.controller('logger', ['$scope', '$http', '$cookies', function($scope,$http,$cookies) {
 $scope.mydisabled=false; 
-var self = this;
+
 $scope.login = function() {
-   $http({ url: '/app.js', method: "GET", params: {o: 'logg',user: $scope.logg, passw: $scope.passw}}).success(function(data) 
+ var self = this;
+  this.$http({ url: '/app.js', method: "GET", params: {o: 'logg',user: $scope.logg, passw: $scope.passw}}).success(function(data) 
  { 
 if (data.substring(0,2) == "go") {
 var tt=data.split("|");
