@@ -347,7 +347,7 @@ if (queryData.o == "resetpw3") {
 //this logs in a user
 if (queryData.o == "logg") {
 loggIn(queryData.user, queryData.passw, function(resp)
-{
+{console.log(queryData.user+'|'+ queryData.passw)
 if (resp != "" && resp !=1 && resp !=2 && resp !=3 && resp!="none"){
 var cookies = new Cookies( request, response )
       cookies.set( "email", queryData.user, { httpOnly: false } );
