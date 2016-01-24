@@ -419,7 +419,7 @@ if (request.url == "/index.html"||request.url == "index.html"||request.url=="/"|
           var em1='dummy'
           var ha1='123'
           em1=cookies.get("email")
-         if (em1 !== undefined){
+         if (em1 != undefined){
           em1=em1.replace('%40', '@')
           ha1=cookies.get("hash")
           console.log(em1+ha1);
