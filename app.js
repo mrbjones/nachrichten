@@ -419,6 +419,7 @@ if (request.url == "/index.html"||request.url == "index.html"||request.url=="/"|
           var em1='dummy'
           var ha1='123'
           em1=cookies.get("email")
+          em1=em1.replace('%40', '@')
           ha1=cookies.get("hash")
           console.log(em1+ha1);
                checker(em1, ha1, function(resp) {
