@@ -7,3 +7,10 @@ hr {
     background: #eeeeee;
 }
 span {color:gray;}
+ .parent .popup {
+  display: none;
+}
+
+.parent:hover .popup {
+  display: block;
+}
