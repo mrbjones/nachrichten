@@ -426,11 +426,12 @@ if (request.url == "/index.html"||request.url == "index.html"||request.url=="/"|
                checker(em1, ha1, function(resp) {
                if (resp == "true"){filePath = "public/index.html";absPath = "./" + filePath;serverWorking(response, absPath)}
                else {filePath = "public/login.html";absPath = "./" + filePath;serverWorking(response, absPath)}
-               }
+               })
+               
          }
           else {filePath = "public/login.html";absPath = "./" + filePath;serverWorking(response, absPath)}
          
-               )}
+               }
 else {filePath = "public" + request.url;
 absPath = "./" + filePath;
 console.log(absPath)
