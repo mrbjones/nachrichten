@@ -77,6 +77,7 @@ function getSaved(offs,user,cb) {
       user=user.replace('%40', '@')
 searcher2='@path.kind:relationship AND @path.source.key:'+user;
 db.newSearchBuilder()
+.limit(15)
 .query(searcher2)
 .then(function (relr) {
 var items2 = relr.body.results;
@@ -85,10 +86,16 @@ var items2 = relr.body.results;
       sear2=sear2 + "@path.path.key:`"+relr3.path.destination.key+"` OR "
       });
       sear2=sear2.substr(1, sear2.length-4)
-      sear2=sear2+")"
-      
 console.log(sear2)
-cb(JSON.stringify(relr));
+
+db.newSearchBuilder()
+.query(sear2)
+.then(function (resultr) {
+      cb(resultr.body)
+      
+})
+
+
 })
         .fail(function (res1) { 
            console.log(JSON.stringify(res1));
