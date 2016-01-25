@@ -79,8 +79,15 @@ searcher2='@path.kind:relationship AND @path.source.key:'+user;
 db.newSearchBuilder()
 .query(searcher2)
 .then(function (relr) {
-
-console.log(JSON.stringify(relr))
+var items2 = relr.body.results;
+      sear2="("
+      items.forEach(function(relr) {
+      sear2=sear2 + "@path.path.key:`"+relr.destination.key+"` OR "
+      });
+      sear2=sear2.substr(1, sear2.length-4)
+      sear2=sear2+")"
+      
+console.log(sear2)
 cb(JSON.stringify(relr));
 })
         .fail(function (res1) { 
