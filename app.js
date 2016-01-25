@@ -79,7 +79,7 @@ searcher2='@path.kind:relationship AND @path.source.key:'+user;
 db.newSearchBuilder()
 .query(searcher2)
 .then(function (relr) {
-var items2 = relr.body.results;
+var items2 = relr.body.results.destination;
       sear2="("
       items2.forEach(function(relr3) {
       sear2=sear2 + "@path.path.key:`"+relr3.destination.key+"` OR "
