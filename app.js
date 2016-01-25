@@ -72,6 +72,20 @@ if (relres.body.count == 0){
 })
 }
 
+
+function getSaved(offs,user,cb) {
+searcher2='@path.kind:relationship AND @path.source.key:'+user;
+db.newSearchBuilder()
+.query(searcher2)
+.then(function (relr) {
+
+console.log(JSON.stringify(relr))
+cb(JSON.stringify(relr));
+})}
+
+
+
+
 function makeLike(user,key,cb){
 db.newGraphBuilder()
 .create()
@@ -313,6 +327,19 @@ user=cookies.get("email")
 searchy(queryData.search+'*', offs, user, function(resp12)
 {response.write(resp12);response.end();
 }); }
+
+//this one gets saved stories
+if (queryData.o == "mySaved") {
+response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
+var offs=queryData.offs
+if (offs==''){offs=0};
+var cookies = new Cookies( request, response )
+user=cookies.get("email")
+getSaved(offs, user, function(resp12)
+{response.write(resp12);response.end();
+}); }
+
+
 //this creates a new user
 if (queryData.o == "nu") {
 response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
