@@ -91,7 +91,8 @@ console.log(sear2)
 db.newSearchBuilder()
 .query(sear2)
 .then(function (resultr) {
-      cb(resultr.body)
+     console.log(resultr)
+      cb(resultr)
       
 })
 
