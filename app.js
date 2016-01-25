@@ -74,6 +74,7 @@ if (relres.body.count == 0){
 
 
 function getSaved(offs,user,cb) {
+      user=user.replace('%40', '@')
 searcher2='@path.kind:relationship AND @path.source.key:'+user;
 db.newSearchBuilder()
 .query(searcher2)
@@ -81,7 +82,11 @@ db.newSearchBuilder()
 
 console.log(JSON.stringify(relr))
 cb(JSON.stringify(relr));
-})}
+})
+        .fail(function (res1) { 
+           console.log(JSON.stringify(res1));
+    })
+}
 
 
 
