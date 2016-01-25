@@ -18,9 +18,10 @@
 <input ng-value="search1"  ng-model="searchz" ng-keyup="update()">
 <input ng-value="pager1" ng-model="pagerz" name='pager'  type=hidden>
 <input type=button ng-click="update()" value="suchen" >
-</form></center>
+</form>
+<a ng-onclick="mysaved()">Mein gespeicherte Stories abrufen.</a></center>
 <div ></div>
-<table><tr><td></td><td>Speichern</td></tr><tr ng-repeat="news in newslist">
+<table><tr><td></td><td style=font-family:verdana;font-size:11px;>Speichern</td></tr><tr ng-repeat="news in newslist">
 
 <td style=font-family:verdana;font-size:11px>
 <b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
@@ -59,6 +60,11 @@ $scope.pager = function() {
   $scope.pagerz=parseInt($scope.pagerz, 10)+15; if (parseInt($scope.pagerz, 10) >= parseInt(data.body.total_count,10)) {
   $scope.mydisabled=true;   };   $location.hash('topp');  $anchorScroll(); });
 };
+
+$scope.mySaved = function() { $scope.mydisabled=false; 
+   $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 'mySaved',search: $scope.searchz}}).success(function(data, status, headers, config) 
+ {$scope.newslist=[]; $scope.newslist=data.body.results;$scope.pagerz='15';if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; } 
+  $location.hash('topp');  $anchorScroll(); }); };
 
 $scope.loggout = function() {
   $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 'loggout',search: $scope.searchz, offs: $scope.pagerz}}).success(function(data, status, headers, config) {window.location.href='login.html'} )
