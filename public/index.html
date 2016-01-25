@@ -61,7 +61,7 @@ $scope.pager = function() {
   $scope.mydisabled=true;   };   $location.hash('topp');  $anchorScroll(); });
 };
 
-$scope.mySaved = function() { $scope.mydisabled=false; 
+$scope.mysaved = function() { $scope.mydisabled=false; 
    $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 'mySaved',search: $scope.searchz}}).success(function(data, status, headers, config) 
  {$scope.newslist=[]; $scope.newslist=data.body.results;$scope.pagerz='15';if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; } 
   $location.hash('topp');  $anchorScroll(); }); };
