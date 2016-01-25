@@ -86,6 +86,9 @@ var items2 = relr.body.results;
       sear2=sear2 + "@path.path.key:`"+relr3.path.destination.key+"` OR "
       });
       sear2=sear2.substr(1, sear2.length-4)
+
+      
+})
 console.log(sear2)
 
 db.newSearchBuilder()
@@ -93,9 +96,6 @@ db.newSearchBuilder()
 .then(function (resultr) {
      console.log(resultr)
       cb(resultr)
-      
-})
-
 
 })
         .fail(function (res1) { 
