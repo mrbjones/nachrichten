@@ -97,9 +97,8 @@ db.newSearchBuilder()
       items3.forEach(function(resser3) {
       resser3.value.liker="1===1"
       }
-      });
+      )}
 cb(JSON.stringify(resultr))
-}
 })
 .fail(function (res1) { 
            console.log(JSON.stringify(res1));
