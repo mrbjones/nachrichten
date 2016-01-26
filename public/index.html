@@ -15,13 +15,13 @@
 <center><br><br><a href=index.html style=text-decoration:none;><img src=zeitung.PNG ng-click="refresher()"></a>
 <br><form novalidate class="simple-form" >
 
-<input ng-value="search1"  ng-model="searchz" ng-keyup="update()">
+<input ng-value="search1"  ng-model="searchz" ng-keyup="update()" ng-click="sucher=false">
 <input ng-value="pager1" ng-model="pagerz" name='pager'  type=hidden>
-<input type=button ng-click="update()" value="suchen" >
+<input type=button ng-click="update()" value="suchen" ng-disabled="sucher">
 </form>
-<a ng-click="mysaved()" style=color:darkblue;font-family:verdana;font-size:11px;cursor:pointer;>Meine Stories abrufen.</a></center>
+<a ng-click="mysaved()" style=color:darkblue;font-family:verdana;font-size:11px;cursor:pointer;>Favoriten abrufen.</a></center>
 <div ></div>
-<table><tr><td></td><td style=font-family:verdana;font-size:11px;>Speichern</td></tr><tr ng-repeat="news in newslist">
+<table><tr><td></td><td style=font-family:verdana;font-size:11px;>Favorite</td></tr><tr ng-repeat="news in newslist">
 
 <td style=font-family:verdana;font-size:11px>
 <b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
@@ -48,7 +48,7 @@ $scope.pagerz=15;
 
 $http({ url: window.location.hostname+'/app.js', method: "GET", params: {o: 'g', user: $cookies.get('email')}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results; if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; };  }); 
 
-$scope.refresher= function() {
+$scope.refresher= function() { $scope.sucher=true;
  $http({ url: window.location.hostname+'/app.js', method: "GET", params: {o: 'g', user: $cookies.get('email')}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results; if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; };  }); 
 
 }
