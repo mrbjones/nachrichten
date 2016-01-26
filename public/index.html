@@ -63,8 +63,8 @@ $scope.pager = function() {
 
 $scope.mysaved = function() { $scope.mydisabled=false; 
    $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 'mySaved',search: $scope.searchz}}).success(function(data, status, headers, config) 
- {$scope.newslist=[]; $scope.newslist=data.body.results;$scope.pagerz='15';if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; } 
-  $location.hash('topp');  $anchorScroll(); }); };
+ { if (data != 'none'){$scope.newslist=[]; $scope.newslist=data.body.results;$scope.pagerz='15';if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; } 
+  $location.hash('topp');  $anchorScroll();} else {alert('Keine Stories gefunden.')} }); };
 
 $scope.loggout = function() {
   $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 'loggout',search: $scope.searchz, offs: $scope.pagerz}}).success(function(data, status, headers, config) {window.location.href='login.html'} )
