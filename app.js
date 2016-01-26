@@ -78,8 +78,7 @@ function getSaved(offs,user,cb) {
 searcher2='@path.kind:relationship AND @path.source.key:'+user;
 db.newSearchBuilder()
 .limit(15)
-if (offs > 0){
-db.offset(offs)}
+if (offs > 0){.offset(offs)}
 .query(searcher2)
 .then(function (relr) {
 var items2 = relr.body.results;
