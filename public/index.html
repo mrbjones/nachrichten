@@ -68,7 +68,7 @@ $scope.pager = function() {
 };
 
 $scope.mysaved = function() { $scope.fmydisabled=false; $scope.sucher=true;$scope.searchz="";$scope.wweiter=false;$scope.fweiter=true;
-   $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 'mySaved', offs: $scope.pagerz}}).success(function(data, status, headers, config) 
+   $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 'mySaved', offs: 0}}).success(function(data, status, headers, config) 
  { if (data != 'none'){$scope.newslist=[]; $scope.newslist=data.body.results;$scope.pagerz='15';if (parseInt(data.body.total_count,10) < 15){$scope.fmydisabled=true; } 
   $location.hash('topp');  $anchorScroll();} else {alert('Keine Stories gefunden.')} }); };
   
