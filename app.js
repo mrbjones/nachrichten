@@ -82,7 +82,7 @@ console.log(offs)
 db.newSearchBuilder()
 .limit(15)
 .offset(offs)
-db.query(searcher2)
+.query(searcher2)
 .then(function (relr) {
 var items2 = relr.body.results;
       sear2="("
