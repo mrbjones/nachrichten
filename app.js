@@ -104,10 +104,12 @@ db.newSearchBuilder()
 })
 .fail(function (res1) { 
            console.log(JSON.stringify(res1));
+           cb('none')
     })
 })
         .fail(function (res1) { 
            console.log(JSON.stringify(res1));
+           cb('none')
     })
 }
 
