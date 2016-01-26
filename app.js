@@ -92,8 +92,13 @@ db.newSearchBuilder()
 .limit(15)
 .query(sear2)
 .then(function (resultr) {
-     console.log(JSON.stringify(resultr))
-      cb(JSON.stringify(resultr))
+      if (resultr.body.count > 0){
+      var items3 = resultr.body.results;
+      items3.forEach(function(resser3) 
+      resser3.value.liker="1===1"
+      });
+cb(JSON.stringify(resultr))
+}
 })
 .fail(function (res1) { 
            console.log(JSON.stringify(res1));
