@@ -12,7 +12,7 @@
  <a id="topp"></a>
 <div id=main ng-controller="ListNews" >
  <div style=float:right>{{emailer}} | <a href style=color:blue;cursor:hand; ng-click="loggout()">Logout</a></div>
-<center><br><br><a href=index.html style=text-decoration:none;><img src=zeitung.PNG ></a>
+<center><br><br><a href=index.html style=text-decoration:none;><img src=zeitung.PNG ng-click="refresher()"></a>
 <br><form novalidate class="simple-form" >
 
 <input ng-value="search1"  ng-model="searchz" ng-keyup="update()">
@@ -47,6 +47,11 @@ $scope.searchz=" ";
 $scope.pagerz=15;
 
 $http({ url: window.location.hostname+'/app.js', method: "GET", params: {o: 'g', user: $cookies.get('email')}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results; if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; };  }); 
+
+$scope.refresher= function() {
+ $http({ url: window.location.hostname+'/app.js', method: "GET", params: {o: 'g', user: $cookies.get('email')}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results; if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; };  }); 
+
+}
 
 //$scope.listnewz = function(newser) {     $http({ url: 'http://front1.uswest.appfog.ctl.io/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results;   }); $scope.newser.search="";$scope.newser.pager="15" ; };
 $scope.update = function() { $scope.mydisabled=false; 
@@ -91,9 +96,9 @@ $scope.loggout = function() {
 
 
 </script>
-
+<!--
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- mrbjgq -->
+
 <center><ins class="adsbygoogle"
      style="display:inline-block;width:728px;height:90px"
      data-ad-client="ca-pub-1571168911646120"
@@ -101,4 +106,5 @@ $scope.loggout = function() {
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+-->
 </body>
