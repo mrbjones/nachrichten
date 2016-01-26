@@ -83,7 +83,7 @@ db.newSearchBuilder()
 var items2 = relr.body.results;
       sear2="("
       items2.forEach(function(relr3) {
-      sear2=sear2 + "@path.path.key:`"+relr3.path.destination.key+"` OR "
+      sear2=sear2 + "@path.key:`"+relr3.path.destination.key+"` OR "
       });
       sear2=sear2.substr(1, sear2.length-4)
 console.log(sear2)
