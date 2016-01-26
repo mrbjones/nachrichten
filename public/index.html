@@ -21,8 +21,8 @@
 </form>
 <a ng-click="mysaved()" style=color:darkblue;font-family:verdana;font-size:11px;cursor:pointer;>Favoriten abrufen.</a></center>
 <div ></div>
-<table><tr><td></td><td style=font-family:verdana;font-size:11px;>Favorite</td></tr><tr ng-repeat="news in newslist">
-
+<table><tr><td></td><td style=font-family:verdana;font-size:11px;text-align:right;>Favorit</td></tr>
+<tr ng-repeat="news in newslist">
 <td style=font-family:verdana;font-size:11px>
 <b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
 <span>{{news.value.pubDate}}</span><br>
@@ -30,7 +30,7 @@
  <td><div class=squaredFour><input id="squaredFour{{$index}}"  type=checkbox data='{{news.path.key}}'  ng-click="checkers($event)" ng-checked="{{news.value.liker}}">
   <label for="squaredFour{{$index}}"></label></div></td>
 </tr>
-<tr><td></td><td style=text-align:right;><input ng-show="fweiter" ng-disabled="fmydisabled" ng-model="fnexter" type=button value='favoriten weiter' ng-click="mySaved"><input ng-show="wweiter" ng-disabled="mydisabled" ng-model="nexter" type=button value='weiter' ng-click="pager()"></td></tr>
+<tr><td></td><td style=text-align:right;><input ng-show="fweiter" ng-disabled="fmydisabled" ng-model="fnexter" type=button value='favoriten weiter' ng-click="mysavedpager"><input ng-show="wweiter" ng-disabled="mydisabled" ng-model="nexter" type=button value='weiter' ng-click="pager()"></td></tr>
 </table>
 <hr>
 </div>
@@ -67,9 +67,14 @@ $scope.pager = function() {
   $scope.mydisabled=true;   };   $location.hash('topp');  $anchorScroll(); });
 };
 
-$scope.mysaved = function() { $scope.mydisabled=false; $scope.sucher=true;$scope.searchz="";$scope.wweiter=false;$scope.fweiter=true;
+$scope.mysaved = function() { $scope.fmydisabled=false; $scope.sucher=true;$scope.searchz="";$scope.wweiter=false;$scope.fweiter=true;
    $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 'mySaved', offs: $scope.pagerz}}).success(function(data, status, headers, config) 
- { if (data != 'none'){$scope.newslist=[]; $scope.newslist=data.body.results;$scope.pagerz='15';if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; } 
+ { if (data != 'none'){$scope.newslist=[]; $scope.newslist=data.body.results;$scope.pagerz='15';if (parseInt(data.body.total_count,10) < 15){$scope.fmydisabled=true; } 
+  $location.hash('topp');  $anchorScroll();} else {alert('Keine Stories gefunden.')} }); };
+  
+  $scope.mysavedpager = function() { $scope.fmydisabled=false; $scope.sucher=true;$scope.searchz="";$scope.wweiter=false;$scope.fweiter=true;
+   $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 'mySaved', offs: $scope.pagerz}}).success(function(data, status, headers, config) 
+ { if (data != 'none'){$scope.newslist=[]; $scope.newslist=data.body.results;$scope.pagerz=parseInt($scope.pagerz, 10)+15; if (parseInt($scope.pagerz, 10) >= parseInt(data.body.total_count,10)){$scope.fmydisabled=true; } 
   $location.hash('topp');  $anchorScroll();} else {alert('Keine Stories gefunden.')} }); };
 
 $scope.loggout = function() {
