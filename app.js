@@ -76,9 +76,9 @@ if (relres.body.count == 0){
 function getSaved(offs,user,cb) {
       user=user.replace('%40', '@')
 searcher2='@path.kind:relationship AND @path.source.key:'+user;
+if (offs==0){offs="0"}
 db.newSearchBuilder()
-db.limit(15)
-if (offs > 0){offs=string(0)}
+.limit(15)
 .offset(offs)
 db.query(searcher2)
 .then(function (relr) {
