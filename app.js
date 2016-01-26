@@ -77,9 +77,9 @@ function getSaved(offs,user,cb) {
       user=user.replace('%40', '@')
 searcher2='@path.kind:relationship AND @path.source.key:'+user;
 db.newSearchBuilder()
-.limit(15)
-if (offs > 0){.offset(offs)}
-.query(searcher2)
+db.limit(15)
+if (offs > 0){db.offset(offs)}
+db.query(searcher2)
 .then(function (relr) {
 var items2 = relr.body.results;
       sear2="("
