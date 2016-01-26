@@ -99,7 +99,7 @@ db.newSearchBuilder()
       }
       )
      cb(JSON.stringify(resultr))       
-                } else {cb('none')
+                } else {cb('none')}
 
 })
 .fail(function (res1) { 
