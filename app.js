@@ -94,8 +94,9 @@ db.newSearchBuilder()
 .then(function (resultr) {
       if (resultr.body.count > 0){
       var items3 = resultr.body.results;
-      items3.forEach(function(resser3) 
+      items3.forEach(function(resser3) {
       resser3.value.liker="1===1"
+      }
       });
 cb(JSON.stringify(resultr))
 }
