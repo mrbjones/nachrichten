@@ -48,7 +48,7 @@ $scope.pagerz=15;
 
 $http({ url: window.location.hostname+'/app.js', method: "GET", params: {o: 'g', user: $cookies.get('email')}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results; if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; };  }); 
 
-$scope.refresher= function() { $scope.sucher=true;
+$scope.refresher= function() { 
  $http({ url: window.location.hostname+'/app.js', method: "GET", params: {o: 'g', user: $cookies.get('email')}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results; if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; };  }); 
 
 }
@@ -66,7 +66,7 @@ $scope.pager = function() {
   $scope.mydisabled=true;   };   $location.hash('topp');  $anchorScroll(); });
 };
 
-$scope.mysaved = function() { $scope.mydisabled=false; 
+$scope.mysaved = function() { $scope.mydisabled=false; $scope.sucher=true;$scope.searchz="";
    $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 'mySaved',search: $scope.searchz}}).success(function(data, status, headers, config) 
  { if (data != 'none'){$scope.newslist=[]; $scope.newslist=data.body.results;$scope.pagerz='15';if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; } 
   $location.hash('topp');  $anchorScroll();} else {alert('Keine Stories gefunden.')} }); };
