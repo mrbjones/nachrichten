@@ -15,7 +15,7 @@
 <center><br><br><a href=index.html style=text-decoration:none;><img src=zeitung.PNG ng-click="refresher()"></a>
 <br><form novalidate class="simple-form" >
 
-<input ng-value="search1"  ng-model="searchz" ng-keyup="update()" ng-click="sucher=false">
+<input ng-value="search1"  ng-model="searchz" ng-keyup="update()" ng-click="sucher=false;fweiter=false;wweiter=true">
 <input ng-value="pager1" ng-model="pagerz" name='pager'  type=hidden>
 <input type=button ng-click="update()" value="suchen" ng-disabled="sucher">
 </form>
@@ -30,7 +30,7 @@
  <td><div class=squaredFour><input id="squaredFour{{$index}}"  type=checkbox data='{{news.path.key}}'  ng-click="checkers($event)" ng-checked="{{news.value.liker}}">
   <label for="squaredFour{{$index}}"></label></div></td>
 </tr>
-<tr><td></td><td style=text-align:right;><input ng-disabled="mydisabled" ng-model="nexter" type=button value='weiter' ng-click="pager()"></td></tr>
+<tr><td></td><td style=text-align:right;><input ng-show="fweiter" ng-disabled="fmydisabled" ng-model="fnexter" type=button value='favoriten weiter' ng-click="mySaved"><input ng-show="wweiter" ng-disabled="mydisabled" ng-model="nexter" type=button value='weiter' ng-click="pager()"></td></tr>
 </table>
 <hr>
 </div>
@@ -41,7 +41,8 @@ myApp.controller('ListNews', ['$scope', '$http', '$element','$location', '$ancho
 $scope.mydisabled=false;
 var cooker=$cookies.get('email');
 if (cooker == "" || cooker == undefined) {}
-
+$scope.fweiter=false;
+$scope.wweiter=true;
 $scope.emailer=cooker;
 $scope.searchz=" ";
 $scope.pagerz=15;
@@ -66,8 +67,8 @@ $scope.pager = function() {
   $scope.mydisabled=true;   };   $location.hash('topp');  $anchorScroll(); });
 };
 
-$scope.mysaved = function() { $scope.mydisabled=false; $scope.sucher=true;$scope.searchz="";
-   $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 'mySaved',search: $scope.searchz}}).success(function(data, status, headers, config) 
+$scope.mysaved = function() { $scope.mydisabled=false; $scope.sucher=true;$scope.searchz="";$scope.wweiter=false;$scope.fweiter=true;
+   $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 'mySaved', offs: $scope.pagerz}}).success(function(data, status, headers, config) 
  { if (data != 'none'){$scope.newslist=[]; $scope.newslist=data.body.results;$scope.pagerz='15';if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; } 
   $location.hash('topp');  $anchorScroll();} else {alert('Keine Stories gefunden.')} }); };
 
