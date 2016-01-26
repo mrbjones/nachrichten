@@ -77,7 +77,7 @@ function getSaved(offs,user,cb) {
       user=user.replace('%40', '@')
 searcher2='@path.kind:relationship AND @path.source.key:'+user;
 
-if (offs == 0 || offs == undefined){offs="0"} 
+if (offs == 0 || offs == undefined){offs=1} 
 console.log(offs)
 db.newSearchBuilder()
 .limit(15)
