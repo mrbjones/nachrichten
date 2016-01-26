@@ -89,6 +89,7 @@ var items2 = relr.body.results;
 console.log(sear2)
 
 db.newSearchBuilder()
+.limit(15)
 .query(sear2)
 .then(function (resultr) {
      console.log(JSON.stringify(resultr))
