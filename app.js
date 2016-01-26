@@ -76,7 +76,8 @@ if (relres.body.count == 0){
 function getSaved(offs,user,cb) {
       user=user.replace('%40', '@')
 searcher2='@path.kind:relationship AND @path.source.key:'+user;
-if (offs==0 || offs = undefined){offs="0"} 
+
+if (offs == 0 || offs == undefined){offs="0"} 
 console.log(offs)
 db.newSearchBuilder()
 .limit(15)
@@ -365,7 +366,7 @@ searchy(queryData.search+'*', offs, user, function(resp12)
 if (queryData.o == "mySaved") {
 response.writeHead(200, {'Content-Type': 'text/plain;charset=UTF-8'});
 var offs=queryData.offs
-if (offs==''){offs=0};
+if (offs==''){offs="0"};
 var cookies = new Cookies( request, response )
 user=cookies.get("email")
 getSaved(offs, user, function(resp12)
