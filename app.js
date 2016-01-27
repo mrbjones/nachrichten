@@ -82,7 +82,7 @@ console.log(offs1)
 db.newSearchBuilder()
 .limit(15)
 .offset(offs1)
-.sortBy('path.destination.reftime:asc')
+.sortBy('path.destination.data.pubDate:desc')
 .query(searcher2)
 .then(function (relr) {
       console.log(JSON.stringify(relr))
