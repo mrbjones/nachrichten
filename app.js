@@ -81,6 +81,7 @@ console.log(offs)
 db.newSearchBuilder()
 .limit(15)
 //.offset(offs)
+.sortBy('path.destination.reftime:desc')
 .query(searcher2)
 .then(function (relr) {
       console.log(JSON.stringify(relr))
