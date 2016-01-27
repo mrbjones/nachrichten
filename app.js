@@ -465,6 +465,7 @@ if (queryData.o=="like2")
 {
        checker(queryData.user, queryData.hash, function(resp) {
             if (resp == "true"){
+                  keyer=queryData.key
                    var piper=keyer.split('#||#')
                   key1=piper[0]
                   date1=piper[1]
