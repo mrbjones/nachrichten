@@ -12,12 +12,12 @@
  <a id="topp"></a>
 <div id=main ng-controller="ListNews" >
  <div style=float:right>{{emailer}} | <a href style=color:blue;cursor:hand; ng-click="loggout()">Logout</a></div>
-<center><br><br><a href=index.html style=text-decoration:none;><img src=zeitung.PNG ng-click="refresher()"></a>
+<center><br><br><a href=index.html style=text-decoration:none;><img title="Seite neu anfordern" src=zeitung.PNG ng-click="refresher()"></a>
 <br><form novalidate class="simple-form" >
 
 <input ng-value="search1"  ng-model="searchz" ng-keyup="update()" ng-click="sucher=false;fweiter=false;wweiter=true">
 <input ng-value="pager1" ng-model="pagerz" name='pager'  type=hidden>
-<input type=button ng-click="update()" value="suchen" ng-disabled="sucher">
+<input type=button ng-click="update()" value="suchen" ng-disabled="sucher"><input type=button value="reset" ng-click="refresher()"
 </form>
 <a ng-click="mysaved()" style=color:darkblue;font-family:verdana;font-size:11px;cursor:pointer;>Favoriten abrufen.</a></center>
 <div ></div>
@@ -49,7 +49,7 @@ $scope.pagerz=15;
 
 $http({ url: window.location.hostname+'/app.js', method: "GET", params: {o: 'g', user: $cookies.get('email')}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results; if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; };  }); 
 
-$scope.refresher= function() { 
+$scope.refresher= function() { $scope.wweiter=true;$scope.fweiter=false;
  $http({ url: window.location.hostname+'/app.js', method: "GET", params: {o: 'g', user: $cookies.get('email')}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results; if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; };  }); 
 
 }
