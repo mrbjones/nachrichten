@@ -83,6 +83,7 @@ db.newSearchBuilder()
 //.offset(offs)
 .query(searcher2)
 .then(function (relr) {
+      console.log(JSON.stringify(relr))
 var items2 = relr.body.results;
       sear2="("
       items2.forEach(function(relr3) {
