@@ -25,12 +25,13 @@
 <div style=min-width:300px;max-width:1000px;>
 
 <div ng-repeat="news in newslist" style=width:100%;background-color:#eeeeee;>
-  <div style=float:left;padding:10px;text-align:left;font-family:verdana;font-size:11px;background-color:white;border-style:solid;border-width:1px;border-color:silver>
-<b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
-<span>{{news.value.pubDate}}</span><br>
-{{news.value.description}}
+  <div style=padding:10px;text-align:left;font-family:verdana;font-size:11px;background-color:white;border-style:solid;border-width:1px;border-color:silver>
 <div class=squaredFour style=float:right><input id="squaredFour{{$index}}"  type=checkbox data='{{news.path.key}}#||#{{news.value.pubDate'  ng-click="checkers($event)" ng-checked="{{news.value.liker}}">
   <label for="squaredFour{{$index}}"></label>  </div>
+<div></div><b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
+<span>{{news.value.pubDate}}</span><br>
+{{news.value.description}}
+</div>
 </div>
  <br><br>
 </div>
