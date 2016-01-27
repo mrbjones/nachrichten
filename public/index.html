@@ -24,7 +24,7 @@
 <center>
 <div style=min-width:300px;max-width:1000px;>
 
-<div ng-repeat="news in newslist" style=width:100%;background-color:#eeeeee;>
+<div ng-repeat="news in newslist" style=width:100%;background-color:#eeeeee;padding:10px;box-sizing:border-box;>
 
 <div style=min-width:145px;max-width:475px;box-sizing:border-box;padding:10px;text-align:left;font-family:verdana;font-size:11px;background-color:white;border-style:solid;border-width:1px;border-color:silver;width:47.5%;  ng-class-odd="'odd'" ng-class-even="'even'">
 <div class=squaredFour style=float:right;width:25px;text-align:left;><input id="squaredFour{{$index}}"  type=checkbox data='{{news.path.key}}#||#{{news.value.pubDate'  ng-click="checkers($event)" ng-checked="{{news.value.liker}}">
@@ -33,7 +33,7 @@
 <span>{{news.value.pubDate}}</span><br>
 {{news.value.description}}
 </div>
-<br><br>
+
 </div>
  
 </div>
