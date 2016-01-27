@@ -21,18 +21,18 @@
 </form>
 <a ng-click="mysaved()" style=color:darkblue;font-family:verdana;font-size:11px;cursor:pointer;>Favoriten abrufen.</a></center>
 <div ></div>
-<table><tr><td></td><td style=font-family:verdana;font-size:11px;text-align:right;width:25px;>Favorit</td></tr>
-<tr ng-repeat="news in newslist">
-<td style=font-family:verdana;font-size:11px>
+<div> style=font-family:verdana;font-size:11px;text-align:right;width:25px;>Favorit</div
+<div ng-repeat="news in newslist">
+
 <b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
 <span>{{news.value.pubDate}}</span><br>
-{{news.value.description}}<br><hr></td>
- <td style=font-family:verdana;font-size:11px;text-align:right;width:25px;><div style=font-family:verdana;font-size:11px;text-align:right;width:25px; class=squaredFour><input id="squaredFour{{$index}}"  type=checkbox data='{{news.path.key}}#||#{{news.value.pubDate'  ng-click="checkers($event)" ng-checked="{{news.value.liker}}">
-  <label for="squaredFour{{$index}}"></label></div></td>
-</tr>
-<tr><td colspan=2 style=text-align:right;><input ng-show="fweiter" ng-disabled="fmydisabled" ng-model="fnexter" type=button value='favoriten weiter' ng-click="mysavedpager()" style=float:right;><input ng-show="wweiter" ng-disabled="mydisabled" ng-model="nexter" type=button value='weiter' ng-click="pager()"  style=float:right;></td></tr>
-</table>
-<hr>
+{{news.value.description}}<br>
+<div style=font-family:verdana;font-size:11px;text-align:right;width:25px; class=squaredFour><input id="squaredFour{{$index}}"  type=checkbox data='{{news.path.key}}#||#{{news.value.pubDate'  ng-click="checkers($event)" ng-checked="{{news.value.liker}}">
+  <label for="squaredFour{{$index}}"></label></div>
+</div>
+<div> style=text-align:right;><input ng-show="fweiter" ng-disabled="fmydisabled" ng-model="fnexter" type=button value='favoriten weiter' ng-click="mysavedpager()" style=float:right;><input ng-show="wweiter" ng-disabled="mydisabled" ng-model="nexter" type=button value='weiter' ng-click="pager()"  style=float:right;>
+
+
 </div>
 <br>
 <script>
