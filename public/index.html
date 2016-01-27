@@ -25,14 +25,14 @@
 <div style=min-width:300px;max-width:1000px;>
 
 <div ng-repeat="news in newslist" style=width:100%;background-color:#eeeeee;>
-  <div style=width:100%;padding:10px;text-align:left;font-family:verdana;font-size:11px;background-color:white;border-style:solid;border-width:1px;border-color:silver;width:100%>
+  <div style=float:left;padding:10px;text-align:left;font-family:verdana;font-size:11px;background-color:white;border-style:solid;border-width:1px;border-color:silver;width:100%>
 <b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
 <span>{{news.value.pubDate}}</span><br>
 {{news.value.description}}
-<div class=squaredFour style=width:100%;text-align:right;><input id="squaredFour{{$index}}"  type=checkbox data='{{news.path.key}}#||#{{news.value.pubDate'  ng-click="checkers($event)" ng-checked="{{news.value.liker}}">
+<div class=squaredFour style=float:right><input id="squaredFour{{$index}}"  type=checkbox data='{{news.path.key}}#||#{{news.value.pubDate'  ng-click="checkers($event)" ng-checked="{{news.value.liker}}">
   <label for="squaredFour{{$index}}"></label></div>
 </div>
- <br><br>
+ <br>
 </div>
 
 <div style=text-align:right;width:100%;><input ng-show="fweiter" ng-disabled="fmydisabled" ng-model="fnexter" type=button value='favoriten weiter' ng-click="mysavedpager()" style=float:right;><input ng-show="wweiter" ng-disabled="mydisabled" ng-model="nexter" type=button value='weiter' ng-click="pager()"  style=float:right;>
