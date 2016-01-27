@@ -76,11 +76,12 @@ if (relres.body.count == 0){
 function getSaved(offs,user,cb) {
       user=user.replace('%40', '@')
 searcher2='@path.kind:relationship AND @path.source.key:'+user;
-if (offs == 0 || offs == undefined){offs=1} 
-console.log(offs)
+if (offs == 0 || offs == undefined){offs=0} 
+offs1=parseInt(offs,10)
+console.log(offs1)
 db.newSearchBuilder()
 .limit(15)
-.offset(offs)
+.offset(offs1)
 .sortBy('path.destination.reftime:asc')
 .query(searcher2)
 .then(function (relr) {
