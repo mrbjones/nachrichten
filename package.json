@@ -5,7 +5,7 @@
     },
     
 "dependencies": {
-"orchestrate": "*",
+"orchestrate": "0.7.0",
 "express": ">= 1.2.0",
 "mime" : "~1.2.7",
 "nodemailer" : "*",
