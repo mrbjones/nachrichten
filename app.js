@@ -122,10 +122,11 @@ db.newSearchBuilder()
 
 
 
-function makeLike(user,key,cb){
+function makeLike(user,key,date1,cb){
 db.newGraphBuilder()
 .create()
 .from('users', user)
+.data({ "pubDate" : date1 })
 .related('marked')
 .to('nachrichten', key)
 .then(function (result) {
@@ -450,7 +451,11 @@ if (queryData.o == "like1")
 {
        checker(queryData.user, queryData.hash, function(resp) {
             if (resp == "true"){
-            makeLike(queryData.user,queryData.key,  function(resp1) {
+                  keyer=queryData.key
+                  var piper=keyer.split('#||#')
+                  key1=piper[0]
+                  date1=piper[1]
+            makeLike(queryData.user,key1,date1,  function(resp1) {
             response.write(resp1);response.end();
    })      }
       })}
@@ -460,7 +465,10 @@ if (queryData.o=="like2")
 {
        checker(queryData.user, queryData.hash, function(resp) {
             if (resp == "true"){
-            removeLike(queryData.user,queryData.key,  function(resp1) {
+                   var piper=keyer.split('#||#')
+                  key1=piper[0]
+                  date1=piper[1]
+            removeLike(queryData.user,key1,  function(resp1) {
             response.write(resp1);response.end();
    })      }
       })}
