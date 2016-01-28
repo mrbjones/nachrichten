@@ -11,8 +11,8 @@ span {color:gray;}
 input[type=checkbox] {
 	visibility: hidden;
 }
-div .odd {float:left;}
-div .even {float:right;}
+div .odd {float:left;clear:left;}
+div .even {float:right;clear:right;}
 
 
 /* SQUARED FOUR */
