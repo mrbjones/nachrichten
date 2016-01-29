@@ -25,18 +25,18 @@
 </form>
 <a ng-click="mysaved()" style=color:darkblue;font-family:verdana;font-size:11px;cursor:pointer;>Favoriten abrufen.</a></center>
 <div ></div>
-<table  infinite-scroll="pager()" >
+<div  infinite-scroll="pager()" >
 
-<tr ng-repeat="news in newslist">
-<td style=font-family:verdana;font-size:11px>
+<div ng-repeat="news in newslist">
+
 <b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
 <span>{{news.value.pubDate}}</span><br>
 {{news.value.description}}<br><hr></td>
- <td style=font-family:verdana;font-size:11px;text-align:right;width:25px;><div style=font-family:verdana;font-size:11px;text-align:right;width:25px; class=squaredFour><input id="squaredFour{{$index}}"  type=checkbox data='{{news.path.key}}#||#{{news.value.pubDate'  ng-click="checkers($event)" ng-checked="{{news.value.liker}}">
+<div style=font-family:verdana;font-size:11px;text-align:right;width:25px; class=squaredFour><input id="squaredFour{{$index}}"  type=checkbox data='{{news.path.key}}#||#{{news.value.pubDate'  ng-click="checkers($event)" ng-checked="{{news.value.liker}}">
   <label for="squaredFour{{$index}}"></label></div></td>
-</tr>
+</div>
 
-</table>
+</div>
 <hr>
 </div>
 <br>
