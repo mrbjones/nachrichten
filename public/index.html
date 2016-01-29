@@ -1,12 +1,13 @@
 
 <head>
 <!doctype html><html lang="de"><meta http-equiv="content-language" content="de"> <meta charset="UTF-8"><html><head><title>Nachrichten Scraper</title> 
- <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-cookies.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-sanitize.js"></script>
-
- <script src="https://raw.githubusercontent.com/BinaryMuse/ngInfiniteScroll/1.0.0/build/ng-infinite-scroll.min.js"></script>
+<script src="https://raw.githubusercontent.com/BinaryMuse/ngInfiniteScroll/1.0.0/build/ng-infinite-scroll.min.js"></script>
+ 
  <link rel="stylesheet" href="mystyle.css"> 
  <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >
@@ -40,7 +41,7 @@
 </div>
 <br>
 <script>
-var myApp=angular.module('putter', ['ngCookies']);
+var myApp=angular.module('putter',['infinite-scroll', 'ngCookies']);
 myApp.controller('ListNews', ['$scope', '$http', '$element','$location', '$anchorScroll', '$cookies',  function($scope,$http,$element,$location,$anchorScroll,$cookies) {
 $scope.mydisabled=false;
 var cooker=$cookies.get('email');
