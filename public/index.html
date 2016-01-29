@@ -4,6 +4,8 @@
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-cookies.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-sanitize.js"></script>
+ <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+ <script src="https://raw.githubusercontent.com/BinaryMuse/ngInfiniteScroll/1.0.0/build/ng-infinite-scroll.min.js"></script>
  <link rel="stylesheet" href="mystyle.css"> 
  <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >
@@ -21,7 +23,7 @@
 </form>
 <a ng-click="mysaved()" style=color:darkblue;font-family:verdana;font-size:11px;cursor:pointer;>Favoriten abrufen.</a></center>
 <div ></div>
-<table><tr><td></td><td style=font-family:verdana;font-size:11px;text-align:right;width:25px;>Favorit</td></tr>
+<table  infinite-scroll="pager()" ><tr><td></td><td style=font-family:verdana;font-size:11px;text-align:right;width:25px;>Favorit</td></tr>
 <tr ng-repeat="news in newslist">
 <td style=font-family:verdana;font-size:11px>
 <b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
@@ -36,8 +38,8 @@
 </div>
 <br>
 <script>
-var myApp=angular.module('putter', ['ngCookies']);
-myApp.controller('ListNews', ['$scope', '$http', '$element','$location', '$anchorScroll', '$cookies',  function($scope,$http,$element,$location,$anchorScroll,$cookies) {
+var myApp=angular.module('putter', ['ngCookies'], ['infinite-scroll']);
+myApp.controller('ListNews', ['$scope', '$http', '$element','$location', '$anchorScroll', '$cookies','infiniteScrollController',  function($scope,$http,$element,$location,$anchorScroll,$cookies) {
 $scope.mydisabled=false;
 var cooker=$cookies.get('email');
 if (cooker == "" || cooker == undefined) {}
