@@ -52,7 +52,9 @@ $scope.emailer=cooker;
 $scope.searchz=" ";
 $scope.pagerz=15;
 
-$http({ url: window.location.hostname+'/app.js', method: "GET", params: {o: 'g', user: $cookies.get('email')}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results; if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; };  }); 
+$http({ url: window.location.hostname+'/app.js', method: "GET", params: {o: 'g', user: $cookies.get('email')}}).success(function(data) {$scope.newslist=[]; 
+ var items = data.body.children;for (var i = 0; i < items.length; i++) {$scope.newslist.push(data.body.results[i]);};
+if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; };  }); 
 
 $scope.refresher= function() { $scope.wweiter=true;$scope.fweiter=false;
  $http({ url: window.location.hostname+'/app.js', method: "GET", params: {o: 'g', user: $cookies.get('email')}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results; if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; };  }); 
@@ -67,7 +69,8 @@ $scope.update = function() { $scope.mydisabled=false;
 
 $scope.pager = function() {
    $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 's',search: $scope.searchz, offs: $scope.pagerz}}).success(function(data, status, headers, config) 
- {$scope.newslist=[]; $scope.newslist.push(data.body.results);   
+ {$scope.newslist=[];  
+ var items = data.body.children;for (var i = 0; i < items.length; i++) {$scope.newslist.push(data.body.results[i]);};
   $scope.pagerz=parseInt($scope.pagerz, 10)+15; if (parseInt($scope.pagerz, 10) >= parseInt(data.body.total_count,10)) {
   $scope.mydisabled=true;   };   $location.hash('topp');  $anchorScroll(); });
 };
