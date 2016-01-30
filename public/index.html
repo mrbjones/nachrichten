@@ -22,12 +22,11 @@ $scope.update = function() { $scope.mydisabled=false;
  {$scope.newslist=[]; $scope.newslist=data.body.results;$scope.pagerz='15';if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; } 
   $location.hash('topp');  $anchorScroll(); }); };
 
-$scope.pager = function() {
+$scope.pager = function() {$scope.pagerz=parseInt($scope.pagerz, 10)+15;
    $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 's',search: $scope.searchz, offs: $scope.pagerz}}).success(function(data, status, headers, config) 
  {
   var items = data.body.results;for (var i = 0; i < items.length; i++) {$scope.newslist.push(data.body.results[i]);}; 
-  $scope.pagerz=parseInt($scope.pagerz, 10)+15; if (parseInt($scope.pagerz, 10) >= parseInt(data.body.total_count,10)) {
-     };    });
+     });
 };
  }]);
 </script>
