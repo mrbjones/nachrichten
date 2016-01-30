@@ -11,7 +11,7 @@
 </head>
 <script>
 var myApp=angular.module('putter', ['infinite-scroll']);
-angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 2000)
+angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 3000)
 myApp.controller('ListNews', ['$scope', '$http', '$element','$location', '$anchorScroll', function($scope,$http,$element,$location,$anchorScroll) {
 $scope.mydisabled=false; 
 $scope.searchz=" ";
