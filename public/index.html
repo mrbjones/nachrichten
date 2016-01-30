@@ -1,7 +1,9 @@
 
 <head>
 <!doctype html><html lang="de"><meta http-equiv="content-language" content="de"> <meta charset="UTF-8"><html><head><title>Nachrichten Scraper</title> <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
+ <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-sanitize.js"></script>
+ <script src="https://raw.githubusercontent.com/BinaryMuse/ngInfiniteScroll/1.0.0/build/ng-infinite-scroll.min.js"></script>
  <link rel="stylesheet" href="mystyle.css"> 
  <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >
@@ -32,17 +34,16 @@ data-ad-slot="1588231650"></ins></center>
 </form></center>
 <div ></div>
 
-<table><tr ng-repeat="news in newslist">
-<td style=font-family:verdana;font-size:11px>
+<div><div ng-repeat="news in newslist" style=font-family:verdana;font-size:11px>
+
 <b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
 <span>{{news.value.pubDate}}</span><br>
-{{news.value.description}}<br><hr></td>
-</tr>
-<tr><td style=text-align:right;><input style=float:right; ng-disabled="mydisabled" ng-model="nexter" type=button value='weiter' ng-click="pager()"></td></tr>
-</table>
+{{news.value.description}}<br><hr>
+</div>
+</div>
 </div>
 <script>
-var myApp=angular.module('putter', []);
+var myApp=angular.module('putter', ['infinite-scroll']);
 myApp.controller('ListNews', ['$scope', '$http', '$element','$location', '$anchorScroll', function($scope,$http,$element,$location,$anchorScroll) {
 $scope.mydisabled=false; 
 
@@ -59,7 +60,7 @@ $scope.update = function() { $scope.mydisabled=false;
 
 $scope.pager = function() {
    $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 's',search: $scope.searchz, offs: $scope.pagerz}}).success(function(data, status, headers, config) 
- {$scope.newslist=[]; $scope.newslist=data.body.results;   
+ {$scope.newslist=data.body.results;   
   $scope.pagerz=parseInt($scope.pagerz, 10)+15; if (parseInt($scope.pagerz, 10) >= parseInt(data.body.total_count,10)) {
   $scope.mydisabled=true;   };   $location.hash('topp');  $anchorScroll(); });
 };
