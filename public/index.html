@@ -48,6 +48,7 @@ data-ad-slot="1588231650"></ins></center>
 </div>
 <script>
 var myApp=angular.module('putter', ['infinite-scroll']);
+angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 250)
 myApp.controller('ListNews', ['$scope', '$http', '$element','$location', '$anchorScroll', function($scope,$http,$element,$location,$anchorScroll) {
 $scope.mydisabled=false; 
 
