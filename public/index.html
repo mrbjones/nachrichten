@@ -1,7 +1,9 @@
 
 <head>
-<!doctype html><html lang="de"><meta http-equiv="content-language" content="de"> <meta charset="UTF-8"><html><head><title>Nachrichten Scraper</title> <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
+<!doctype html><html lang="de"><meta http-equiv="content-language" content="de"> <meta charset="UTF-8"><html><head><title>Nachrichten Scraper</title> 
  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
+
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-sanitize.js"></script>
  <script src="https://raw.githubusercontent.com/BinaryMuse/ngInfiniteScroll/1.0.0/build/ng-infinite-scroll.min.js"></script>
  <link rel="stylesheet" href="mystyle.css"> 
@@ -33,15 +35,16 @@ data-ad-slot="1588231650"></ins></center>
 <input type=button ng-click="update()" value="suchen" style=display:none;>
 </form></center>
 <div ></div>
-
+<center>
  <div infinite-scroll="pager()" style=min-width:500px;max-width:1200px;>
-  <div ng-repeat="news in newslist" style=font-family:verdana;font-size:11px>
+  <div ng-repeat="news in newslist" style=font-family:verdana;font-size:11px;text-align:left;>
 
 <b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
 <span>{{news.value.pubDate}}</span><br>
 {{news.value.description}}<br><hr>
 </div>
 </div>
+</center>
 </div>
 <script>
 var myApp=angular.module('putter', ['infinite-scroll']);
