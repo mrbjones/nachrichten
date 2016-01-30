@@ -11,7 +11,7 @@
 </head>
 <script>
 var myApp=angular.module('putter', ['infinite-scroll']);
-angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 1000)
+angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 2000)
 myApp.controller('ListNews', ['$scope', '$http', '$element','$location', '$anchorScroll', function($scope,$http,$element,$location,$anchorScroll) {
 $scope.mydisabled=false; 
 $scope.searchz=" ";
@@ -63,7 +63,7 @@ data-ad-slot="1588231650"></ins></center>
 
 <b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
 <span>{{news.value.pubDate}}</span><br>
-{{news.value.description}}<br>
+{{news.value.description}}<br><br>
 </div>
 </div>
 </center>
