@@ -17,10 +17,6 @@ $scope.mydisabled=false;
 $scope.searchz=" ";
 $scope.pagerz=0;
 $http({ url: window.location.hostname+'/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results;  }); 
-$scope.update = function() { $scope.mydisabled=false; 
-   $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 's',search: $scope.searchz}}).success(function(data, status, headers, config) 
- {$scope.newslist=[]; $scope.newslist=data.body.results;$scope.pagerz='15';if (parseInt(data.body.total_count,10) < 15){$scope.mydisabled=true; } 
-  $location.hash('topp');  $anchorScroll(); }); };
 
 $scope.pager = function() {$scope.pagerz=parseInt($scope.pagerz, 10)+15;
    $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 's',search: $scope.searchz, offs: $scope.pagerz}}).success(function(data, status, headers, config) 
@@ -53,11 +49,11 @@ data-ad-slot="1588231650"></ins></center>
 
 <input ng-value="search1"  ng-model="searchz" ng-keyup="update()" style=display:none;>
 <input ng-value="pager1" ng-model="pagerz" name='pager'  type=hidden>
-<input type=button ng-click="update()" value="suchen" style=display:none;>
+
 </form></center>
 <div ></div>
 <center>
- <div infinite-scroll="pager()" style=min-width:500px;max-width:1000px;  infinite-scroll-distance='1'>
+ <div infinite-scroll="pager()" style=min-width:500px;max-width:1000px;  infinite-scroll-distance='0'>
  <div ng-repeat="news in newslist" style=font-family:verdana;font-size:11px;text-align:left;>
 
 <b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
