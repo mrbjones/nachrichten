@@ -60,7 +60,7 @@ $scope.pager = function() {$scope.verybusy=true;$scope.pagerz=parseInt($scope.pa
 </form></center>
 <div ></div>
 <center>
- <div infinite-scroll="pager()" style="margin-left:auto;margin-right:auto;width:75%;min-width:200px;max-width:1000px;"  infinite-scroll-distance='0' infinite-scroll-disabled='verybusy'  ui-scroll-bottom="pager()">
+ <div infinite-scroll="pager()" style="margin-left:auto;margin-right:auto;width:75%;min-width:200px;max-width:1000px;"  infinite-scroll-distance='0' infinite-scroll-disabled='verybusy' class="content"  infinite-scroll-container=".content">
  <div  ng-repeat="news in newslist" style=font-family:verdana;font-size:11px;text-align:left; ng-show="showy">
 
 <b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
