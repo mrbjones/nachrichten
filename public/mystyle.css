@@ -1,6 +1,7 @@
 table { margin-left:auto;margin-right:auto;width:75%;min-width:300px;max-width:750px  }
 a {text-decoration:none;}
 form {font-family:verdana;font-size:13px;font-weight:bold;margin-left:auto;margin-right:auto;width:75%;min-width:300px;max-width:750px; }
+div {margin-left:auto;margin-right:auto;width:75%;min-width:300px;max-width:750px }
 hr {
     border: 0;
     
