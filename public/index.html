@@ -6,7 +6,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-sanitize.js"></script>
  <script src="https://cdn.rawgit.com/BinaryMuse/ngInfiniteScroll/1.0.0/build/ng-infinite-scroll.min.js"></script>
  <link rel="stylesheet" href="mystyle.css"> 
- <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >
 </head>
 <script>
@@ -33,19 +33,9 @@ $scope.pager = function() {$scope.verybusy=true;$scope.pagerz=parseInt($scope.pa
 
  <a id="topp"></a>
 <center>
-<!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
- mrbjgq 
-
-<ins class="adsbygoogle"
-style="display:inline-block;width:728px;height:90px;z-index:-1"
-data-ad-client="ca-pub-1571168911646120"
-data-ad-slot="1588231650"></ins></center>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>-->
+<div style=margin-left:auto;margin-right:auto;width:75%;min-width:200px;max-width:1000px;>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- freezeitung -->
-<div style=margin-left:auto;margin-right:auto;width:75%;min-width:200px;max-width:1000px;>
 <ins class="adsbygoogle"
      style="display:block;"
      data-ad-client="ca-pub-1571168911646120"
@@ -69,8 +59,8 @@ data-ad-slot="1588231650"></ins></center>
 </form></center>
 <div ></div>
 <center>
- <div infinite-scroll="pager()" style=margin-left:auto;margin-right:auto;width:75%;min-width:200px;max-width:1000px;  infinite-scroll-distance='0' infinite-scroll-disabled='verybusy'>
- <div id=r1 ng-repeat="news in newslist" style=font-family:verdana;font-size:11px;text-align:left; ng-show="showy">
+ <div infinite-scroll="pager()" style="margin-left:auto;margin-right:auto;width:75%;min-width:200px;max-width:1000px;"  infinite-scroll-distance='0' infinite-scroll-disabled='verybusy'>
+ <div  ng-repeat="news in newslist" style=font-family:verdana;font-size:11px;text-align:left; ng-show="showy">
 
 <b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
 <span>{{news.value.pubDate}}</span><br>
