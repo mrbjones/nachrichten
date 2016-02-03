@@ -16,7 +16,8 @@ myApp.controller('ListNews', ['$scope', '$http', '$element','$location', '$ancho
 $scope.mydisabled=false; 
 $scope.searchz=" ";
 $scope.pagerz=0;
-$http({ url: window.location.hostname+'/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results; $scope.pagerz=0; }); 
+$http({ url: window.location.hostname+'/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results;
+document.getElementById("r1").style.color = "black";$scope.pagerz=0; }); 
 
 $scope.pager = function() {$scope.verybusy=true;$scope.pagerz=parseInt($scope.pagerz, 10)+5;
    $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 's',search: $scope.searchz, offs: $scope.pagerz}}).success(function(data, status, headers, config) 
@@ -54,7 +55,7 @@ data-ad-slot="1588231650"></ins></center>
 <div ></div>
 <center>
  <div infinite-scroll="pager()" style=min-width:500px;max-width:1000px;  infinite-scroll-distance='0' infinite-scroll-disabled='verybusy'>
- <div ng-repeat="news in newslist" style=font-family:verdana;font-size:11px;text-align:left;>
+ <div id=r1 ng-repeat="news in newslist" style=font-family:verdana;font-size:11px;text-align:left;color:white>
 
 <b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
 <span>{{news.value.pubDate}}</span><br>
