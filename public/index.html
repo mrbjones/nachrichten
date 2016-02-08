@@ -50,7 +50,7 @@ $scope.pager = function() {$scope.verybusy=true;$scope.pagerz=parseInt($scope.pa
  <div id="parent" style=clear:both;width:225px;clear:both;float:right;position:relative;><a onmouseover="document.getElementById('popup').style.display = 'block';">About</a> | <a href=http://www.myzeitung.ml>Login</a>
  <div id="popup" style="padding:10px;font-family:verdana;font-size:11px;clear:both;float:right;display:none;width:200px;border-style:solid;border-width:1px;border-color:silver;z-Index:100;position:absolute;background-color:white;" onmouseout="document.getElementById('popup').style.display = 'none';">This web app collects and stores the RSS feeds from die Zeit, Die Welt and FAZ.<br><br>You may also follow the login link to create a Login to search and store the database of the feeds.<br><br>This page was created in Appfog using Orchestrate in the CenturyLink Cloud.</div>
  </div>
-<div id=main ng-controller="ListNews" >
+
 <center><br><br><a href=index.html style=text-decoration:none;><img src=zeitung.PNG ></a>
 <br><form novalidate class="simple-form" >
 
@@ -58,9 +58,10 @@ $scope.pager = function() {$scope.verybusy=true;$scope.pagerz=parseInt($scope.pa
 <input ng-value="pager1" ng-model="pagerz" name='pager'  type=hidden>
 
 </form></center>
-<div ></div>
+<div id=main ng-controller="ListNews" >
 <center>
- <div infinite-scroll="pager()" style="margin-left:auto;margin-right:auto;width:75%;min-width:200px;max-width:1000px;"  infinite-scroll-distance='0' infinite-scroll-disabled='verybusy' class="content"  infinite-scroll-container=".content">
+ 
+ <div infinite-scroll="pager()" style="margin-left:auto;margin-right:auto;width:75%;min-width:200px;max-width:1000px;"  infinite-scroll-distance='0' >
  <div  ng-repeat="news in newslist" style=font-family:verdana;font-size:11px;text-align:left; ng-show="showy">
 
 <b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
