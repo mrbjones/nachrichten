@@ -11,7 +11,7 @@
 </head>
 <script>
 var myApp=angular.module('putter', ['infinite-scroll']);
-angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 1000)
+angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 3000)
 myApp.controller('ListNews', ['$scope', '$http', '$element','$location', '$anchorScroll', function($scope,$http,$element,$location,$anchorScroll) {
 $scope.verybusy=true
 $scope.showy=false;
@@ -61,7 +61,7 @@ $scope.pager = function() {$scope.verybusy=true;$scope.pagerz=parseInt($scope.pa
 <div id=main ng-controller="ListNews" >
 <center>
  
- <div infinite-scroll="pager()" style="margin-left:auto;margin-right:auto;width:75%;min-width:200px;max-width:1000px;"  infinite-scroll-distance='0' >
+ <div infinite-scroll="pager()" style="margin-left:auto;margin-right:auto;width:75%;min-width:200px;max-width:1000px;"  infinite-scroll-distance='0' infinite-scroll-disabled='verybusy'>
  <div  ng-repeat="news in newslist" style=font-family:verdana;font-size:11px;text-align:left; ng-show="showy">
 
 <b><a title={{news.value.source}} href={{news.value.link}} target=_blank style=color:black;>{{news.value.title}}</a></b><br>
