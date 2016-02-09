@@ -17,12 +17,39 @@ orchestrate_api_endpoint = node.credentials.ORCHESTRATE_API_HOST
 }
 };
 var db = require("orchestrate")(orchestrate_api_key,orchestrate_api_endpoint);
+apk=process.env.api_key;
+apu=process.env.api_user;
+appw=process.env.api_pw;
+
 
 function getter(cb) {
-db.search('nachrichten', '*', {  sort: 'value.pubDate:desc',  limit: 15} )
-.then(function (result) {
-cb(JSON.stringify(result))
-})};
+ var options = {
+hostname: 'https://api.ctl.io'
+  ,port: app.get('port')
+  ,path: '/v2/authentication/login'
+  ,method: 'POST'
+  ,headers: { 'Content-Type': 'application/json', 'ACCEPT' : 'application/json'},
+  
+};
+
+var body = JSON.stringify({
+    username: apu, password: appw
+})
+var req = http.request(options, function(res) {
+  res.setEncoding('utf8');
+  res.on('data', function (data) {
+       console.log(data); // I can't parse it because, it's a string. why?
+  });
+});
+reqA.on('error', function(e) {
+  console.log('problem with request: ' + e.message);
+});
+reqA.end(body);
+  
+  
+  
+  
+};
 
 function send404(response) {
 response.writeHead(404, {"Content-type" : "text/plain"});
