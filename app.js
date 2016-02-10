@@ -25,7 +25,6 @@ appw=process.env.api_pw;
 function getter(cb) {
  var options = {
 hostname: 'https://api.ctl.io'
-  ,port: app.get('port')
   ,path: '/v2/authentication/login'
   ,method: 'POST'
   ,headers: { 'Content-Type': 'application/json', 'ACCEPT' : 'application/json'},
