@@ -11,15 +11,15 @@
 </head>
 <script>
 var myApp=angular.module('putter', ['infinite-scroll']);
-angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 3000)
+angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 10000)
 myApp.controller('ListNews', ['$scope', '$http', '$element','$location', '$anchorScroll', function($scope,$http,$element,$location,$anchorScroll) {
 $scope.verybusy=true
 $scope.showy=false;
 $scope.mydisabled=false; 
 $scope.searchz=" ";
-$scope.pagerz=0;
+$scope.pagerz=10;
 $http({ url: window.location.hostname+'/app.js', method: "GET", params: {o: 'g'}}).success(function(data) {$scope.newslist=[]; $scope.newslist=data.body.results;
-$scope.showy=true;$scope.verybusy=false;$scope.pagerz=0; }); 
+$scope.showy=true;$scope.verybusy=false;$scope.pagerz=10; }); 
 
 $scope.pager = function() {$scope.verybusy=true;$scope.pagerz=parseInt($scope.pagerz, 10)+5;
    $http({ url: window.location.hostname +'/app.js', method: "GET", params: {o: 's',search: $scope.searchz, offs: $scope.pagerz}}).success(function(data, status, headers, config) 
